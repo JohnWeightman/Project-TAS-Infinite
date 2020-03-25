@@ -1,0 +1,7 @@
+C:\Users\Istalri Skolir\Documents\Visual Studio Projects\Text-Adventure-Enviroment\Text Adventure Environment\bin\Debug\Text Adventure Environment.exe.config
+C:\Users\Istalri Skolir\Documents\Visual Studio Projects\Text-Adventure-Enviroment\Text Adventure Environment\bin\Debug\Text Adventure Environment.exe
+C:\Users\Istalri Skolir\Documents\Visual Studio Projects\Text-Adventure-Enviroment\Text Adventure Environment\bin\Debug\Text Adventure Environment.pdb
+C:\Users\Istalri Skolir\Documents\Visual Studio Projects\Text-Adventure-Enviroment\Text Adventure Environment\obj\Debug\Text Adventure Environment.csprojAssemblyReference.cache
+C:\Users\Istalri Skolir\Documents\Visual Studio Projects\Text-Adventure-Enviroment\Text Adventure Environment\obj\Debug\Text Adventure Environment.csproj.CoreCompileInputs.cache
+C:\Users\Istalri Skolir\Documents\Visual Studio Projects\Text-Adventure-Enviroment\Text Adventure Environment\obj\Debug\Text Adventure Environment.exe
+C:\Users\Istalri Skolir\Documents\Visual Studio Projects\Text-Adventure-Enviroment\Text Adventure Environment\obj\Debug\Text Adventure Environment.pdb
