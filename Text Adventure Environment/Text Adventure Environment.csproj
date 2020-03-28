@@ -45,6 +45,8 @@
     <Compile Include="DiceRoller.cs" />
     <Compile Include="Draw.cs" />
     <Compile Include="DrawGUI.cs" />
+    <Compile Include="Enemies.cs" />
+    <Compile Include="EnemyNPC.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

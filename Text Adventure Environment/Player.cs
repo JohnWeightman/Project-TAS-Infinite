@@ -16,19 +16,34 @@ namespace Text_Adventure_Environment
         public static int HP = 90;
         public static int MaxHP = 90;
         public static int AC = 18;
-        public static int Pro = 2;
         public static int Str = 18;
         public static int Dex = 16;
         public static int Con = 14;
+        public static int StrMod = 0;
+        public static int DexMod = 0;
+        public static int ConMod = 0;
         public static int XP = 1000;
         public static int LU = 2000;
         public static string Weapon = "Longsword";
         public static string OffHand = "Shield";
         public static string Armour = "Chainmail";
-        public static List<string> Inventory = new List<string>()
+        public static List<string> Inventory = new List<string>() {"Health Potion", "Health Potion", "Health Potion", "Key", "Key"};
+
+        #endregion
+
+        #region Update Player Stats
+
+        public static void UpdateAbilityModifiers()
         {
-            "Health Potion", "Health Potion", "Health Potion", "Key", "Key"
-        };
+            Player.StrMod = Player.Str / 3;
+            Player.DexMod = Player.Dex / 3;
+            Player.ConMod = Player.Con / 3;
+        }
+
+        public static int UpdatePlayerAC()
+        {
+            return 10;
+        }
 
         #endregion
 
@@ -72,16 +87,18 @@ namespace Text_Adventure_Environment
         {
             CharacterName();
             CharacterAbilityPoints();
+            EmptyOtherStats();
+            DisplayCharacterSheet();
+            DrawGUI.UpdatePlayersStatBoxes();
         }
 
         static void CharacterName()
         {
-            DrawGUI.UpdateStoryBox("Welcome to the character Creator!                                                                                          " +
-            "                                                                                                   Character Name: ");
+            List<string> CCName1 = new List<string>() {"Welcome to the Character Creator", "", "Name: "};
+            DrawGUI.UpdateStoryBox(CCName1);
             Player.Name = Console.ReadLine();
-            DrawGUI.UpdateStoryBox("Welcome to the character Creator!                                                                                          " +
-            "                                                                                                   Are you sure you want to be known as " +
-            Player.Name + "?");
+            List<string> CCName2 = new List<string>() { "Welcome to the Character Creator", "", "Are you sure you want to be known as " + Player.Name + "?"};
+            DrawGUI.UpdateStoryBox(CCName2);
             List<string> Options = new List<string>() { "Yes", "No" };
             DrawGUI.UpdatePlayerOptions(Options);
             int Input = PlayerInputs(Options.Count);
@@ -101,13 +118,22 @@ namespace Text_Adventure_Environment
         static void CharacterAbilityPoints()
         {
             RandomizeAbilityPoints();
-            DrawGUI.UpdateStoryBox("Welcome to the character Creator!                                                                                          " +
-            "                                                                                                   Str: " + Player.Str + "                        " +
-            "                                                                                Dex: " + Player.Dex + "                                           " +
-            "                                                            Con: " + Player.Con);
+            List<string> CCAbilities1 = new List<string>() {"Welcome to the Character Creator", "", "Name: " + Player.Name, "", "HP: " + Player.HP + "/" + 
+                Player.MaxHP, "", "Str: " + Player.Str, "Dex: " + Player.Dex, "Con: " + Player.Con};
+            DrawGUI.UpdateStoryBox(CCAbilities1);
             List<string> Options = new List<string>() {"Reroll Stats", "Continue"};
             DrawGUI.UpdatePlayerOptions(Options);
             int Input = PlayerInputs(Options.Count);
+            switch (Input)
+            {
+                case 1:
+                    CharacterAbilityPoints();
+                    break;
+                case 2:
+                    return;
+                default:
+                    return;
+            }
         }
 
         static void RandomizeAbilityPoints()
@@ -116,19 +142,19 @@ namespace Text_Adventure_Environment
             int Stat = 1;
             while (!Finished)
             {
-                int[] Random = new int[] {DiceRoller.RollDice(6), DiceRoller.RollDice(6), DiceRoller.RollDice(6), DiceRoller.RollDice(6), DiceRoller.RollDice(6)};
+                int[] Random = new int[] {DiceRoller.RollDice(4), DiceRoller.RollDice(4), DiceRoller.RollDice(4), DiceRoller.RollDice(4)};
                 Array.Sort(Random);
                 if (Stat == 1)
                 {
-                    Player.Str = Random[2] + Random[3] + Random[4];
+                    Player.Str = Random[1] + Random[2] + Random[3];
                 }
                 else if( Stat == 2)
                 {
-                    Player.Dex = Random[2] + Random[3] + Random[4];
+                    Player.Dex = Random[1] + Random[2] + Random[3];
                 }
                 else
                 {
-                    Player.Con = Random[2] + Random[3] + Random[4];
+                    Player.Con = Random[1] + Random[2] + Random[3];
                     Finished = !Finished;
                 }
                 Stat += 1;
@@ -150,10 +176,36 @@ namespace Text_Adventure_Environment
                             break;
                     }
                 }
+                UpdateAbilityModifiers();
+                Player.MaxHP = DiceRoller.RollDice(10) + Player.ConMod;
+                Player.HP = Player.MaxHP;
             }
         }
 
+        static void EmptyOtherStats()
+        {
+            Player.AC = UpdatePlayerAC();
+            Player.XP = 0;
+            Player.LU = 100;
+            Player.Weapon = "ShortSword";
+            Player.OffHand = "N/A";
+            Player.Armour = "Leather";
+            Player.Inventory.Clear();
+        }
+
         #endregion
+
+        public static void DisplayCharacterSheet()
+        {
+            List<string> CharacterSheet = new List<string>() { "Welcome to the Character Creator", "", "Name: " + Player.Name, "Level: " + Player.Level,
+            "HP: " + Player.HP + "/" + Player.MaxHP, "AC: " + Player.AC, "", "Str: " + Player.Str + " (+" + Player.StrMod + ")", "Dex: " + Player.Dex + 
+            " (+" + Player.DexMod + ")", "Con: " + Player.Con + " (+" + Player.ConMod + ")", "", "XP: " + Player.XP, "Next Level: " + Player. LU,
+                "XP Till Next Level: " + (Player.LU - Player.XP), "", "Weapon: " + Player.Weapon, "Off-Hand: " + Player.OffHand, "Armour: " + Player.Armour};
+            DrawGUI.UpdateStoryBox(CharacterSheet);
+            List<string> Options = new List<string>() {"Continue"};
+            DrawGUI.UpdatePlayerOptions(Options);
+            int Input = PlayerInputs(Options.Count);
+        }
 
     }
 }

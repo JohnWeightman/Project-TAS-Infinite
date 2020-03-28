@@ -45,6 +45,48 @@ namespace Text_Adventure_Environment
 
         #endregion
 
+        #region Additional Functions
+
+        public static void UpdatePlayersStatBoxes()
+        {
+            UpdatePlayersFirstStatsBox();
+            UpdatePlayersSecondStatsBox();
+            UpdatePlayersThirdStatsBox();
+            UpdatePlayersFourthStatsBox();
+            UpdateInventory();
+        }
+
+        public static void ClearAllBoxes()
+        {
+            ClearPlayersStatBoxes();
+            ClearNPCBoxes();
+            ClearGameBoxes();
+        }
+
+        public static void ClearPlayersStatBoxes()
+        {
+            ClearPlayersFirstStatsBox();
+            ClearPlayersSecondStatsBox();
+            ClearPlayersThirdStatsBox();
+            ClearPlayersFourthStatsBox();
+            ClearInventory();
+        }
+
+        public static void ClearNPCBoxes()
+        {
+            ClearFightOrderBox();
+            ClearEnemiesBox();
+        }
+
+        public static void ClearGameBoxes()
+        {
+            ClearStory();
+            ClearPlayerOptions();
+            ClearEventsBox();
+        }
+
+        #endregion
+
         #region Players First Stats Box
 
         static void DrawPlayersFirstStatsBox() //Draws the Players first stats box
@@ -255,20 +297,18 @@ namespace Text_Adventure_Environment
         static void DrawEnemiesBox() //Draws the Enemies box
         {
             Draw.Rectangle(20, 10, 148, 1, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
-            List<string> StartDisplayList = StartDisplay.StartEnemies;
-            UpdateEnemiesBox(StartDisplayList);
         }
 
-        public static void UpdateEnemiesBox(List<string> Enemies) //Updates the Enmies Box
+        public static void UpdateEnemiesBox() //Updates the Enmies Box
         {
             ClearEnemiesBox();
             Console.SetCursorPosition(150, 17);
             Console.Write("Enemies");
             int YPos = 19;
-            foreach(string Enemy in Enemies)
+            foreach (object Enemy in Enemies.EnemyList)
             {
                 Console.SetCursorPosition(150, YPos);
-                Console.Write(Enemy);
+                Console.Write(Enemy.Name);
                 YPos += 1;
             }
         }
@@ -289,17 +329,19 @@ namespace Text_Adventure_Environment
 
         #region Story Box
 
-        public static void UpdateStoryBox(string StoryString) //Updates the Story box
+        public static void UpdateStoryBox(List<string> StoryStrings) //Updates the Story box
         {
             ClearStory();
-            List<string> Story = CheckStringLength(StoryString);
-            int XPos = 28;
             int YPos = 6;
-            foreach (string Line in Story)
+            foreach (string StoryString in StoryStrings)
             {
-                Console.SetCursorPosition(XPos, YPos);
-                Console.Write(Line);
-                YPos += 1;
+                List<string> Story = CheckStringLength(StoryString);
+                foreach (string Line in Story)
+                {
+                    Console.SetCursorPosition(28, YPos);
+                    Console.Write(Line);
+                    YPos += 1;
+                }
             }
         }
 
