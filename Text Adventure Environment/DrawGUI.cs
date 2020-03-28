@@ -261,19 +261,23 @@ namespace Text_Adventure_Environment
         {
             Draw.Rectangle(20, 10, 148, -23, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
             List<string> StartDisplayList = StartDisplay.StartFightOrder;
-            UpdateFightOrderBox(StartDisplayList);
+            UpdateFightOrderBox();
         }
 
-        public static void UpdateFightOrderBox(List<string> FightOrder) //Updates the Fight Order box
+        public static void UpdateFightOrderBox() //Updates the Fight Order box
         {
             ClearFightOrderBox();
             Console.SetCursorPosition(150, 6);
             Console.Write("Fight Order");
             int YPos = 8;
-            foreach(string Character in FightOrder)
+            foreach (object Character in Encounter.FightOrder)
             {
                 Console.SetCursorPosition(150, YPos);
-                Console.Write(Character);
+                if(Character == TempPlayer)
+                {
+
+                }
+                //Console.Write(Character.Name);
                 YPos += 1;
             }
         }
@@ -305,7 +309,7 @@ namespace Text_Adventure_Environment
             Console.SetCursorPosition(150, 17);
             Console.Write("Enemies");
             int YPos = 19;
-            foreach (object Enemy in Enemies.EnemyList)
+            foreach (EnemyNPC Enemy in Enemies.EnemyList)
             {
                 Console.SetCursorPosition(150, YPos);
                 Console.Write(Enemy.Name);

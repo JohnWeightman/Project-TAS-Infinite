@@ -9,7 +9,7 @@ namespace Text_Adventure_Environment
     class EnemyNPC
     {
 
-        #region Data
+        #region Enemy Data
 
         public string Name = "";
         public int HP = 0;
@@ -24,27 +24,9 @@ namespace Text_Adventure_Environment
         public string OffHand = "";
         public string Armour = "";
         public int XPValue = 0;
-        public EnemyNPC(string name, int hp, int ac, int str, int dex, int con, int strmod, int dexmod, int conmod, string weapon, string offhand, string armour,
-            int xpvalue)
-        {
-            Name = name;
-            HP = hp;
-            AC = ac;
-            Str = str;
-            Dex = dex;
-            Con = con;
-            StrMod = strmod;
-            DexMod = dexmod;
-            ConMod = conmod;
-            Weapon = weapon;
-            OffHand = offhand;
-            Armour = armour;
-            XPValue = xpvalue;
-        }
 
+        public int Initiative = 0;
         #endregion
-
-
 
     }
 }

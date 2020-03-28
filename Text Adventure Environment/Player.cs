@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Adventure_Environment
 {
+
     static class Player
     {
 
@@ -28,6 +29,8 @@ namespace Text_Adventure_Environment
         public static string OffHand = "Shield";
         public static string Armour = "Chainmail";
         public static List<string> Inventory = new List<string>() {"Health Potion", "Health Potion", "Health Potion", "Key", "Key"};
+
+        public static int Initiative = 0;
 
         #endregion
 
@@ -207,5 +210,59 @@ namespace Text_Adventure_Environment
             int Input = PlayerInputs(Options.Count);
         }
 
+    }
+
+    class TempPlayer
+    {
+        public string GetPlayerString(string Stat)
+        {
+            switch (Stat)
+            {
+                case "Name":
+                    return Player.Name;
+                case "Weapon":
+                    return Player.Weapon;
+                case "OffHand":
+                    return Player.OffHand;
+                case "Armour":
+                    return Player.Armour;
+                default:
+                    return "";
+            }
+        }
+
+        public int GetPlayerInt(string Stat)
+        {
+            switch (Stat)
+            {
+                case "Level":
+                    return Player.Level;
+                case "HP":
+                    return Player.HP;
+                case "MaxHP":
+                    return Player.MaxHP;
+                case "AC":
+                    return Player.AC;
+                case "Str":
+                    return Player.Str;
+                case "Dex":
+                    return Player.Dex;
+                case "Con":
+                    return Player.Con;
+                case "StrMod":
+                    return Player.StrMod;
+                case "DexMod":
+                    return Player.DexMod;
+                case "ConMod":
+                    return Player.ConMod;
+                case "XP":
+                    return Player.XP;
+                case "LU":
+                    return Player.LU;
+                default:
+                    return 0;
+            }
+
+        }
     }
 }
