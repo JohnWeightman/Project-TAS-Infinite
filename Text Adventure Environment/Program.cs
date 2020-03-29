@@ -12,7 +12,7 @@ namespace Text_Adventure_Environment
         {
             DrawGUI.DrawGUIConsole();
             StartDisplay.DisplayMainMenu();
-            Encounter.SortFightOrder();
+            Encounter.StartEncounter();
             Console.ReadKey();
         }
     }

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Armour>
+	<Leather Name="Leather" AC="5" Weight="Light"/>
+	<Chainmail Name="Chainmail" AC="10" Weight="Heavy"/>
+</Armour>

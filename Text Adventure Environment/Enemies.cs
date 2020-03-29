@@ -10,7 +10,7 @@ namespace Text_Adventure_Environment
 {
     static class Enemies
     {
-        public static List<object> EnemyList = new List<object>();
+        public static List<EnemyNPC> EnemyList = new List<EnemyNPC>();
 
         public static void LoadEnemeisFromFile(List<string> EnemyType, List<int> EnemyCount)
         {
@@ -36,16 +36,16 @@ namespace Text_Adventure_Environment
                             EnemyNPC[Count].StrMod = Convert.ToInt32(XML.GetAttribute("StrMod"));
                             EnemyNPC[Count].DexMod = Convert.ToInt32(XML.GetAttribute("DexMod"));
                             EnemyNPC[Count].ConMod = Convert.ToInt32(XML.GetAttribute("ConMod"));
-                            EnemyNPC[Count].Weapon = XML.GetAttribute("Weapon");
                             EnemyNPC[Count].OffHand = XML.GetAttribute("OffHand");
-                            EnemyNPC[Count].Armour = XML.GetAttribute("Armour");
                             EnemyNPC[Count].XPValue = Convert.ToInt32(XML.GetAttribute("XPValue"));
+                            EnemyNPC[Count].Weapon.UpdateWeapon(XML.GetAttribute("Weapon"));
+                            EnemyNPC[Count].Armour.UpdateArmour(XML.GetAttribute("Armour"));
                             Count += 1;
                         }
                     }
                 }
             }
-            foreach(object Enemy in EnemyNPC)
+            foreach(EnemyNPC Enemy in EnemyNPC)
             {
                 EnemyList.Add(Enemy);
             }

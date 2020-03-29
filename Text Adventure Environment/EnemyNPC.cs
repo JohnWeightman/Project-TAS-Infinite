@@ -20,13 +20,27 @@ namespace Text_Adventure_Environment
         public int StrMod = 0;
         public int DexMod = 0;
         public int ConMod = 0;
-        public string Weapon = "";
         public string OffHand = "";
-        public string Armour = "";
         public int XPValue = 0;
 
         public int Initiative = 0;
+
+        public Weapon Weapon = new Weapon();
+        public Armour Armour = new Armour();
+        
         #endregion
+
+        public bool TakeDamage(int Damage)
+        {
+            bool Dead = false;
+            HP -= Damage;
+            if(HP <= 0)
+            {
+                Player.FightXP += XPValue;
+                Dead = true;
+            }
+            return Dead;
+        }
 
     }
 }

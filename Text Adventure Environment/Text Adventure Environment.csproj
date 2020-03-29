@@ -48,6 +48,7 @@
     <Compile Include="Encounter.cs" />
     <Compile Include="Enemies.cs" />
     <Compile Include="EnemyNPC.cs" />
+    <Compile Include="Equipment.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

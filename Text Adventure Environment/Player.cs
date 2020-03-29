@@ -16,7 +16,7 @@ namespace Text_Adventure_Environment
         public static int Level = 1;
         public static int HP = 90;
         public static int MaxHP = 90;
-        public static int AC = 18;
+        public static int AC = 16;
         public static int Str = 18;
         public static int Dex = 16;
         public static int Con = 14;
@@ -25,13 +25,18 @@ namespace Text_Adventure_Environment
         public static int ConMod = 0;
         public static int XP = 1000;
         public static int LU = 2000;
-        public static string Weapon = "Longsword";
         public static string OffHand = "Shield";
-        public static string Armour = "Chainmail";
-        public static List<string> Inventory = new List<string>() {"Health Potion", "Health Potion", "Health Potion", "Key", "Key"};
+        public static List<string> Inventory = new List<string>() { "Health Potion", "Health Potion", "Health Potion", "Key", "Key" };
 
+        public static List<string> FightOptions = new List<string>() { "Heavy Attack (10s)", "Light Attack (7s)", "Drink Potion (3s)", "End Turn (0s)" };
+        public static List<int> FightOptionCosts = new List<int>() { 7, 10, 3, 0};
         public static int Initiative = 0;
+        public static int Stamina = 0;
+        public static int StaminaMax = 0;
+        public static int FightXP = 0;
 
+        public static Weapon Weapon = new Weapon();
+        public static Armour Armour = new Armour();
         #endregion
 
         #region Update Player Stats
@@ -45,7 +50,29 @@ namespace Text_Adventure_Environment
 
         public static int UpdatePlayerAC()
         {
-            return 10;
+            int AC = 0;
+            if (Player.Armour.Name != "N/A")
+            {
+                if(Player.Armour.Weight == "Light")
+                {
+                    if (Player.DexMod > 5)
+                        AC = Player.Armour.AC + 5;
+                    else
+                        AC = Player.Armour.AC + Player.DexMod;
+                }
+                else
+                {
+                    AC = Player.Armour.AC;
+                }
+            }
+            else
+            {
+                if (Player.DexMod > 5)
+                    AC = 9;
+                else
+                    AC = 4 + Player.DexMod;
+            }
+            return AC;
         }
 
         #endregion
@@ -182,6 +209,8 @@ namespace Text_Adventure_Environment
                 UpdateAbilityModifiers();
                 Player.MaxHP = DiceRoller.RollDice(10) + Player.ConMod;
                 Player.HP = Player.MaxHP;
+                Player.StaminaMax = 6 + (2 * DexMod);
+                Player.Stamina = Player.StaminaMax;
             }
         }
 
@@ -190,9 +219,7 @@ namespace Text_Adventure_Environment
             Player.AC = UpdatePlayerAC();
             Player.XP = 0;
             Player.LU = 100;
-            Player.Weapon = "ShortSword";
             Player.OffHand = "N/A";
-            Player.Armour = "Leather";
             Player.Inventory.Clear();
         }
 
@@ -203,66 +230,13 @@ namespace Text_Adventure_Environment
             List<string> CharacterSheet = new List<string>() { "Welcome to the Character Creator", "", "Name: " + Player.Name, "Level: " + Player.Level,
             "HP: " + Player.HP + "/" + Player.MaxHP, "AC: " + Player.AC, "", "Str: " + Player.Str + " (+" + Player.StrMod + ")", "Dex: " + Player.Dex + 
             " (+" + Player.DexMod + ")", "Con: " + Player.Con + " (+" + Player.ConMod + ")", "", "XP: " + Player.XP, "Next Level: " + Player. LU,
-                "XP Till Next Level: " + (Player.LU - Player.XP), "", "Weapon: " + Player.Weapon, "Off-Hand: " + Player.OffHand, "Armour: " + Player.Armour};
+                "XP Till Next Level: " + (Player.LU - Player.XP), "", "Weapon: " + Player.Weapon.Name, "Off-Hand: " + Player.OffHand, "Armour: " + 
+                Player.Armour.Name};
             DrawGUI.UpdateStoryBox(CharacterSheet);
             List<string> Options = new List<string>() {"Continue"};
             DrawGUI.UpdatePlayerOptions(Options);
             int Input = PlayerInputs(Options.Count);
         }
 
-    }
-
-    class TempPlayer
-    {
-        public string GetPlayerString(string Stat)
-        {
-            switch (Stat)
-            {
-                case "Name":
-                    return Player.Name;
-                case "Weapon":
-                    return Player.Weapon;
-                case "OffHand":
-                    return Player.OffHand;
-                case "Armour":
-                    return Player.Armour;
-                default:
-                    return "";
-            }
-        }
-
-        public int GetPlayerInt(string Stat)
-        {
-            switch (Stat)
-            {
-                case "Level":
-                    return Player.Level;
-                case "HP":
-                    return Player.HP;
-                case "MaxHP":
-                    return Player.MaxHP;
-                case "AC":
-                    return Player.AC;
-                case "Str":
-                    return Player.Str;
-                case "Dex":
-                    return Player.Dex;
-                case "Con":
-                    return Player.Con;
-                case "StrMod":
-                    return Player.StrMod;
-                case "DexMod":
-                    return Player.DexMod;
-                case "ConMod":
-                    return Player.ConMod;
-                case "XP":
-                    return Player.XP;
-                case "LU":
-                    return Player.LU;
-                default:
-                    return 0;
-            }
-
-        }
     }
 }

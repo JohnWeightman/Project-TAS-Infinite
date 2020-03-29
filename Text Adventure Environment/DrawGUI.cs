@@ -29,6 +29,8 @@ namespace Text_Adventure_Environment
             UpdatePlayerOptions(StartDisplayOptions);
             List<string> StartDisplayEvents = StartDisplay.StartEvents;
             UpdateEventBox(StartDisplayEvents);
+            Enemies.EnemyList.Clear();
+            Encounter.ClearFightOrder();
         }
 
         static void DrawBorders() //Draws the main borders for the interface
@@ -46,6 +48,12 @@ namespace Text_Adventure_Environment
         #endregion
 
         #region Additional Functions
+
+        public static void UpdateNPCBoxes()
+        {
+            UpdateFightOrderBox();
+            UpdateEnemiesBox();
+        }
 
         public static void UpdatePlayersStatBoxes()
         {
@@ -192,17 +200,19 @@ namespace Text_Adventure_Environment
         {
             Draw.Rectangle(20, 3, 2, 1, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Green);
             UpdatePlayersFourthStatsBox();
+            Player.Weapon.UpdateWeapon("Shortsword");
+            Player.Armour.UpdateArmour("Leather");
         }
 
         public static void UpdatePlayersFourthStatsBox() //Update the Players fourth stat box
         {
             ClearPlayersFourthStatsBox();
             Console.SetCursorPosition(4, 18);
-            Console.Write("Weapon: " + Player.Weapon);
+            Console.Write("Weapon: " + Player.Weapon.Name);
             Console.SetCursorPosition(4, 19);
             Console.Write("OfHand: " + Player.OffHand);
             Console.SetCursorPosition(4, 20);
-            Console.Write("Armour: " + Player.Armour);
+            Console.Write("Armour: " + Player.Armour.Name);
         }
 
         public static void ClearPlayersFourthStatsBox() //Clear the Players fourth stat box
@@ -260,7 +270,10 @@ namespace Text_Adventure_Environment
         static void DrawFightOrderBox() //Draws the Fight Order box
         {
             Draw.Rectangle(20, 10, 148, -23, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
-            List<string> StartDisplayList = StartDisplay.StartFightOrder;
+            List<string> StartDisplayEnemeis = new List<string>() { "Bandit" };
+            List<int> StartDisplayEnemyAmount = new List<int>() { 7 };
+            Enemies.LoadEnemeisFromFile(StartDisplayEnemeis, StartDisplayEnemyAmount);
+            Encounter.SortFightOrder();
             UpdateFightOrderBox();
         }
 
@@ -270,14 +283,10 @@ namespace Text_Adventure_Environment
             Console.SetCursorPosition(150, 6);
             Console.Write("Fight Order");
             int YPos = 8;
-            foreach (object Character in Encounter.FightOrder)
+            foreach (EnemyNPC Character in Encounter.FightOrder)
             {
                 Console.SetCursorPosition(150, YPos);
-                if(Character == TempPlayer)
-                {
-
-                }
-                //Console.Write(Character.Name);
+                Console.Write(Character.Name);
                 YPos += 1;
             }
         }
@@ -301,6 +310,7 @@ namespace Text_Adventure_Environment
         static void DrawEnemiesBox() //Draws the Enemies box
         {
             Draw.Rectangle(20, 10, 148, 1, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
+            UpdateEnemiesBox();
         }
 
         public static void UpdateEnemiesBox() //Updates the Enmies Box

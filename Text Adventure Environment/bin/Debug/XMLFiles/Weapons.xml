@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Weapons>
+	<Shortsword Name="Shortsword" Damage ="6" TwoHanded="false" Versatile="false"/>
+	<Longsword Name="Longsword" Damage="8" TwoHanded="false" Versatile="true"/>
+</Weapons>
