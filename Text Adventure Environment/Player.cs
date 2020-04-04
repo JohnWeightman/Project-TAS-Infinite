@@ -29,7 +29,7 @@ namespace Text_Adventure_Environment
         public static List<string> Inventory = new List<string>() { "Health Potion", "Health Potion", "Health Potion", "Key", "Key" };
 
         public static List<string> FightOptions = new List<string>() { "Heavy Attack (10s)", "Light Attack (7s)", "Drink Potion (3s)", "End Turn (0s)" };
-        public static List<int> FightOptionCosts = new List<int>() { 7, 10, 3, 0};
+        public static List<int> FightOptionCosts = new List<int>() { 10, 7, 3, 0};
         public static int Initiative = 0;
         public static int Stamina = 0;
         public static int StaminaMax = 0;
@@ -92,7 +92,7 @@ namespace Text_Adventure_Environment
             return Input;
         }
 
-        public static int PlayerInputsLoop(int Options)
+        static int PlayerInputsLoop(int Options)
         {
             ConsoleKey Input = Console.ReadKey(true).Key;
             if (Input == ConsoleKey.D1 || Input == ConsoleKey.D2 || Input == ConsoleKey.D3 || Input == ConsoleKey.D4 || Input == ConsoleKey.D5 || 
@@ -209,7 +209,7 @@ namespace Text_Adventure_Environment
                 UpdateAbilityModifiers();
                 Player.MaxHP = DiceRoller.RollDice(10) + Player.ConMod;
                 Player.HP = Player.MaxHP;
-                Player.StaminaMax = 6 + (2 * DexMod);
+                Player.StaminaMax = 4 + (2 * DexMod);
                 Player.Stamina = Player.StaminaMax;
             }
         }

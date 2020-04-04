@@ -67,7 +67,11 @@ namespace Text_Adventure_Environment
         public static void StartEncounter()
         {
             SortFightOrder();
-            List<string> SE1 = new List<string>() { "Your under attack!" };
+            List<string> SE1 = new List<string>() { "Your under attack!", "" };
+            foreach (EnemyNPC Enemy in Enemies.EnemyList)
+                SE1.Add(Enemy.Name);
+            SE1.Add("");
+            SE1.Add("Stamina: " + Player.Stamina + "/" + Player.StaminaMax);
             DrawGUI.UpdateStoryBox(SE1);
             List<string> SE2 = new List<string>() { "Continue" };
             DrawGUI.UpdatePlayerOptions(SE2);
@@ -107,18 +111,51 @@ namespace Text_Adventure_Environment
                 switch (Input)
                 {
                     case 1:
-                        TargetEnemy = WhichEnemy();
-                        AttackEnemy(TargetEnemy, "Heavy");
+                        if(Player.Stamina >= Player.FightOptionCosts[Input - 1])
+                        {
+                            Player.Stamina -= Player.FightOptionCosts[Input - 1];
+                            TargetEnemy = WhichEnemy();
+                            AttackEnemy(TargetEnemy, "Heavy");
+                        }
+                        else
+                        {
+                            List<string> Update = new List<string>() { "Not Enough Stamina!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                            DrawGUI.UpdateStoryBox(Update);
+                        }
                         break;
                     case 2:
-                        TargetEnemy = WhichEnemy();
-                        AttackEnemy(TargetEnemy, "Light");
+                        if(Player.Stamina >= Player.FightOptionCosts[Input - 1])
+                        {
+                            Player.Stamina -= Player.FightOptionCosts[Input - 1];
+                            TargetEnemy = WhichEnemy();
+                            AttackEnemy(TargetEnemy, "Light");
+                        }
+                        else
+                        {
+                            List<string> Update = new List<string>() { "Not Enough Stamina!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                            DrawGUI.UpdateStoryBox(Update);
+                        }
                         break;
                     case 3:
+                        if(Player.Stamina >= Player.FightOptionCosts[Input - 1])
+                        {
+                            Player.Stamina -= Player.FightOptionCosts[Input - 1];
+                            HealthPotion();
+                        }
+                        else
+                        {
+                            List<string> Update = new List<string>() { "Not Enough Stamina!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                            DrawGUI.UpdateStoryBox(Update);
+                        }
+                        break;
+                    case 4:
+                        TurnDone = true;
                         break;
                     default:
                         break;
                 }
+                if(!TurnDone)
+                    TurnDone = CheckFightStatus();
             }
         }
 
@@ -143,20 +180,21 @@ namespace Text_Adventure_Environment
                 bool Dead = Enemies.EnemyList[TargetEnemy].TakeDamage(Attack);
                 if (Dead)
                 {
-                    List<string> Update = new List<string>() { "You strike down " + FightOrder[TargetEnemy].Name + "!" };
+                    List<string> Update = new List<string>() { "You strike down " + Enemies.EnemyList[TargetEnemy].Name + "!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                    FightOrder.Remove(Enemies.EnemyList[TargetEnemy]);
                     Enemies.EnemyList.Remove(Enemies.EnemyList[TargetEnemy]);
-                    FightOrder.Remove(FightOrder[TargetEnemy]);
                     DrawGUI.UpdateNPCBoxes();
                     DrawGUI.UpdateStoryBox(Update);
                 }
                 else
                 {
-                    List<string> Update = new List<string>() { "You strike " + FightOrder[TargetEnemy].Name + " " + Attack + " Damage!" };
+                    List<string> Update = new List<string>() { "You strike " + Enemies.EnemyList[TargetEnemy].Name + " for " + Attack + " Damage!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                    DrawGUI.UpdateStoryBox(Update);
                 }
             }
             else
             {
-                List<string> Update = new List<string>() { "Your attack missed!" };
+                List<string> Update = new List<string>() { "Your attack missed!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
                 DrawGUI.UpdateStoryBox(Update);
             }
         }
@@ -167,6 +205,36 @@ namespace Text_Adventure_Environment
             if (AttackType == "Light")
                 Damage = (Damage / 3) * 2;
             return Damage;
+        }
+
+        static void HealthPotion()
+        {
+            bool Potion = false;
+            foreach(string Item in Player.Inventory)
+            {
+                if(Item == "Health Potion")
+                {
+                    Potion = !Potion;
+                    break;
+                }
+            }
+            if (Potion)
+            {
+                int Regen = 0;
+                for (int x = 0; x < Player.Level; x++)
+                    Regen += DiceRoller.RollDice(4) + 1;
+                if (Regen > (Player.MaxHP - Player.HP))
+                    Regen = Player.MaxHP - Player.HP;
+                Player.HP += Regen;
+                List<string> Update = new List<string>() { "You Heal for " + Regen + "HP!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                DrawGUI.UpdateStoryBox(Update);            
+            }
+            else
+            {
+                Player.Stamina += Player.FightOptionCosts[2];
+                List<string> Update = new List<string>() { "You don't have any Health Potions!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                DrawGUI.UpdateStoryBox(Update);
+            }
         }
 
         #endregion
