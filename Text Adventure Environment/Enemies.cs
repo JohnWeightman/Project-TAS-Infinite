@@ -12,7 +12,7 @@ namespace Text_Adventure_Environment
     {
         public static List<EnemyNPC> EnemyList = new List<EnemyNPC>();
 
-        public static void LoadEnemeisFromFile(List<string> EnemyType, List<int> EnemyCount)
+        public static void LoadEnemeisFromFile(List<string> EnemyType, List<int> EnemyCount, bool StartEncounter)
         {
             int EnemyTotal = EnemyCount.Sum(x => Convert.ToInt32(x));
             EnemyNPC[] EnemyNPC = new EnemyNPC[EnemyTotal];
@@ -52,6 +52,8 @@ namespace Text_Adventure_Environment
             {
                 EnemyList.Add(Enemy);
             }
+            if (StartEncounter)
+                Encounter.StartEncounter();
         }
     }
 }
