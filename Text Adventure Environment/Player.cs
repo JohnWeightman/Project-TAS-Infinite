@@ -216,11 +216,14 @@ namespace Text_Adventure_Environment
 
         static void EmptyOtherStats()
         {
+            Player.Armour.UpdateArmour("N/A");
+            Player.Weapon.UpdateWeapon("Shortsword");
             Player.AC = UpdatePlayerAC();
             Player.XP = 0;
             Player.LU = 100;
             Player.OffHand = "N/A";
             Player.Inventory.Clear();
+            Player.FightXP = 0;
         }
 
         #endregion
@@ -236,6 +239,48 @@ namespace Text_Adventure_Environment
             List<string> Options = new List<string>() {"Continue"};
             DrawGUI.UpdatePlayerOptions(Options);
             int Input = PlayerInputs(Options.Count);
+        }
+
+        public static void LevelUp()
+        {
+            Level += 1;
+            LU = (LU * 2) + 50;
+            MaxHP += DiceRoller.RollDice(10) + ConMod;
+            List<string> Update = new List<string>() { "Level Up!", "", "Level: " + Level, "", "You have 1 Ability Point to spend!", "Str: " + Str, "Dex: " + 
+                Dex, "Con: " + Con };
+            List<string> Options = new List<string>() { "Str", "Dex", "Con" };
+            DrawGUI.UpdateStoryBox(Update);
+            DrawGUI.UpdatePlayerOptions(Options);
+            int Input = PlayerInputs(Options.Count);
+            switch (Input)
+            {
+                case 1:
+                    Str += 1;
+                    break;
+                case 2:
+                    Dex += 1;
+                    break;
+                case 3:
+                    Con += 1;
+                    break;
+                default:
+                    break;
+            }
+            UpdateAbilityModifiers();
+            DrawGUI.UpdatePlayersFirstStatsBox();
+            DrawGUI.UpdatePlayersSecondStatsBox();
+            DrawGUI.UpdatePlayersThirdStatsBox();
+            DisplayCharacterSheet();
+        }
+
+        public static void PlayerDeath()
+        {
+            List<string> Update = new List<string>() { "YOU DIED" };
+            List<string> Options = new List<string>() { "Main Menu" };
+            DrawGUI.UpdateStoryBox(Update);
+            DrawGUI.UpdatePlayerOptions(Options);
+            int Input = PlayerInputs(Options.Count);
+            StartDisplay.DisplayMainMenu();
         }
 
     }

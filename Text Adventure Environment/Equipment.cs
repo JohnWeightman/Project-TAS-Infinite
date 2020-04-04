@@ -48,6 +48,10 @@ namespace Text_Adventure_Environment
                     AC = Convert.ToInt32(XML.GetAttribute("AC"));
                     Weight = XML.GetAttribute("Weight");
                 }
+                else
+                {
+                    Name = "N/A";
+                }
             }
         }
     }

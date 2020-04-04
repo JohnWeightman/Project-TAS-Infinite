@@ -30,7 +30,7 @@ namespace Text_Adventure_Environment
             List<string> StartDisplayEvents = StartDisplay.StartEvents;
             UpdateEventBox(StartDisplayEvents);
             Enemies.EnemyList.Clear();
-            Encounter.ClearFightOrder();
+            Encounter.FightOrder.Clear();
         }
 
         static void DrawBorders() //Draws the main borders for the interface

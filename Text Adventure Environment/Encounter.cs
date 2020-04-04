@@ -60,8 +60,6 @@ namespace Text_Adventure_Environment
 
         #endregion
 
-        #region Fight Code
-
         #region FightMechanics
 
         public static void StartEncounter()
@@ -88,12 +86,40 @@ namespace Text_Adventure_Environment
                 if (FightOrder[CharTurn].Name == Player.Name)
                     PlayerTurn();
                 else
-                    NPCTurn();
+                    NPCTurn(FightOrder[CharTurn]);
                 CharTurn++;
                 if (CharTurn == FightOrder.Count)
                     CharTurn = 0;
                 Finished = CheckFightStatus();
             }
+            if (Player.HP <= 0)
+                Player.PlayerDeath();
+            else
+                EncounterEnd();
+        }
+
+        static void EncounterEnd()
+        {
+            List<string> Update = new List<string>() { "You won the fight!" };
+            List<string> Options = new List<string>() { "Continue" };
+            DrawGUI.UpdateStoryBox(Update);
+            DrawGUI.UpdatePlayerOptions(Options);
+            int Input = Player.PlayerInputs(Options.Count);
+            List<string> Update2 = new List<string>() { "You won the fight!", "", "XP Earned: " + Player.FightXP };
+            Player.XP += Player.FightXP;
+            Player.FightXP = 0;
+            DrawGUI.UpdateStoryBox(Update2);
+            Input = Player.PlayerInputs(Options.Count);
+            if (Player.XP >= Player.LU)
+                Player.LevelUp();
+        }
+
+        static bool CheckFightStatus()
+        {
+            bool Finished = false;
+            if (Player.HP <= 0 || Enemies.EnemyList.Count == 0)
+                Finished = true;
+            return Finished;
         }
 
         #endregion
@@ -157,6 +183,7 @@ namespace Text_Adventure_Environment
                 if(!TurnDone)
                     TurnDone = CheckFightStatus();
             }
+            Player.Stamina = Player.StaminaMax;
         }
 
         static int WhichEnemy()
@@ -214,6 +241,8 @@ namespace Text_Adventure_Environment
             {
                 if(Item == "Health Potion")
                 {
+                    Player.Inventory.Remove(Item);
+                    DrawGUI.UpdateInventory();
                     Potion = !Potion;
                     break;
                 }
@@ -239,24 +268,63 @@ namespace Text_Adventure_Environment
 
         #endregion
 
-        static void NPCTurn()
-        {
+        #region NPCs Turn
 
+        static void NPCTurn(EnemyNPC NPC)
+        {
+            bool TurnDone = false;
+            while (!TurnDone)
+            {
+                byte Decision = NPC.CombatDecision();
+                switch (Decision)
+                {
+                    case 0:
+                        NPC.Stamina -= Player.FightOptionCosts[0];
+                        AttackPlayer(NPC, Decision);
+                        break;
+                    case 1:
+                        NPC.Stamina -= Player.FightOptionCosts[1];
+                        AttackPlayer(NPC, Decision);
+                        break;
+                    case 2:
+                        TurnDone = !TurnDone;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            NPC.Stamina = NPC.StaminaMax;
         }
 
-        static bool CheckFightStatus()
+        static void AttackPlayer(EnemyNPC NPC, byte AttackType)
         {
-            bool Finished = false;
-            if (Player.HP <= 0 || Enemies.EnemyList.Count == 0)
-                Finished = true;
-            return Finished;
+            int Attack = DiceRoller.RollDice(12) + NPC.StrMod + NPC.DifBonus;
+            if(Attack >= Player.AC)
+            {
+                DamagePlayer(NPC, AttackType);
+            }
+            else
+            {
+                List<string> Update = new List<string>() { NPC.Name + " attacked you and missed!" };
+                DrawGUI.UpdateStoryBox(Update);
+            }
+            List<string> Options = new List<string>() { "Continue" };
+            DrawGUI.UpdatePlayerOptions(Options);
+            int Input = Player.PlayerInputs(Options.Count);
+        }
+
+        static void DamagePlayer(EnemyNPC NPC, byte AttackType)
+        {
+            int Damage = DiceRoller.RollDice(NPC.Weapon.Damage) + NPC.StrMod;
+            if (AttackType == 1)
+                Damage = (Damage / 3) * 2;
+            Player.HP -= Damage;
+            List<string> Update = new List<string>() { NPC.Name + " attacked you for " + Damage + " Damage!" };
+            DrawGUI.UpdateStoryBox(Update);
+            DrawGUI.UpdatePlayersFirstStatsBox();
         }
 
         #endregion
 
-        public static void ClearFightOrder()
-        {
-            FightOrder.Clear();
-        }
     }
 }

@@ -25,6 +25,10 @@ namespace Text_Adventure_Environment
 
         public int Initiative = 0;
 
+        public int Stamina = 0;
+        public int StaminaMax = 0;
+        public int DifBonus = 0;
+
         public Weapon Weapon = new Weapon();
         public Armour Armour = new Armour();
         
@@ -41,6 +45,25 @@ namespace Text_Adventure_Environment
             }
             return Dead;
         }
+
+        #region Combat Decision
+
+        public byte CombatDecision()
+        {
+            byte Decision = 0;
+            if (Stamina >= Player.FightOptionCosts[1])
+            {
+                if (Stamina / Player.FightOptionCosts[0] >= 2)
+                    Decision = 0;
+                else
+                    Decision = 1;
+            }
+            else
+                Decision = 2;
+            return Decision;
+        }
+
+        #endregion
 
     }
 }

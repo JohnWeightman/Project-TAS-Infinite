@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Enemies>
-	<Bandit HP="12" AC="5" Str="6" StrMod="2" Dex="0" DexMod="0" Con="3" ConMod="1" Weapon="Shortsword" OffHand="N/A" Armour="Leather" XPValue="8"/>
-	<Thief HP="8" AC="7" Str="3" StrMod="1" Dex="6" DexMod="2" Con="0" ConMod="0" Weapon="Dagger" OffHand="N/A" Armour="Leather" XPValue="8"/>
+	<Bandit HP="12" AC="5" Str="6" StrMod="2" Dex="0" DexMod="0" Con="3" ConMod="1" Stamina="10" StaminaMax="10" DifBonus="1" Weapon="Shortsword" OffHand="N/A" Armour="Leather" XPValue="8"/>
+	<Thief HP="8" AC="7" Str="3" StrMod="1" Dex="6" DexMod="2" Con="0" ConMod="0" Stamina="10" StaminaMax="10" DifBonus="1" Weapon="Dagger" OffHand="N/A" Armour="Leather" XPValue="8"/>
 </Enemies>

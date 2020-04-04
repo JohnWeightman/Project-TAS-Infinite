@@ -36,6 +36,9 @@ namespace Text_Adventure_Environment
                             EnemyNPC[Count].StrMod = Convert.ToInt32(XML.GetAttribute("StrMod"));
                             EnemyNPC[Count].DexMod = Convert.ToInt32(XML.GetAttribute("DexMod"));
                             EnemyNPC[Count].ConMod = Convert.ToInt32(XML.GetAttribute("ConMod"));
+                            EnemyNPC[Count].Stamina = Convert.ToInt32(XML.GetAttribute("Stamina"));
+                            EnemyNPC[Count].StaminaMax = Convert.ToInt32(XML.GetAttribute("StaminaMax"));
+                            EnemyNPC[Count].DifBonus = Convert.ToInt32(XML.GetAttribute("DifBonus"));
                             EnemyNPC[Count].OffHand = XML.GetAttribute("OffHand");
                             EnemyNPC[Count].XPValue = Convert.ToInt32(XML.GetAttribute("XPValue"));
                             EnemyNPC[Count].Weapon.UpdateWeapon(XML.GetAttribute("Weapon"));
