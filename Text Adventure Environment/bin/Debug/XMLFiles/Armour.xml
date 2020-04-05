@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Armour>
 	<Leather Name="Leather" AC="5" Weight="Light"/>
+	<Hide Name="Hide" AC="6" Weight="Light"/>
+	<Chainshirt Name="Chainshirt" AC="7" Weight="Light"/>
+	<Chestplate Name="Chestplate" AC="9" Weight="Heavy"/>
 	<Chainmail Name="Chainmail" AC="10" Weight="Heavy"/>
+	<Plate Name="Plate" AC="11" Weight="Heavy"/>
 </Armour>
