@@ -1,6 +1,6 @@
 # ISTALRI SKOLIR PRODUCTIONS
 
-# Text-Adventure-Enviroment
+# Text-Adventure-Shell
 
-This is a work in process text adventure environment that has all the mechanics of the game already built, the developer will only neeed to
-integrate a story of their own into it.
+This is a work in process text adventure game that people will be able to play custom campagins of. Campaigns can be made using the 'TAS
+Campaign Creator' tool.
