@@ -142,11 +142,11 @@ namespace Text_Adventure_Environment
         {
             ClearPlayersSecondStatsBox();
             Console.SetCursorPosition(4, 11);
-            Console.Write("STR: " + Player.Str);
+            Console.Write("STR: " + Player.Str + " (+" + Player.StrMod + ")");
             Console.SetCursorPosition(4, 12);
-            Console.Write("DEX: " + Player.Dex);
+            Console.Write("DEX: " + Player.Dex + " (+" + Player.DexMod + ")");
             Console.SetCursorPosition(4, 13);
-            Console.Write("CON: " + Player.Con);
+            Console.Write("CON: " + Player.Con + " (+" + Player.ConMod + ")");
         }
 
         public static void ClearPlayersSecondStatsBox() //Clears the Players third stats box

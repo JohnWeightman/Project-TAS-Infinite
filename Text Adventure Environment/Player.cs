@@ -172,13 +172,13 @@ namespace Text_Adventure_Environment
             int Stat = 1;
             while (!Finished)
             {
-                int[] Random = new int[] {DiceRoller.RollDice(4), DiceRoller.RollDice(4), DiceRoller.RollDice(4), DiceRoller.RollDice(4)};
+                int[] Random = new int[] { DiceRoller.RollDice(4), DiceRoller.RollDice(4), DiceRoller.RollDice(4), DiceRoller.RollDice(4) };
                 Array.Sort(Random);
                 if (Stat == 1)
                 {
                     Player.Str = Random[1] + Random[2] + Random[3];
                 }
-                else if( Stat == 2)
+                else if (Stat == 2)
                 {
                     Player.Dex = Random[1] + Random[2] + Random[3];
                 }
@@ -188,8 +188,9 @@ namespace Text_Adventure_Environment
                     Finished = !Finished;
                 }
                 Stat += 1;
-                for(int x = 0; x < 2; x++)
-                {
+            }
+            for(int x = 0; x < 2; x++)
+            {
                     int Ran = DiceRoller.RollDice(3);
                     switch(Ran)
                     {
@@ -205,13 +206,14 @@ namespace Text_Adventure_Environment
                         default:
                             break;
                     }
-                }
-                UpdateAbilityModifiers();
-                Player.MaxHP = DiceRoller.RollDice(10) + Player.ConMod;
-                Player.HP = Player.MaxHP;
-                Player.StaminaMax = 4 + (2 * DexMod);
-                Player.Stamina = Player.StaminaMax;
             }
+            UpdateAbilityModifiers();
+            MaxHP = DiceRoller.RollDice(10) + ConMod;
+            HP = Player.MaxHP;
+            StaminaMax = 4 + (2 * DexMod);
+            if (StaminaMax < 7)
+                StaminaMax = 7;
+            Stamina = StaminaMax;            
         }
 
         static void EmptyOtherStats()
@@ -245,7 +247,6 @@ namespace Text_Adventure_Environment
         {
             Level += 1;
             LU = (LU * 2) + 50;
-            MaxHP += DiceRoller.RollDice(10) + ConMod;
             List<string> Update = new List<string>() { "Level Up!", "", "Level: " + Level, "", "You have 1 Ability Point to spend!", "Str: " + Str, "Dex: " + 
                 Dex, "Con: " + Con };
             List<string> Options = new List<string>() { "Str", "Dex", "Con" };
@@ -266,6 +267,8 @@ namespace Text_Adventure_Environment
                 default:
                     break;
             }
+            MaxHP += DiceRoller.RollDice(10) + ConMod;
+            HP = MaxHP;
             UpdateAbilityModifiers();
             DrawGUI.UpdatePlayersFirstStatsBox();
             DrawGUI.UpdatePlayersSecondStatsBox();

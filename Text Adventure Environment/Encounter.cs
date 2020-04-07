@@ -108,8 +108,10 @@ namespace Text_Adventure_Environment
             List<string> Update2 = new List<string>() { "You won the fight!", "", "XP Earned: " + Player.FightXP };
             Player.XP += Player.FightXP;
             Player.FightXP = 0;
+            DrawGUI.UpdatePlayersThirdStatsBox();
             DrawGUI.UpdateStoryBox(Update2);
             Input = Player.PlayerInputs(Options.Count);
+            FightOrder.Clear();
             if (Player.XP >= Player.LU)
                 Player.LevelUp();
         }
