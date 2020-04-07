@@ -68,9 +68,9 @@ namespace Text_Adventure_Environment
             else
             {
                 if (Player.DexMod > 5)
-                    AC = 9;
+                    AC = 11;
                 else
-                    AC = 4 + Player.DexMod;
+                    AC = 6 + Player.DexMod;
             }
             return AC;
         }

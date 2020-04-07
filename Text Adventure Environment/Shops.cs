@@ -10,4 +10,9 @@ namespace Text_Adventure_Environment
     {
 
     }
+
+    static class PotionsMaster
+    {
+
+    }
 }

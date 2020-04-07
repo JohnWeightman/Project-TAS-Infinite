@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Enemies>
-	<Bandit HP="12" AC="5" Str="6" StrMod="2" Dex="0" DexMod="0" Con="3" ConMod="1" Stamina="10" StaminaMax="10" DifBonus="1" Weapon="Shortsword" OffHand="N/A" Armour="Leather" XPValue="8"/>
-	<Thief HP="8" AC="7" Str="3" StrMod="1" Dex="6" DexMod="2" Con="0" ConMod="0" Stamina="12" StaminaMax="12" DifBonus="1" Weapon="Dagger" OffHand="N/A" Armour="Leather" XPValue="8"/>
-	<Thug HP="21" AC="7" Str="6" StrMod="2" Dex="3" DexMod="1" Con="3" ConMod="1" Stamina="11" StaminaMax="11" DifBonus="2" Weapon="Shortsword" OffHand="N/A" Armour="Hide" XPValue="16"/>
-	<Scout HP="18" AC="8" Str="1" StrMod="3" Dex="6" DexMod="2" Con="3" ConMod="1" Stamina="12" StaminaMax="12" DifBonus="2" Weapon="Shortsword" OffHand="N/A" Armour="Hide" XPValue="16"/>
+	<Bandit HP="12" AC="7" Str="6" StrMod="2" Dex="0" DexMod="0" Con="3" ConMod="1" Stamina="10" StaminaMax="10" DifBonus="1" Weapon="Shortsword" OffHand="N/A" Armour="Leather" XPValue="8"/>
+	<Thief HP="8" AC="9" Str="3" StrMod="1" Dex="6" DexMod="2" Con="0" ConMod="0" Stamina="12" StaminaMax="12" DifBonus="1" Weapon="Dagger" OffHand="N/A" Armour="Leather" XPValue="8"/>
+	<Thug HP="21" AC="9" Str="6" StrMod="2" Dex="3" DexMod="1" Con="3" ConMod="1" Stamina="11" StaminaMax="11" DifBonus="2" Weapon="Shortsword" OffHand="N/A" Armour="Hide" XPValue="16"/>
+	<Scout HP="18" AC="10" Str="1" StrMod="3" Dex="6" DexMod="2" Con="3" ConMod="1" Stamina="12" StaminaMax="12" DifBonus="2" Weapon="Shortsword" OffHand="N/A" Armour="Hide" XPValue="16"/>
 </Enemies>

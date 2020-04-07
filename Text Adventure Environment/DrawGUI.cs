@@ -469,10 +469,14 @@ namespace Text_Adventure_Environment
         {
             ClearEventsBox();
             int YPos = 40;
-            foreach (string Event in Events.EventsList)
+            int Count = Events.EventsList.Count;
+            while(Count >= 0)
             {
+                Count--;
+                if (Count < 0)
+                    break;
                 Console.SetCursorPosition(86, YPos);
-                Console.Write(Event);
+                Console.Write(Events.EventsList[Count]);
                 YPos += 1;
             }
         }

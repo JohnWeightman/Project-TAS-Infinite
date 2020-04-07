@@ -12,7 +12,8 @@ namespace Text_Adventure_Environment
         {
             DrawGUI.DrawGUIConsole();
             StartDisplay.DisplayMainMenu();
-            Encounter.StartEncounter();
+            //while(true)
+                Encounter.StartEncounter();
             Console.ReadKey();
         }
     }
