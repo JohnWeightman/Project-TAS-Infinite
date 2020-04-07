@@ -205,13 +205,7 @@ namespace Text_Adventure_Environment
             {
                 Events.NewEvent("AttackRoll", Attack - Player.StrMod - (Player.Level / 3), Player.StrMod, Player.Level / 3, Attack, 
                     Enemies.EnemyList[TargetEnemy].AC, Player.Name, Enemies.EnemyList[TargetEnemy].Name, "HIT");
-                Attack = DamageEnemy(AttackType);
-                if(AttackType == "Light")
-                    Events.NewEvent("LightDamageRoll", EN1: Attack - Player.StrMod, EN2: Player.StrMod, EN3: Attack, ES1: Player.Name,
-                    ES2: Enemies.EnemyList[TargetEnemy].Name);
-                else
-                    Events.NewEvent("HeavyDamageRoll", EN1: Attack - Player.StrMod, EN2: Player.StrMod, EN3: Attack, ES1: Player.Name,
-                    ES2: Enemies.EnemyList[TargetEnemy].Name);
+                Attack = DamageEnemy(AttackType, Enemies.EnemyList[TargetEnemy]);
                 bool Dead = Enemies.EnemyList[TargetEnemy].TakeDamage(Attack);
                 if (Dead)
                 {
@@ -236,12 +230,23 @@ namespace Text_Adventure_Environment
             }
         }
 
-        static int DamageEnemy(string AttackType)
+        static int DamageEnemy(string AttackType, EnemyNPC NPC)
         {
             int Damage = DiceRoller.RollDice(Player.Weapon.Damage) + Player.StrMod;
+            int Damage2 = Damage;
             if (AttackType == "Light")
-                Damage = (Damage / 3) * 2;
-            return Damage;
+            {
+                Damage2 = (Damage / 3) * 2;
+                Events.NewEvent("LightDamageRoll", EN1: Damage - Player.StrMod, EN2: Player.StrMod, EN3: Damage2, ES1: Player.Name,
+                    ES2: NPC.Name);
+            }
+            else
+            {
+                Events.NewEvent("HeavyDamageRoll", EN1: Damage - Player.StrMod, EN2: Player.StrMod, EN3: Damage2, ES1: Player.Name,
+                    ES2: NPC.Name);
+            }
+
+            return Damage2;
         }
 
         static void HealthPotion()
@@ -328,17 +333,18 @@ namespace Text_Adventure_Environment
         static void DamagePlayer(EnemyNPC NPC, byte AttackType)
         {
             int Damage = DiceRoller.RollDice(NPC.Weapon.Damage) + NPC.StrMod;
+            int Damage2 = Damage;
             if (AttackType == 1)
             {
-                Events.NewEvent("LightDamageRoll", EN1: Damage - NPC.StrMod, EN2: NPC.StrMod, EN3: Damage, ES1: NPC.Name, ES2: Player.Name);
-                Damage = (Damage / 3) * 2;
+                Damage2 = (Damage / 3) * 2;
+                Events.NewEvent("LightDamageRoll", EN1: Damage - NPC.StrMod, EN2: NPC.StrMod, EN3: Damage2, ES1: NPC.Name, ES2: Player.Name);
             }
             else
             {
                 Events.NewEvent("HeavyDamageRoll", EN1: Damage - NPC.StrMod, EN2: NPC.StrMod, EN3: Damage, ES1: NPC.Name, ES2: Player.Name);
             }
-            Player.HP -= Damage;
-            List<string> Update = new List<string>() { NPC.Name + " attacked you for " + Damage + " Damage!" };
+            Player.HP -= Damage2;
+            List<string> Update = new List<string>() { NPC.Name + " attacked you for " + Damage2 + " Damage!" };
             DrawGUI.UpdateStoryBox(Update);
             DrawGUI.UpdatePlayersFirstStatsBox();
         }
