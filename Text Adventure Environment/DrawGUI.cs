@@ -28,7 +28,7 @@ namespace Text_Adventure_Environment
             List<string> StartDisplayOptions = StartDisplay.StartOptions;
             UpdatePlayerOptions(StartDisplayOptions);
             List<string> StartDisplayEvents = StartDisplay.StartEvents;
-            UpdateEventBox(StartDisplayEvents);
+            UpdateEventBox();
             Enemies.EnemyList.Clear();
             Encounter.FightOrder.Clear();
         }
@@ -272,7 +272,7 @@ namespace Text_Adventure_Environment
             Draw.Rectangle(20, 10, 148, -23, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
             List<string> StartDisplayEnemeis = new List<string>() { "Bandit" };
             List<int> StartDisplayEnemyAmount = new List<int>() { 7 };
-            Enemies.LoadEnemeisFromFile(StartDisplayEnemeis, StartDisplayEnemyAmount);
+            Enemies.LoadEnemeisFromFile(StartDisplayEnemeis, StartDisplayEnemyAmount, false);
             Encounter.SortFightOrder();
             UpdateFightOrderBox();
         }
@@ -465,11 +465,11 @@ namespace Text_Adventure_Environment
 
         #region Events Box
 
-        public static void UpdateEventBox(List<string> Events) //Updates the Event box
+        public static void UpdateEventBox() //Updates the Event box
         {
             ClearEventsBox();
             int YPos = 40;
-            foreach (string Event in Events)
+            foreach (string Event in Events.EventsList)
             {
                 Console.SetCursorPosition(86, YPos);
                 Console.Write(Event);

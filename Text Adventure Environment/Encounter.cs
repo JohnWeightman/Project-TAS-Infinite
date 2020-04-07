@@ -45,7 +45,7 @@ namespace Text_Adventure_Environment
             {
                 List<string> DefaultEnemy = new List<string>() { "Bandit" };
                 List<int> DefaultAmount = new List<int>() { 1 };
-                Enemies.LoadEnemeisFromFile(DefaultEnemy, DefaultAmount);
+                Enemies.LoadEnemeisFromFile(DefaultEnemy, DefaultAmount, false);
                 SortFightOrder();
             }
             DrawGUI.UpdateNPCBoxes();
@@ -203,7 +203,15 @@ namespace Text_Adventure_Environment
             int Attack = DiceRoller.RollDice(12) + Player.StrMod + (Player.Level / 3);
             if (Attack >= Enemies.EnemyList[TargetEnemy].AC)
             {
+                Events.NewEvent("AttackRoll", Attack - Player.StrMod - (Player.Level / 3), Player.StrMod, Player.Level / 3, Attack, 
+                    Enemies.EnemyList[TargetEnemy].AC, Player.Name, Enemies.EnemyList[TargetEnemy].Name, "HIT");
                 Attack = DamageEnemy(AttackType);
+                if(AttackType == "Light")
+                    Events.NewEvent("LightDamageRoll", EN1: Attack - Player.StrMod, EN2: Player.StrMod, EN3: Attack, ES1: Player.Name,
+                    ES2: Enemies.EnemyList[TargetEnemy].Name);
+                else
+                    Events.NewEvent("HeavyDamageRoll", EN1: Attack - Player.StrMod, EN2: Player.StrMod, EN3: Attack, ES1: Player.Name,
+                    ES2: Enemies.EnemyList[TargetEnemy].Name);
                 bool Dead = Enemies.EnemyList[TargetEnemy].TakeDamage(Attack);
                 if (Dead)
                 {
@@ -221,6 +229,8 @@ namespace Text_Adventure_Environment
             }
             else
             {
+                Events.NewEvent("AttackRoll", Attack - Player.StrMod - (Player.Level / 3), Player.StrMod, Player.Level / 3, Attack,
+                    Enemies.EnemyList[TargetEnemy].AC, Player.Name, Enemies.EnemyList[TargetEnemy].Name, "MISS");
                 List<string> Update = new List<string>() { "Your attack missed!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
                 DrawGUI.UpdateStoryBox(Update);
             }
@@ -301,10 +311,12 @@ namespace Text_Adventure_Environment
             int Attack = DiceRoller.RollDice(12) + NPC.StrMod + NPC.DifBonus;
             if(Attack >= Player.AC)
             {
+                Events.NewEvent("AttackRoll", Attack - (NPC.StrMod + NPC.DifBonus), NPC.StrMod, NPC.DifBonus, Attack, Player.AC, NPC.Name, Player.Name, "HIT");
                 DamagePlayer(NPC, AttackType);
             }
             else
             {
+                Events.NewEvent("AttackRoll", Attack - (NPC.StrMod + NPC.DifBonus), NPC.StrMod, NPC.DifBonus, Attack, Player.AC, NPC.Name, Player.Name, "MISS");
                 List<string> Update = new List<string>() { NPC.Name + " attacked you and missed!" };
                 DrawGUI.UpdateStoryBox(Update);
             }
@@ -317,7 +329,14 @@ namespace Text_Adventure_Environment
         {
             int Damage = DiceRoller.RollDice(NPC.Weapon.Damage) + NPC.StrMod;
             if (AttackType == 1)
+            {
+                Events.NewEvent("LightDamageRoll", EN1: Damage - NPC.StrMod, EN2: NPC.StrMod, EN3: Damage, ES1: NPC.Name, ES2: Player.Name);
                 Damage = (Damage / 3) * 2;
+            }
+            else
+            {
+                Events.NewEvent("HeavyDamageRoll", EN1: Damage - NPC.StrMod, EN2: NPC.StrMod, EN3: Damage, ES1: NPC.Name, ES2: Player.Name);
+            }
             Player.HP -= Damage;
             List<string> Update = new List<string>() { NPC.Name + " attacked you for " + Damage + " Damage!" };
             DrawGUI.UpdateStoryBox(Update);
