@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Campaign1>
+  <Module1>
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+  </Module1>
+  <Module2>
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+  </Module2>
+  <Module3>
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+  </Module3>
+  <Module4>
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+  </Module4>
+  <Module5>
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+  </Module5>
+  <Module6>
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+  </Module6>
+  <Module7>
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+  </Module7>
+  <Module8>
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+  </Module8>
+  <Module9>
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+  </Module9>
+  <Module10>
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+  </Module10>
+</Campaign1>
