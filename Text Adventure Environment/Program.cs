@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Text_Adventure_Environment
 {
@@ -12,8 +13,8 @@ namespace Text_Adventure_Environment
         {
             DrawGUI.DrawGUIConsole();
             StartDisplay.DisplayMainMenu();
-            //while(true)
-                Encounter.StartEncounter();
+            StartDisplay.DisplayCampaignMenu();
+            Encounter.StartEncounter();
             Console.ReadKey();
         }
     }

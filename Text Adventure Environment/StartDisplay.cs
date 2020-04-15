@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Text_Adventure_Environment
 {
@@ -18,8 +19,39 @@ namespace Text_Adventure_Environment
             "Event 9"};
 
         #endregion
-    
+
+        #region Campaign Selection
+
         public static void DisplayMainMenu()
+        {
+            List<string> Story = new List<string>() { "Welcome To TAS Infinite!" };
+            List<string> Options = new List<string>() { "Continue" };
+            DrawGUI.UpdateStoryBox(Story);
+            DrawGUI.UpdatePlayerOptions(Options);
+            int Input = Player.PlayerInputs(Options.Count);
+            GetCampaignFiles(Story);
+            DrawGUI.UpdateStoryBox(Story);
+            Input = Player.PlayerInputs(1);
+        }
+
+        static void GetCampaignFiles(List<string> Story)
+        {
+            Story.Clear();
+            string[] CampaignFiles = Directory.GetFiles("Campaigns\\", "*.xml");
+            for(int x = 0; x < CampaignFiles.Length; x++)
+            {
+                CampaignFiles[x] = CampaignFiles[x].Substring(10);
+                int StringLength = CampaignFiles[x].Length - 4;
+                CampaignFiles[x] = CampaignFiles[x].Remove(StringLength, 4);
+                Story.Add(CampaignFiles[x]);
+            }
+        }
+
+        #endregion
+
+        #region Game Functions
+
+        public static void DisplayCampaignMenu()
         {
             List<string> GameTitle = new List<string>() { "Welcome to 'Game Title'" };
             DrawGUI.UpdateStoryBox(GameTitle);
@@ -42,6 +74,8 @@ namespace Text_Adventure_Environment
                     break;
             }
         }
+
+        #endregion
 
     }
 }

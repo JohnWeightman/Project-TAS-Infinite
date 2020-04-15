@@ -55,6 +55,8 @@ namespace Text_Adventure_Environment
             {
                 if (Stamina / Player.FightOptionCosts[0] >= 2)
                     Decision = 0;
+                else if (Stamina < (Player.FightOptionCosts[1] * 2) && Stamina >= Player.FightOptionCosts[0])
+                    Decision = 0;
                 else
                     Decision = 1;
             }
