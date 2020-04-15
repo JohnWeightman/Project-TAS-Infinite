@@ -461,6 +461,14 @@ namespace Text_Adventure_Environment
             }
         }
 
+        public static string OptionsReadLine()
+        {
+            ClearPlayerOptions();
+            Console.SetCursorPosition(28, 41);
+            String Input = Console.ReadLine();
+            return Input;
+        }
+
         #endregion
 
         #region Events Box

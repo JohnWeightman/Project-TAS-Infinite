@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Xml;
 
 namespace Text_Adventure_Environment
 {
@@ -29,21 +30,47 @@ namespace Text_Adventure_Environment
             DrawGUI.UpdateStoryBox(Story);
             DrawGUI.UpdatePlayerOptions(Options);
             int Input = Player.PlayerInputs(Options.Count);
-            GetCampaignFiles(Story);
-            DrawGUI.UpdateStoryBox(Story);
-            Input = Player.PlayerInputs(1);
+            string[] CampaignFiles = Directory.GetFiles("Campaigns\\", "*.xml");
+            bool Done = false;
+            while (!Done)
+            {
+                Story.Clear();
+                Story = GetCampaignFiles();
+                DrawGUI.UpdateStoryBox(Story);
+                string Input2 = DrawGUI.OptionsReadLine();
+                foreach(string Campaign in Story)
+                {
+                    string CamName = Campaign.Remove(0, 3);
+                    if (Input2 == CamName)
+                    {
+                        LoadCampaign(Campaign);
+                        Done = true;
+                    }
+                }
+            }
         }
 
-        static void GetCampaignFiles(List<string> Story)
+        static List<string> GetCampaignFiles()
         {
-            Story.Clear();
+            List<string> Story = new List<string>();
             string[] CampaignFiles = Directory.GetFiles("Campaigns\\", "*.xml");
-            for(int x = 0; x < CampaignFiles.Length; x++)
+            for (int x = 0; x < CampaignFiles.Length; x++)
             {
                 CampaignFiles[x] = CampaignFiles[x].Substring(10);
                 int StringLength = CampaignFiles[x].Length - 4;
-                CampaignFiles[x] = CampaignFiles[x].Remove(StringLength, 4);
+                CampaignFiles[x] = (x + 1) + ". " + CampaignFiles[x].Remove(StringLength, 4);
                 Story.Add(CampaignFiles[x]);
+            }
+            return Story;
+        }
+
+        static void LoadCampaign(string Campaign)
+        {
+            Program.Campaign.Name = Campaign.Remove(0, 3);
+            XmlReader XML = XmlReader.Create("Campaigns\\" + Program.Campaign.Name + ".xml");
+            while (XML.Read())
+            {
+
             }
         }
 

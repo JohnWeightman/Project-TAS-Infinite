@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Campaign.cs" />
     <Compile Include="DiceRoller.cs" />
     <Compile Include="Draw.cs" />
     <Compile Include="DrawGUI.cs" />

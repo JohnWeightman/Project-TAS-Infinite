@@ -7,8 +7,10 @@ using System.Xml;
 
 namespace Text_Adventure_Environment
 {
-    class Program
+    static class Program
     {
+        public static Campaigns Campaign = new Campaigns();
+
         static void Main(string[] args)
         {
             DrawGUI.DrawGUIConsole();
