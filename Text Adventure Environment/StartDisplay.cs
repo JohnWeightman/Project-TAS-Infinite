@@ -64,14 +64,44 @@ namespace Text_Adventure_Environment
             return Story;
         }
 
+        #endregion
+
+        #region LoadCampaignData
+
         static void LoadCampaign(string Campaign)
         {
             Program.Campaign.Name = Campaign.Remove(0, 3);
             XmlReader XML = XmlReader.Create("Campaigns\\" + Program.Campaign.Name + ".xml");
+            int ModNum = 0;
             while (XML.Read())
             {
-
+                if ((XML.NodeType == XmlNodeType.Element) && (XML.Name == "Module"))
+                {
+                    Module Mod = new Module();
+                    Mod.Name = XML.GetAttribute("Name");
+                    Program.Campaign.Modules.Add(Mod);
+                }
+                else if ((XML.NodeType == XmlNodeType.Element) && (XML.Name == "Story"))
+                {
+                    LoadModuleStory(XML, ModNum);
+                    XML.ReadToNextSibling("Options");
+                    LoadModuleOptions(XML, ModNum);
+                    ModNum += 1;
+                }
             }
+        }
+
+        static void LoadModuleStory(XmlReader XML, int ModNum)
+        {
+            for(int x = 0; x < XML.AttributeCount; x++)
+                Program.Campaign.Modules[ModNum].Story.Add(XML.GetAttribute(x));
+        }
+
+        static void LoadModuleOptions(XmlReader XML, int ModNum)
+        {
+            for (int x = 0; x < XML.AttributeCount; x++)
+                Program.Campaign.Modules[ModNum].Options.OptionsList.Add(XML.GetAttribute(x));
+
         }
 
         #endregion
