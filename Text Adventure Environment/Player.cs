@@ -34,6 +34,7 @@ namespace Text_Adventure_Environment
         public static int Stamina = 0;
         public static int StaminaMax = 0;
         public static int FightXP = 0;
+        public static bool Dead = false;
 
         public static Weapon Weapon = new Weapon();
         public static Armour Armour = new Armour();
@@ -283,7 +284,7 @@ namespace Text_Adventure_Environment
             DrawGUI.UpdateStoryBox(Update);
             DrawGUI.UpdatePlayerOptions(Options);
             int Input = PlayerInputs(Options.Count);
-            StartDisplay.DisplayMainMenu();
+            Dead = true;
         }
 
     }

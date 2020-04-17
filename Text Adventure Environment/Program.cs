@@ -10,6 +10,7 @@ namespace Text_Adventure_Environment
     static class Program
     {
         public static Campaigns Campaign = new Campaigns();
+        static int ModNum = 0;
 
         static void Main(string[] args)
         {
@@ -20,7 +21,17 @@ namespace Text_Adventure_Environment
             {
                 Encounter.StartEncounter();
             }
-            Console.ReadKey();
+        }
+
+        static void GameLoop()
+        {
+            while (!Player.Dead && !Campaign.Complete)
+            {
+                DrawGUI.UpdateStoryBox(Campaign.Modules[ModNum].Story);
+                DrawGUI.UpdatePlayerOptions(Campaign.Modules[ModNum].Options.OptionsList);
+                int Input = Player.PlayerInputs(Campaign.Modules[ModNum].Options.OptionsList.Count);
+            }
+            StartDisplay.DisplayCampaignMenu();
         }
     }
 }

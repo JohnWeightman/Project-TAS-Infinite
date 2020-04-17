@@ -9,6 +9,7 @@ namespace Text_Adventure_Environment
     class Campaigns
     {
         public string Name = "";
+        public bool Complete = false;
         public List<Module> Modules = new List<Module>();
     }
 
