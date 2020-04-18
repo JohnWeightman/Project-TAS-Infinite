@@ -23,5 +23,6 @@ namespace Text_Adventure_Environment
     class Options
     {
         public List<string> OptionsList = new List<string>();
+        public List<byte> OptionTypes = new List<byte>();
     }
 }

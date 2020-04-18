@@ -2,42 +2,72 @@
 <Campaign1>
   <Module Name="Module1">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
-    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionsType OptionType1="0" OptionType2="1"/>
+    </Options>
   </Module>
   <Module Name="Module2">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
-    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionsType OptionType1="0" OptionType2="1"/>
+    </Options>
   </Module>
   <Module Name="Module3">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
-    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionsType OptionType1="0" OptionType2="1"/>
+    </Options>
   </Module>
   <Module Name="Module4">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
-    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionsType OptionType1="0" OptionType2="1"/>
+    </Options>
   </Module>
   <Module Name="Module5">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
-    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionsType OptionType1="0" OptionType2="1"/>
+    </Options>
   </Module>
   <Module Name="Module6">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
-    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionsType OptionType1="0" OptionType2="1"/>
+    </Options>
   </Module>
   <Module Name="Module7">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
-    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionsType OptionType1="0" OptionType2="1"/>
+    </Options>
   </Module>
   <Module Name="Module8">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
-    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionsType OptionType1="0" OptionType2="1"/>
+    </Options>
   </Module>
   <Module Name="Module9">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
-    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionsType OptionType1="0" OptionType2="1"/>
+    </Options>
   </Module>
   <Module Name="Module10">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
-    <Options Option1="eeE" Option2="ddD" Option3="ccC" Option4="bbB" Option5="aaA"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionsType OptionType1="0" OptionType2="1"/>
+    </Options>
   </Module>
 </Campaign1>

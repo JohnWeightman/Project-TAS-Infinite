@@ -84,8 +84,12 @@ namespace Text_Adventure_Environment
                 else if ((XML.NodeType == XmlNodeType.Element) && (XML.Name == "Story"))
                 {
                     LoadModuleStory(XML, ModNum);
-                    XML.ReadToNextSibling("Options");
+                }
+                else if((XML.NodeType == XmlNodeType.Element) && (XML.Name == "OptionsList"))
+                {
                     LoadModuleOptions(XML, ModNum);
+                    XML.ReadToNextSibling("OptionsType");
+                    LoadModuleOptionTypes(XML, ModNum);
                     ModNum += 1;
                 }
             }
@@ -102,6 +106,12 @@ namespace Text_Adventure_Environment
             for (int x = 0; x < XML.AttributeCount; x++)
                 Program.Campaign.Modules[ModNum].Options.OptionsList.Add(XML.GetAttribute(x));
 
+        }
+
+        static void LoadModuleOptionTypes(XmlReader XML, int ModNum)
+        {
+            for (int x = 0; x < XML.AttributeCount; x++)
+                Program.Campaign.Modules[ModNum].Options.OptionTypes.Add(Convert.ToByte(XML.GetAttribute(x)));
         }
 
         #endregion
