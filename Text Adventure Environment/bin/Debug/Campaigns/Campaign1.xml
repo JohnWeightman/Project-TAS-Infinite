@@ -1,73 +1,939 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Campaign1>
-  <Module Name="Module1">
+  <Module Name="Module1" ModType="0">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
     <Options>
       <OptionsList Option1="Continue" Option2="Fight"/>
-      <OptionDirections OptionType1="2" OptionType2="6"/>
+      <OptionDirections OptionDirection1="60" OptionDirection2="55"/>
     </Options>
   </Module>
-  <Module Name="Module2">
+  <Module Name="Module2" ModType="1">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
     <Options>
       <OptionsList Option1="Continue" Option2="Fight"/>
-      <OptionDirections OptionType1="2" OptionType2="5"/>
+      <OptionDirections OptionDirection1="66" OptionDirection2="99"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="1"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module3" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="28" OptionDirection2="93"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module4" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="87" OptionDirection2="24"/>
     </Options>
   </Module>
-  <Module Name="Module3">
+  <Module Name="Module5" ModType="0">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
     <Options>
       <OptionsList Option1="Continue" Option2="Fight"/>
-      <OptionDirections OptionType1="4" OptionType2="5"/>
+      <OptionDirections OptionDirection1="75" OptionDirection2="43"/>
     </Options>
   </Module>
-  <Module Name="Module4">
+  <Module Name="Module6" ModType="1">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
     <Options>
       <OptionsList Option1="Continue" Option2="Fight"/>
-      <OptionDirections OptionType1="8" OptionType2="1"/>
+      <OptionDirections OptionDirection1="42" OptionDirection2="93"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="1"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module7" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="90" OptionDirection2="31"/>
     </Options>
   </Module>
-  <Module Name="Module5">
+  <Module Name="Module8" ModType="0">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
     <Options>
       <OptionsList Option1="Continue" Option2="Fight"/>
-      <OptionDirections OptionType1="8" OptionType2="3"/>
+      <OptionDirections OptionDirection1="80" OptionDirection2="66"/>
     </Options>
   </Module>
-  <Module Name="Module6">
+  <Module Name="Module9" ModType="0">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
     <Options>
       <OptionsList Option1="Continue" Option2="Fight"/>
-      <OptionDirections OptionType1="1" OptionType2="7"/>
+      <OptionDirections OptionDirection1="67" OptionDirection2="20"/>
     </Options>
   </Module>
-  <Module Name="Module7">
+  <Module Name="Module10" ModType="0">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
     <Options>
       <OptionsList Option1="Continue" Option2="Fight"/>
-      <OptionDirections OptionType1="8" OptionType2="5"/>
+      <OptionDirections OptionDirection1="42" OptionDirection2="33"/>
     </Options>
   </Module>
-  <Module Name="Module8">
+  <Module Name="Module11" ModType="0">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
     <Options>
       <OptionsList Option1="Continue" Option2="Fight"/>
-      <OptionDirections OptionType1="8" OptionType2="9"/>
+      <OptionDirections OptionDirection1="6" OptionDirection2="92"/>
     </Options>
   </Module>
-  <Module Name="Module9">
+  <Module Name="Module12" ModType="1">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
     <Options>
       <OptionsList Option1="Continue" Option2="Fight"/>
-      <OptionDirections OptionType1="6" OptionType2="1"/>
+      <OptionDirections OptionDirection1="38" OptionDirection2="38"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="2"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module13" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="78" OptionDirection2="85"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="2"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module14" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="48" OptionDirection2="92"/>
     </Options>
   </Module>
-  <Module Name="Module10">
+  <Module Name="Module15" ModType="1">
     <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
     <Options>
       <OptionsList Option1="Continue" Option2="Fight"/>
-      <OptionDirections OptionType1="1" OptionType2="3"/>
+      <OptionDirections OptionDirection1="60" OptionDirection2="50"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module16" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="50" OptionDirection2="93"/>
+    </Options>
+  </Module>
+  <Module Name="Module17" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="24" OptionDirection2="70"/>
+    </Options>
+  </Module>
+  <Module Name="Module18" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="17" OptionDirection2="85"/>
+    </Options>
+  </Module>
+  <Module Name="Module19" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="48" OptionDirection2="48"/>
+    </Options>
+  </Module>
+  <Module Name="Module20" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="61" OptionDirection2="28"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module21" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="19" OptionDirection2="36"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="1"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module22" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="5" OptionDirection2="50"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="1"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module23" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="16" OptionDirection2="11"/>
+    </Options>
+  </Module>
+  <Module Name="Module24" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="83" OptionDirection2="87"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module25" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="18" OptionDirection2="52"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module26" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="40" OptionDirection2="99"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="2"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module27" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="76" OptionDirection2="22"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module28" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="80" OptionDirection2="31"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="1"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module29" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="98" OptionDirection2="82"/>
+    </Options>
+  </Module>
+  <Module Name="Module30" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="86" OptionDirection2="25"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="4"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module31" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="43" OptionDirection2="1"/>
+    </Options>
+  </Module>
+  <Module Name="Module32" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="19" OptionDirection2="8"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="1"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module33" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="34" OptionDirection2="97"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module34" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="31" OptionDirection2="57"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="2"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module35" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="26" OptionDirection2="58"/>
+    </Options>
+  </Module>
+  <Module Name="Module36" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="14" OptionDirection2="97"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module37" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="90" OptionDirection2="85"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="2"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module38" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="92" OptionDirection2="6"/>
+    </Options>
+  </Module>
+  <Module Name="Module39" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="53" OptionDirection2="74"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module40" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="89" OptionDirection2="42"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="1"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module41" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="81" OptionDirection2="74"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module42" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="87" OptionDirection2="55"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="2"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module43" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="99" OptionDirection2="20"/>
+    </Options>
+  </Module>
+  <Module Name="Module44" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="63" OptionDirection2="56"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module45" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="11" OptionDirection2="77"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module46" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="10" OptionDirection2="43"/>
+    </Options>
+  </Module>
+  <Module Name="Module47" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="69" OptionDirection2="67"/>
+    </Options>
+  </Module>
+  <Module Name="Module48" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="33" OptionDirection2="44"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module49" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="88" OptionDirection2="67"/>
+    </Options>
+  </Module>
+  <Module Name="Module50" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="45" OptionDirection2="14"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="4"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module51" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="52" OptionDirection2="41"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module52" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="4" OptionDirection2="64"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="1"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module53" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="51" OptionDirection2="43"/>
+    </Options>
+  </Module>
+  <Module Name="Module54" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="77" OptionDirection2="26"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="4"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module55" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="12" OptionDirection2="50"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="4"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module56" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="44" OptionDirection2="6"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module57" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="55" OptionDirection2="12"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="2"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module58" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="12" OptionDirection2="53"/>
+    </Options>
+  </Module>
+  <Module Name="Module59" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="19" OptionDirection2="43"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module60" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="58" OptionDirection2="37"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module61" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="7" OptionDirection2="78"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module62" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="16" OptionDirection2="71"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="4"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module63" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="72" OptionDirection2="42"/>
+    </Options>
+  </Module>
+  <Module Name="Module64" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="56" OptionDirection2="84"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module65" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="33" OptionDirection2="58"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module66" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="42" OptionDirection2="84"/>
+    </Options>
+  </Module>
+  <Module Name="Module67" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="37" OptionDirection2="69"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module68" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="24" OptionDirection2="3"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="2"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module69" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="95" OptionDirection2="28"/>
+    </Options>
+  </Module>
+  <Module Name="Module70" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="54" OptionDirection2="74"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module71" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="55" OptionDirection2="79"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="4"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module72" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="44" OptionDirection2="18"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module73" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="97" OptionDirection2="22"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module74" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="67" OptionDirection2="28"/>
+    </Options>
+  </Module>
+  <Module Name="Module75" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="39" OptionDirection2="40"/>
+    </Options>
+  </Module>
+  <Module Name="Module76" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="93" OptionDirection2="42"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module77" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="71" OptionDirection2="47"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module78" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="32" OptionDirection2="47"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="2"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module79" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="31" OptionDirection2="88"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module80" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="3" OptionDirection2="77"/>
+    </Options>
+  </Module>
+  <Module Name="Module81" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="75" OptionDirection2="41"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="3"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module82" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="81" OptionDirection2="69"/>
+    </Options>
+  </Module>
+  <Module Name="Module83" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="68" OptionDirection2="3"/>
+    </Options>
+  </Module>
+  <Module Name="Module84" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="13" OptionDirection2="93"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module85" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="42" OptionDirection2="80"/>
+    </Options>
+  </Module>
+  <Module Name="Module86" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="99" OptionDirection2="71"/>
+    </Options>
+  </Module>
+  <Module Name="Module87" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="24" OptionDirection2="81"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module88" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="38" OptionDirection2="93"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module89" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="67" OptionDirection2="47"/>
+    </Options>
+  </Module>
+  <Module Name="Module90" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="25" OptionDirection2="24"/>
+    </Options>
+  </Module>
+  <Module Name="Module91" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="65" OptionDirection2="71"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module92" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="7" OptionDirection2="16"/>
+    </Options>
+  </Module>
+  <Module Name="Module93" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="79" OptionDirection2="83"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="1"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module94" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="53" OptionDirection2="7"/>
+    </Options>
+  </Module>
+  <Module Name="Module95" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="89" OptionDirection2="8"/>
+    </Options>
+  </Module>
+  <Module Name="Module96" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="46" OptionDirection2="32"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="1"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module97" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="93" OptionDirection2="86"/>
+    </Options>
+  </Module>
+  <Module Name="Module98" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="15" OptionDirection2="88"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="2"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module99" ModType="1">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="2" OptionDirection2="56"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="5"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module100" ModType="0">
+    <Story Part1="aaA" Part2="bbB" Part3="ccC" Part4="ddD" Part5="eeE"/>
+    <Options>
+      <OptionsList Option1="Continue" Option2="Fight"/>
+      <OptionDirections OptionDirection1="69" OptionDirection2="76"/>
     </Options>
   </Module>
 </Campaign1>

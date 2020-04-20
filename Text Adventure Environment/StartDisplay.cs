@@ -84,6 +84,7 @@ namespace Text_Adventure_Environment
                 {
                     Module Mod = new Module();
                     Mod.Name = XML.GetAttribute("Name");
+                    Mod.ModType = Convert.ToByte(XML.GetAttribute("ModType"));
                     Program.Campaign.Modules.Add(Mod);
                 }
                 else if ((XML.NodeType == XmlNodeType.Element) && (XML.Name == "Story"))
@@ -95,6 +96,14 @@ namespace Text_Adventure_Environment
                     LoadModuleOptions(XML, ModNum);
                     XML.ReadToNextSibling("OptionDirections");
                     LoadModuleOptionDirections(XML, ModNum);
+                    if(Program.Campaign.Modules[ModNum].ModType == 0)
+                        ModNum += 1;
+                }
+                else if((XML.NodeType == XmlNodeType.Element) && (XML.Name == "EncounterEnemyType"))
+                {
+                    LoadModuleEncounterType(XML, ModNum);
+                    XML.ReadToNextSibling("EncounterEnemyNumber");
+                    LoadModuleEncounterNumber(XML, ModNum);
                     ModNum += 1;
                 }
             }
@@ -117,6 +126,18 @@ namespace Text_Adventure_Environment
         {
             for (int x = 0; x < XML.AttributeCount; x++)
                 Program.Campaign.Modules[ModNum].Options.OptionDirections.Add(Convert.ToByte(XML.GetAttribute(x)));
+        }
+
+        static void LoadModuleEncounterType(XmlReader XML, int ModNum)
+        {
+            for (int x = 0; x < XML.AttributeCount; x++)
+                Program.Campaign.Modules[ModNum].Encounter.EnemyTypes.Add(XML.GetAttribute(x));
+        }
+
+        static void LoadModuleEncounterNumber(XmlReader XML, int ModNum)
+        {
+            for (int x = 0; x < XML.AttributeCount; x++)
+                Program.Campaign.Modules[ModNum].Encounter.EnemyNumber.Add(Convert.ToInt32(XML.GetAttribute(x)));
         }
 
         #endregion
