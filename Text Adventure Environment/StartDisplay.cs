@@ -46,6 +46,10 @@ namespace Text_Adventure_Environment
                         LoadCampaign(Campaign);
                         Done = true;
                     }
+                    else if(Input2 == "Quit" || Input2 == "quit")
+                    {
+                        System.Environment.Exit(1);
+                    }
                 }
             }
         }
@@ -61,6 +65,7 @@ namespace Text_Adventure_Environment
                 CampaignFiles[x] = (x + 1) + ". " + CampaignFiles[x].Remove(StringLength, 4);
                 Story.Add(CampaignFiles[x]);
             }
+            Story.Add("Quit");
             return Story;
         }
 
@@ -88,8 +93,8 @@ namespace Text_Adventure_Environment
                 else if((XML.NodeType == XmlNodeType.Element) && (XML.Name == "OptionsList"))
                 {
                     LoadModuleOptions(XML, ModNum);
-                    XML.ReadToNextSibling("OptionsType");
-                    LoadModuleOptionTypes(XML, ModNum);
+                    XML.ReadToNextSibling("OptionDirections");
+                    LoadModuleOptionDirections(XML, ModNum);
                     ModNum += 1;
                 }
             }
@@ -108,10 +113,10 @@ namespace Text_Adventure_Environment
 
         }
 
-        static void LoadModuleOptionTypes(XmlReader XML, int ModNum)
+        static void LoadModuleOptionDirections(XmlReader XML, int ModNum)
         {
             for (int x = 0; x < XML.AttributeCount; x++)
-                Program.Campaign.Modules[ModNum].Options.OptionTypes.Add(Convert.ToByte(XML.GetAttribute(x)));
+                Program.Campaign.Modules[ModNum].Options.OptionDirections.Add(Convert.ToByte(XML.GetAttribute(x)));
         }
 
         #endregion
@@ -134,7 +139,7 @@ namespace Text_Adventure_Environment
                     Player.StartCharacterCreator();
                     break;
                 case 2:
-                    System.Environment.Exit(1);
+                    DisplayMainMenu();
                     break;
                 default:
                     System.Environment.Exit(1);
