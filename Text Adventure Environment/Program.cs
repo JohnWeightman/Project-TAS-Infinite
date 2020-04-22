@@ -17,19 +17,25 @@ namespace Text_Adventure_Environment
             DrawGUI.DrawGUIConsole();
             StartDisplay.DisplayMainMenu();
             StartDisplay.DisplayCampaignMenu();
-            while (true)
-            {
-                Encounter.StartEncounter();
-            }
+            GameLoop();
         }
 
         static void GameLoop()
         {
+            int ModChoice = 0;
             while (!Player.Dead && !Campaign.Complete)
             {
-                DrawGUI.UpdateStoryBox(Campaign.Modules[ModNum].Story);
-                DrawGUI.UpdatePlayerOptions(Campaign.Modules[ModNum].Options.OptionsList);
-                int Input = Player.PlayerInputs(Campaign.Modules[ModNum].Options.OptionsList.Count);
+                switch (Campaign.Modules[ModChoice].ModType)
+                {
+                    case 0:
+                        ModChoice = Campaign.StoryModule(Campaign.Modules[ModChoice]);
+                        break;
+                    case 1:
+                        ModChoice = Campaign.EncounterModule(Campaign.Modules[ModChoice]);
+                        break;
+                    default:
+                        break;
+                }
             }
             StartDisplay.DisplayCampaignMenu();
         }

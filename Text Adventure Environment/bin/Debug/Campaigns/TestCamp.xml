@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Campaign1>
+  <Module Name="Module1" ModType="0">
+    <Story Part1="Welcome to the TAS Infinite Test Campaign!" Part2=" " Part3="This campaign is to test the functionality of the Campaign Creator and the Game itself" Part4=" " Part5="Lets hope this works!"/>
+    <Options>
+      <OptionsList Option1="Continue"/>
+      <OptionDirections OptionDirection1="1"/>
+    </Options>
+  </Module>
+  <Module Name="Module2" ModType="0">
+    <Story Part1="Your currently standing in the town center."/>
+    <Options>
+      <OptionsList Option1="Go to shop" Option2="Go to the arena" Option3="Go home"/>
+      <OptionDirections OptionDirection1="2" OptionDirection2="4" OptionDirection3="3"/>
+    </Options>
+  </Module>
+  <Module Name="Module3" ModType="0">
+    <Story Part1="You arrive at the shop. Unfortunetly, it is currently closed."/>
+    <Options>
+      <OptionsList Option1="Return to town"/>
+      <OptionDirections OptionDirection1="1"/>
+    </Options>
+  </Module>
+  <Module Name="Module4" ModType="0">
+    <Story Part1="You arrive back at home and are standing in your bedroom."/>
+    <Options>
+      <OptionsList Option1="Go to town" Option2="Go to bed"/>
+      <OptionDirections OptionDirection1="1" OptionDirection2="5"/>
+    </Options>
+  </Module>
+  <Module Name="Module5" ModType="1">
+    <Story Part1="You arrive at the arena and step into the sand pit to see your opponent standing opposite you."/>
+    <Options>
+      <OptionsList Option1="Continue"/>
+      <OptionDirections OptionDirection2="1"/>
+    </Options>
+    <Encounter>
+      <EncounterEnemyType EnemyType1="Bandit"/>
+      <EncounterEnemyNumber EnemyNumber1="1"/>
+    </Encounter>
+  </Module>
+  <Module Name="Module6" ModType="0">
+    <Story Part1="You awake the next morning feeling refreshed."/>
+    <Options>
+      <OptionsList Option1="Continue"/>
+      <OptionDirections OptionDirection1="3"/>
+    </Options>
+  </Module>
+</Campaign1>

@@ -11,6 +11,28 @@ namespace Text_Adventure_Environment
         public string Name;
         public bool Complete = false;
         public List<Module> Modules = new List<Module>();
+
+        #region Module Functions
+
+        public int StoryModule(Module Mod)
+        {
+            DrawGUI.UpdateStoryBox(Mod.Story);
+            DrawGUI.UpdatePlayerOptions(Mod.Options.OptionsList);
+            int Input = Player.PlayerInputs(Mod.Options.OptionsList.Count);
+            int OptDir = Mod.Options.OptionDirections[Input - 1];
+            return OptDir;
+        }
+
+        public int EncounterModule(Module Mod)
+        {
+            DrawGUI.UpdateStoryBox(Mod.Story);
+            DrawGUI.UpdatePlayerOptions(Mod.Options.OptionsList);
+            int Input = Player.PlayerInputs(Mod.Options.OptionsList.Count);
+            Enemies.LoadEnemeisFromFile(Mod.Encounter.EnemyTypes, Mod.Encounter.EnemyNumber, true);
+            return Mod.Options.OptionDirections[0];
+        }
+
+        #endregion
     }
 
     class Module
