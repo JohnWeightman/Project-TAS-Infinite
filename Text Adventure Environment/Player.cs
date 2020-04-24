@@ -150,8 +150,8 @@ namespace Text_Adventure_Environment
         static void CharacterAbilityPoints()
         {
             RandomizeAbilityPoints();
-            List<string> CCAbilities1 = new List<string>() {"Welcome to the Character Creator", "", "Name: " + Player.Name, "", "HP: " + Player.HP + "/" + 
-                Player.MaxHP, "", "Str: " + Player.Str, "Dex: " + Player.Dex, "Con: " + Player.Con};
+            List<string> CCAbilities1 = new List<string>() {"Welcome to the Character Creator", "", "Name: " + Name, "", "HP: " + HP + "/" + MaxHP, "",
+                "Str: " + Str + " (+" + StrMod + ")", "Dex: " + Dex + " (+" + DexMod + ")", "Con: " + Con + " (+" + ConMod + ")"};
             DrawGUI.UpdateStoryBox(CCAbilities1);
             List<string> Options = new List<string>() {"Reroll Stats", "Continue"};
             DrawGUI.UpdatePlayerOptions(Options);
@@ -170,47 +170,47 @@ namespace Text_Adventure_Environment
 
         static void RandomizeAbilityPoints()
         {
-            bool Finished = false;
-            int Stat = 1;
-            while (!Finished)
+            Str = 1;
+            Dex = 1;
+            Con = 1;
+            int Count = 27;
+            while(Count > 0)
             {
-                int[] Random = new int[] { DiceRoller.RollDice(4), DiceRoller.RollDice(4), DiceRoller.RollDice(4), DiceRoller.RollDice(4) };
-                Array.Sort(Random);
-                if (Stat == 1)
+                int Stat = DiceRoller.RollDice(3);
+                switch (Stat)
                 {
-                    Player.Str = Random[1] + Random[2] + Random[3];
+                    case 1:
+                        Str += 1;
+                        if(Str > 15)
+                        {
+                            Str = 15;
+                            Count++;
+                        }
+                        break;
+                    case 2:
+                        Dex += 1;
+                        if(Dex > 15)
+                        {
+                            Dex = 15;
+                            Count++;
+                        }
+                        break;
+                    case 3:
+                        Con += 1;
+                        if(Con > 15)
+                        {
+                            Con = 15;
+                            Count++;
+                        }
+                        break;
+                    default:
+                        Str += 1;
+                        break;
                 }
-                else if (Stat == 2)
-                {
-                    Player.Dex = Random[1] + Random[2] + Random[3];
-                }
-                else
-                {
-                    Player.Con = Random[1] + Random[2] + Random[3];
-                    Finished = !Finished;
-                }
-                Stat += 1;
-            }
-            for(int x = 0; x < 2; x++)
-            {
-                    int Ran = DiceRoller.RollDice(3);
-                    switch(Ran)
-                    {
-                        case 1:
-                            Player.Str += 1;
-                            break;
-                        case 2:
-                            Player.Dex += 1;
-                            break;
-                        case 3:
-                            Player.Con += 1;
-                            break;
-                        default:
-                            break;
-                    }
+                Count--;
             }
             UpdateAbilityModifiers();
-            MaxHP = DiceRoller.RollDice(10) + ConMod;
+            MaxHP = 10 + ConMod;
             HP = Player.MaxHP;
             StaminaMax = 4 + (2 * DexMod);
             if (StaminaMax < 7)

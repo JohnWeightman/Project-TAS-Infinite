@@ -143,11 +143,12 @@ namespace Text_Adventure_Environment
                         {
                             Player.Stamina -= Player.FightOptionCosts[Input - 1];
                             TargetEnemy = WhichEnemy();
+                            DrawGUI.UpdatePlayersFirstStatsBox();
                             AttackEnemy(TargetEnemy, "Heavy");
                         }
                         else
                         {
-                            List<string> Update = new List<string>() { "Not Enough Stamina!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                            List<string> Update = new List<string>() { "Not Enough Stamina!" };
                             DrawGUI.UpdateStoryBox(Update);
                         }
                         break;
@@ -156,11 +157,12 @@ namespace Text_Adventure_Environment
                         {
                             Player.Stamina -= Player.FightOptionCosts[Input - 1];
                             TargetEnemy = WhichEnemy();
+                            DrawGUI.UpdatePlayersFirstStatsBox();
                             AttackEnemy(TargetEnemy, "Light");
                         }
                         else
                         {
-                            List<string> Update = new List<string>() { "Not Enough Stamina!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                            List<string> Update = new List<string>() { "Not Enough Stamina!" };
                             DrawGUI.UpdateStoryBox(Update);
                         }
                         break;
@@ -168,11 +170,12 @@ namespace Text_Adventure_Environment
                         if(Player.Stamina >= Player.FightOptionCosts[Input - 1])
                         {
                             Player.Stamina -= Player.FightOptionCosts[Input - 1];
+                            DrawGUI.UpdatePlayersFirstStatsBox();
                             HealthPotion();
                         }
                         else
                         {
-                            List<string> Update = new List<string>() { "Not Enough Stamina!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                            List<string> Update = new List<string>() { "Not Enough Stamina!" };
                             DrawGUI.UpdateStoryBox(Update);
                         }
                         break;
@@ -211,7 +214,7 @@ namespace Text_Adventure_Environment
                 bool Dead = Enemies.EnemyList[TargetEnemy].TakeDamage(Attack);
                 if (Dead)
                 {
-                    List<string> Update = new List<string>() { "You strike down " + Enemies.EnemyList[TargetEnemy].Name + "!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                    List<string> Update = new List<string>() { "You strike down " + Enemies.EnemyList[TargetEnemy].Name + "!" };
                     FightOrder.Remove(Enemies.EnemyList[TargetEnemy]);
                     Enemies.EnemyList.Remove(Enemies.EnemyList[TargetEnemy]);
                     DrawGUI.UpdateNPCBoxes();
@@ -219,7 +222,7 @@ namespace Text_Adventure_Environment
                 }
                 else
                 {
-                    List<string> Update = new List<string>() { "You strike " + Enemies.EnemyList[TargetEnemy].Name + " for " + Attack + " Damage!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                    List<string> Update = new List<string>() { "You strike " + Enemies.EnemyList[TargetEnemy].Name + " for " + Attack + " Damage!" };
                     DrawGUI.UpdateStoryBox(Update);
                 }
             }
@@ -227,7 +230,7 @@ namespace Text_Adventure_Environment
             {
                 Events.NewEvent("AttackRoll", Attack - Player.StrMod - (Player.Level / 3), Player.StrMod, Player.Level / 3, Attack,
                     Enemies.EnemyList[TargetEnemy].AC, Player.Name, Enemies.EnemyList[TargetEnemy].Name, "MISS");
-                List<string> Update = new List<string>() { "Your attack missed!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                List<string> Update = new List<string>() { "Your attack missed!" };
                 DrawGUI.UpdateStoryBox(Update);
             }
         }

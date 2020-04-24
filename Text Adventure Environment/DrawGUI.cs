@@ -99,7 +99,7 @@ namespace Text_Adventure_Environment
 
         static void DrawPlayersFirstStatsBox() //Draws the Players first stats box
         {
-            Draw.Rectangle(20, 4, 2, 3, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Green);
+            Draw.Rectangle(20, 5, 2, 3, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Green);
             UpdatePlayersFirstStatsBox(); 
         }
 
@@ -114,11 +114,13 @@ namespace Text_Adventure_Environment
             Console.Write("HP: " + Player.HP + "/" + Player.MaxHP);
             Console.SetCursorPosition(4, 9);
             Console.Write("AC: " + Player.AC);
+            Console.SetCursorPosition(4, 10);
+            Console.Write("STA: " + Player.Stamina + "/" + Player.StaminaMax);
         }
 
         public static void ClearPlayersFirstStatsBox() //Clears the Players first stats box
         {
-            for (int YPos = 6; YPos < 10; YPos++)
+            for (int YPos = 6; YPos < 11; YPos++)
             {
                 Console.SetCursorPosition(4, YPos);
                 for (int x = 0; x < 18; x++)
@@ -141,17 +143,17 @@ namespace Text_Adventure_Environment
         public static void UpdatePlayersSecondStatsBox() //Updates the Players second stats box
         {
             ClearPlayersSecondStatsBox();
-            Console.SetCursorPosition(4, 11);
-            Console.Write("STR: " + Player.Str + " (+" + Player.StrMod + ")");
             Console.SetCursorPosition(4, 12);
-            Console.Write("DEX: " + Player.Dex + " (+" + Player.DexMod + ")");
+            Console.Write("STR: " + Player.Str + " (+" + Player.StrMod + ")");
             Console.SetCursorPosition(4, 13);
+            Console.Write("DEX: " + Player.Dex + " (+" + Player.DexMod + ")");
+            Console.SetCursorPosition(4, 14);
             Console.Write("CON: " + Player.Con + " (+" + Player.ConMod + ")");
         }
 
         public static void ClearPlayersSecondStatsBox() //Clears the Players third stats box
         {
-            for (int YPos = 11; YPos < 14; YPos++)
+            for (int YPos = 12; YPos < 15; YPos++)
             {
                 Console.SetCursorPosition(4, YPos);
                 for (int x = 0; x < 18; x++)
@@ -174,15 +176,15 @@ namespace Text_Adventure_Environment
         public static void UpdatePlayersThirdStatsBox() //Updates the Players third stat box
         {
             ClearPlayersThirdStatsBox();
-            Console.SetCursorPosition(4, 15);
-            Console.Write("XP: " + Player.XP);
             Console.SetCursorPosition(4, 16);
+            Console.Write("XP: " + Player.XP);
+            Console.SetCursorPosition(4, 17);
             Console.Write("LU: " + Player.LU);
         }
 
         public static void ClearPlayersThirdStatsBox() //Clears the Players third stat box
         {
-            for (int YPos = 15; YPos < 17; YPos++)
+            for (int YPos = 16; YPos < 18; YPos++)
             {
                 Console.SetCursorPosition(4, YPos);
                 for (int x = 0; x < 18; x++)
@@ -207,17 +209,17 @@ namespace Text_Adventure_Environment
         public static void UpdatePlayersFourthStatsBox() //Update the Players fourth stat box
         {
             ClearPlayersFourthStatsBox();
-            Console.SetCursorPosition(4, 18);
-            Console.Write("Weapon: " + Player.Weapon.Name);
             Console.SetCursorPosition(4, 19);
-            Console.Write("OfHand: " + Player.OffHand);
+            Console.Write("Weapon: " + Player.Weapon.Name);
             Console.SetCursorPosition(4, 20);
+            Console.Write("OfHand: " + Player.OffHand);
+            Console.SetCursorPosition(4, 21);
             Console.Write("Armour: " + Player.Armour.Name);
         }
 
         public static void ClearPlayersFourthStatsBox() //Clear the Players fourth stat box
         {
-            for (int YPos = 18; YPos < 21; YPos++)
+            for (int YPos = 19; YPos < 22; YPos++)
             {
                 Console.SetCursorPosition(4, YPos);
                 for (int x = 0; x < 18; x++)
@@ -233,16 +235,16 @@ namespace Text_Adventure_Environment
 
         static void DrawPlayersFifthStatsBox() //Draws the Players fifth stats box
         {
-            Draw.Rectangle(20, 26, 2, 1, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Green);
+            Draw.Rectangle(20, 25, 2, 1, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Green);
             UpdateInventory();
         }
 
         public static void UpdateInventory() //Updates the Players Inventory box
         {
             ClearInventory();
-            Console.SetCursorPosition(4, 22);
+            Console.SetCursorPosition(4, 23);
             Console.Write("Inventory");
-            int YPos = 24;
+            int YPos = 25;
             foreach (string Item in Player.Inventory)
             {
                 Console.SetCursorPosition(4, YPos);
@@ -253,7 +255,7 @@ namespace Text_Adventure_Environment
 
         public static void ClearInventory() //Clears the Players Inventory box
         {
-            for (int YPos = 22; YPos < 48; YPos++)
+            for (int YPos = 23; YPos < 48; YPos++)
             {
                 Console.SetCursorPosition(4, YPos);
                 for (int x = 0; x < 18; x++)
@@ -269,7 +271,7 @@ namespace Text_Adventure_Environment
 
         static void DrawFightOrderBox() //Draws the Fight Order box
         {
-            Draw.Rectangle(20, 10, 148, -23, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
+            Draw.Rectangle(20, 10, 148, -24, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
             List<string> StartDisplayEnemeis = new List<string>() { "Bandit" };
             List<int> StartDisplayEnemyAmount = new List<int>() { 7 };
             Enemies.LoadEnemeisFromFile(StartDisplayEnemeis, StartDisplayEnemyAmount, false);
