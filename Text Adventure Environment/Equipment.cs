@@ -10,10 +10,10 @@ namespace Text_Adventure_Environment
 {
     class Weapon
     {
-        public string Name = "Longsword";
-        public int Damage = 8;
+        public string Name = "Shortsword";
+        public int Damage = 6;
         public bool TwoHanded = false;
-        public bool Versatile = true;
+        public bool Versatile = false;
 
         public void UpdateWeapon(string NewWeapon)
         {
@@ -33,8 +33,8 @@ namespace Text_Adventure_Environment
 
     class Armour
     {
-        public string Name = "Chainmail";
-        public string Weight = "Heavy";
+        public string Name = "Leather";
+        public string Weight = "Light";
         public int AC = 16;
 
         public void UpdateArmour(string NewArmour)
@@ -47,10 +47,6 @@ namespace Text_Adventure_Environment
                     Name = XML.GetAttribute("Name");
                     AC = Convert.ToInt32(XML.GetAttribute("AC"));
                     Weight = XML.GetAttribute("Weight");
-                }
-                else
-                {
-                    Name = "N/A";
                 }
             }
         }

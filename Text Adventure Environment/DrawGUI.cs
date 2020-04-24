@@ -113,9 +113,9 @@ namespace Text_Adventure_Environment
             Console.SetCursorPosition(4, 8);
             Console.Write("HP: " + Player.HP + "/" + Player.MaxHP);
             Console.SetCursorPosition(4, 9);
-            Console.Write("AC: " + Player.AC);
-            Console.SetCursorPosition(4, 10);
             Console.Write("STA: " + Player.Stamina + "/" + Player.StaminaMax);
+            Console.SetCursorPosition(4, 10);
+            Console.Write("AC: " + Player.AC);
         }
 
         public static void ClearPlayersFirstStatsBox() //Clears the Players first stats box
@@ -201,9 +201,9 @@ namespace Text_Adventure_Environment
         static void DrawPlayersFourthStatsBox() //Draws the Players fourth stats box
         {
             Draw.Rectangle(20, 3, 2, 1, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Green);
-            UpdatePlayersFourthStatsBox();
             Player.Weapon.UpdateWeapon("Shortsword");
             Player.Armour.UpdateArmour("Leather");
+            UpdatePlayersFourthStatsBox();
         }
 
         public static void UpdatePlayersFourthStatsBox() //Update the Players fourth stat box
