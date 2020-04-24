@@ -10,17 +10,14 @@ namespace Text_Adventure_Environment
     static class Program
     {
         public static Campaigns Campaign = new Campaigns();
-        static int ModNum = 0;
 
         static void Main(string[] args)
         {
             DrawGUI.DrawGUIConsole();
             StartDisplay.DisplayMainMenu();
-            StartDisplay.DisplayCampaignMenu();
-            GameLoop();
         }
 
-        static void GameLoop()
+        public static void GameLoop()
         {
             int ModChoice = 0;
             while (!Player.Dead && !Campaign.Complete)

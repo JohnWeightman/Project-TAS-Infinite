@@ -116,6 +116,7 @@ namespace Text_Adventure_Environment
 
         public static void StartCharacterCreator()
         {
+            Dead = false;
             CharacterName();
             CharacterAbilityPoints();
             EmptyOtherStats();

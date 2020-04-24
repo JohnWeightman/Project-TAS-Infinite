@@ -41,7 +41,8 @@ namespace Text_Adventure_Environment
                 foreach(string Campaign in Story)
                 {
                     string CamName = Campaign.Remove(0, 3);
-                    if (Input2 == CamName)
+                    string CamNameLower = CamName.ToLower();
+                    if (Input2 == CamName || Input2 == CamNameLower)
                     {
                         LoadCampaign(Campaign);
                         Done = true;
@@ -52,6 +53,7 @@ namespace Text_Adventure_Environment
                     }
                 }
             }
+            DisplayCampaignMenu();
         }
 
         static List<string> GetCampaignFiles()
@@ -148,7 +150,7 @@ namespace Text_Adventure_Environment
         {
             List<string> GameTitle = new List<string>() { "Welcome to 'Game Title'" };
             DrawGUI.UpdateStoryBox(GameTitle);
-            List<string> MenuOptions = new List<string>() {"Start Game", "Quit Game"};
+            List<string> MenuOptions = new List<string>() { "Start Game", "Quit Game" };
             DrawGUI.UpdatePlayerOptions(MenuOptions);
             int Input = Player.PlayerInputs(MenuOptions.Count);
             switch (Input)
@@ -158,6 +160,7 @@ namespace Text_Adventure_Environment
                     DrawGUI.ClearNPCBoxes();
                     DrawGUI.ClearEventsBox();
                     Player.StartCharacterCreator();
+                    Program.GameLoop();
                     break;
                 case 2:
                     DisplayMainMenu();
