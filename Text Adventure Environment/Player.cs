@@ -16,7 +16,7 @@ namespace Text_Adventure_Environment
         public static int Level = 1;
         public static int HP = 13;
         public static int MaxHP = 13;
-        public static int AC = 7;
+        public static int AC = 10;
         public static int Str = 12;
         public static int Dex = 9;
         public static int Con = 9;

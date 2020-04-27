@@ -86,6 +86,7 @@ namespace Text_Adventure_Environment
                 {
                     Module Mod = new Module();
                     Mod.Name = XML.GetAttribute("Name");
+                    Mod.ID = XML.GetAttribute("ID");
                     Mod.ModType = Convert.ToByte(XML.GetAttribute("ModType"));
                     Program.Campaign.Modules.Add(Mod);
                 }

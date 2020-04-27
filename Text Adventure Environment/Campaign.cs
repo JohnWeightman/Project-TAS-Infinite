@@ -38,6 +38,7 @@ namespace Text_Adventure_Environment
     class Module
     {
         public string Name;
+        public string ID;
         public byte ModType;
         public Options Options = new Options();
         public Encounters Encounter = new Encounters();

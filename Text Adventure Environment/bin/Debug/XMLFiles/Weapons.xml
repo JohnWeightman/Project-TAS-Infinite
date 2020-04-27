@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Weapons>
-	<Dagger Name="Dagger" Damage="4" TwoHanded="false" Versatile="false"/>
-	<Shortsword Name="Shortsword" Damage ="6" TwoHanded="false" Versatile="false"/>
-	<Longsword Name="Longsword" Damage="8" TwoHanded="false" Versatile="true"/>
-	<Greatsword Name="Greatsword" Damage="12" TwoHanded="true" Versatile="false"/>
-</Weapons>

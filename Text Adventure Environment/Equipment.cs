@@ -17,15 +17,22 @@ namespace Text_Adventure_Environment
 
         public void UpdateWeapon(string NewWeapon)
         {
-            XmlReader XML = XmlReader.Create("XMLFiles\\Weapons.xml");
-            while (XML.Read())
+            XmlDocument Doc = new XmlDocument();
+            Doc.Load("GameObjects.xml");
+            foreach (XmlNode Node in Doc.DocumentElement)
             {
-                if ((XML.NodeType == XmlNodeType.Element) && (XML.Name == NewWeapon))
+                if (Node.Name == "Weapons")
                 {
-                    Name = XML.GetAttribute("Name");
-                    Damage = Convert.ToInt32(XML.GetAttribute("Damage"));
-                    TwoHanded = Convert.ToBoolean(XML.GetAttribute("TwoHanded"));
-                    Versatile = Convert.ToBoolean(XML.GetAttribute("Versatile"));
+                    foreach (XmlNode Child in Node.ChildNodes)
+                    {
+                        if(Child.Name == NewWeapon)
+                        {
+                            Name = Child.Attributes[0].Value;
+                            Damage = Convert.ToInt32(Child.Attributes[1].Value);
+                            TwoHanded = Convert.ToBoolean(Child.Attributes[2].Value);
+                            Versatile = Convert.ToBoolean(Child.Attributes[3].Value);
+                        }
+                    }
                 }
             }
         }
@@ -35,18 +42,25 @@ namespace Text_Adventure_Environment
     {
         public string Name = "Leather";
         public string Weight = "Light";
-        public int AC = 16;
+        public int AC = 7;
 
         public void UpdateArmour(string NewArmour)
         {
-            XmlReader XML = XmlReader.Create("XMLFiles\\Armour.xml");
-            while (XML.Read())
+            XmlDocument Doc = new XmlDocument();
+            Doc.Load("GameObjects.xml");
+            foreach (XmlNode Node in Doc.DocumentElement)
             {
-                if ((XML.NodeType == XmlNodeType.Element) && (XML.Name == NewArmour))
+                if (Node.Name == "Armour")
                 {
-                    Name = XML.GetAttribute("Name");
-                    AC = Convert.ToInt32(XML.GetAttribute("AC"));
-                    Weight = XML.GetAttribute("Weight");
+                    foreach (XmlNode Child in Node.ChildNodes)
+                    {
+                        if (Child.Name == NewArmour)
+                        {
+                            Name = Child.Attributes[0].Value;
+                            AC = Convert.ToInt32(Child.Attributes[1].Value);
+                            Weight = Child.Attributes[2].Value;
+                        }
+                    }
                 }
             }
         }
