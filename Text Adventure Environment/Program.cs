@@ -13,8 +13,15 @@ namespace Text_Adventure_Environment
 
         static void Main(string[] args)
         {
-            DrawGUI.DrawGUIConsole();
+            PrepareGameEnvironment();
             StartDisplay.DisplayMainMenu();
+        }
+
+        static void PrepareGameEnvironment()
+        {
+            Equipment.LoadEquipment();
+            Enemies.LoadEnemyDataFromFile();
+            DrawGUI.DrawGUIConsole();
         }
 
         public static void GameLoop()

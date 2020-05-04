@@ -29,7 +29,7 @@ namespace Text_Adventure_Environment
             UpdatePlayerOptions(StartDisplayOptions);
             List<string> StartDisplayEvents = StartDisplay.StartEvents;
             UpdateEventBox();
-            Enemies.EnemyList.Clear();
+            Enemies.EncounterList.Clear();
             Encounter.FightOrder.Clear();
         }
 
@@ -323,7 +323,7 @@ namespace Text_Adventure_Environment
             Console.SetCursorPosition(150, 17);
             Console.Write("Enemies");
             int YPos = 19;
-            foreach (EnemyNPC Enemy in Enemies.EnemyList)
+            foreach (EnemyNPC Enemy in Enemies.EncounterList)
             {
                 Console.SetCursorPosition(150, YPos);
                 Console.Write(Enemy.Name);

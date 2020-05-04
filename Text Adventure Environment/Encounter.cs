@@ -17,10 +17,10 @@ namespace Text_Adventure_Environment
 
         public static void SortFightOrder()
         {
-            if(Enemies.EnemyList.Count > 0)
+            if(Enemies.EncounterList.Count > 0)
             {
                 Player.Initiative = RollInitiative(Player.DexMod);
-                foreach (EnemyNPC Enemy in Enemies.EnemyList)
+                foreach (EnemyNPC Enemy in Enemies.EncounterList)
                 {
                     Enemy.Initiative = RollInitiative(Enemy.DexMod);
                 }
@@ -33,7 +33,7 @@ namespace Text_Adventure_Environment
                         PlayerIni.Name = Player.Name;
                         FightOrder.Add(PlayerIni);
                     }
-                    foreach (EnemyNPC Enemy in Enemies.EnemyList)
+                    foreach (EnemyNPC Enemy in Enemies.EncounterList)
                     {
                         if (Enemy.Initiative == Ini)
                         {
@@ -68,7 +68,7 @@ namespace Text_Adventure_Environment
         {
             SortFightOrder();
             List<string> SE1 = new List<string>() { "Your under attack!", "" };
-            foreach (EnemyNPC Enemy in Enemies.EnemyList)
+            foreach (EnemyNPC Enemy in Enemies.EncounterList)
                 SE1.Add(Enemy.Name);
             SE1.Add("");
             SE1.Add("Stamina: " + Player.Stamina + "/" + Player.StaminaMax);
@@ -123,7 +123,7 @@ namespace Text_Adventure_Environment
         static bool CheckFightStatus()
         {
             bool Finished = false;
-            if (Player.HP <= 0 || Enemies.EnemyList.Count == 0)
+            if (Player.HP <= 0 || Enemies.EncounterList.Count == 0)
                 Finished = true;
             return Finished;
         }
@@ -198,7 +198,7 @@ namespace Text_Adventure_Environment
         static int WhichEnemy()
         {
             List<string> EnemyList = new List<string>();
-            foreach(EnemyNPC Enemy in Enemies.EnemyList)
+            foreach(EnemyNPC Enemy in Enemies.EncounterList)
             {
                 EnemyList.Add(Enemy.Name);
             }
@@ -210,30 +210,30 @@ namespace Text_Adventure_Environment
         static void AttackEnemy(int TargetEnemy, string AttackType)
         {
             int Attack = DiceRoller.RollDice(12) + Player.StrMod + (Player.Level / 3);
-            if (Attack >= Enemies.EnemyList[TargetEnemy].AC)
+            if (Attack >= Enemies.EncounterList[TargetEnemy].AC)
             {
                 Events.NewEvent("AttackRoll", Attack - Player.StrMod - (Player.Level / 3), Player.StrMod, Player.Level / 3, Attack, 
-                    Enemies.EnemyList[TargetEnemy].AC, Player.Name, Enemies.EnemyList[TargetEnemy].Name, "HIT");
-                Attack = DamageEnemy(AttackType, Enemies.EnemyList[TargetEnemy]);
-                bool Dead = Enemies.EnemyList[TargetEnemy].TakeDamage(Attack);
+                    Enemies.EncounterList[TargetEnemy].AC, Player.Name, Enemies.EncounterList[TargetEnemy].Name, "HIT");
+                Attack = DamageEnemy(AttackType, Enemies.EncounterList[TargetEnemy]);
+                bool Dead = Enemies.EncounterList[TargetEnemy].TakeDamage(Attack);
                 if (Dead)
                 {
-                    List<string> Update = new List<string>() { "You strike down " + Enemies.EnemyList[TargetEnemy].Name + "!" };
-                    FightOrder.Remove(Enemies.EnemyList[TargetEnemy]);
-                    Enemies.EnemyList.Remove(Enemies.EnemyList[TargetEnemy]);
+                    List<string> Update = new List<string>() { "You strike down " + Enemies.EncounterList[TargetEnemy].Name + "!" };
+                    FightOrder.Remove(Enemies.EncounterList[TargetEnemy]);
+                    Enemies.EncounterList.Remove(Enemies.EncounterList[TargetEnemy]);
                     DrawGUI.UpdateNPCBoxes();
                     DrawGUI.UpdateStoryBox(Update);
                 }
                 else
                 {
-                    List<string> Update = new List<string>() { "You strike " + Enemies.EnemyList[TargetEnemy].Name + " for " + Attack + " Damage!" };
+                    List<string> Update = new List<string>() { "You strike " + Enemies.EncounterList[TargetEnemy].Name + " for " + Attack + " Damage!" };
                     DrawGUI.UpdateStoryBox(Update);
                 }
             }
             else
             {
                 Events.NewEvent("AttackRoll", Attack - Player.StrMod - (Player.Level / 3), Player.StrMod, Player.Level / 3, Attack,
-                    Enemies.EnemyList[TargetEnemy].AC, Player.Name, Enemies.EnemyList[TargetEnemy].Name, "MISS");
+                    Enemies.EncounterList[TargetEnemy].AC, Player.Name, Enemies.EncounterList[TargetEnemy].Name, "MISS");
                 List<string> Update = new List<string>() { "Your attack missed!" };
                 DrawGUI.UpdateStoryBox(Update);
             }

@@ -28,7 +28,7 @@ namespace Text_Adventure_Environment
             DrawGUI.UpdateStoryBox(Mod.Story);
             DrawGUI.UpdatePlayerOptions(Mod.Options.OptionsList);
             int Input = Player.PlayerInputs(Mod.Options.OptionsList.Count);
-            Enemies.LoadEnemeisFromFile(Mod.Encounter.EnemyTypes, Mod.Encounter.EnemyNumber, true);
+            Enemies.SetEncounterList(Mod.Encounter.EnemyTypes, Mod.Encounter.EnemyNumber, true);
             return Mod.Options.OptionDirections[0];
         }
 
@@ -55,5 +55,11 @@ namespace Text_Adventure_Environment
     {
         public List<string> EnemyTypes = new List<string>();
         public List<int> EnemyNumber = new List<int>();
+    }
+
+    class Shop
+    {
+        public List<Weapon> Weapons = new List<Weapon>();
+        public List<Armour> Armour = new List<Armour>();
     }
 }

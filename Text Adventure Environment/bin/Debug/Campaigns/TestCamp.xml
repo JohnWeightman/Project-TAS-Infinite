@@ -35,8 +35,8 @@
       <OptionDirections OptionDirection2="1"/>
     </Options>
     <Encounter>
-      <EncounterEnemyType EnemyType1="Bandit"/>
-      <EncounterEnemyNumber EnemyNumber1="1"/>
+      <EncounterEnemyType EnemyType1="Bandit" EnemyType2="Thief"/>
+      <EncounterEnemyNumber EnemyNumber1="3" EnemyNumber2="2"/>
     </Encounter>
   </Module>
   <Module Name="Module6" ModType="0">
