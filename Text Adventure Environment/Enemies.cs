@@ -43,6 +43,7 @@ namespace Text_Adventure_Environment
                             EnemyNPC[Count].XPValue = Convert.ToInt32(XML.GetAttribute("XPValue"));
                             EnemyNPC[Count].Weapon.UpdateWeapon(XML.GetAttribute("Weapon"));
                             EnemyNPC[Count].Armour.UpdateArmour(XML.GetAttribute("Armour"));
+                            EnemyNPC[Count].Gold = DiceRoller.RandomRange(3 * EnemyNPC[Count].DifBonus, 5 * EnemyNPC[Count].DifBonus);
                             Count += 1;
                         }
                     }

@@ -244,7 +244,9 @@ namespace Text_Adventure_Environment
             ClearInventory();
             Console.SetCursorPosition(4, 23);
             Console.Write("Inventory");
-            int YPos = 25;
+            Console.SetCursorPosition(4, 25);
+            Console.Write("Gold: " + Player.Gold);
+            int YPos = 26;
             foreach (string Item in Player.Inventory)
             {
                 Console.SetCursorPosition(4, YPos);
@@ -271,7 +273,7 @@ namespace Text_Adventure_Environment
 
         static void DrawFightOrderBox() //Draws the Fight Order box
         {
-            Draw.Rectangle(20, 10, 148, -24, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
+            Draw.Rectangle(20, 10, 148, -25, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
             List<string> StartDisplayEnemeis = new List<string>() { "Bandit" };
             List<int> StartDisplayEnemyAmount = new List<int>() { 7 };
             Enemies.LoadEnemeisFromFile(StartDisplayEnemeis, StartDisplayEnemyAmount, false);

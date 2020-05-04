@@ -27,14 +27,13 @@ namespace Text_Adventure_Environment
         public static int LU = 100;
         public static string OffHand = "N/A";
         public static List<string> Inventory = new List<string>() { "Health Potion", "Health Potion", "Health Potion", "Key", "Key" };
-
         public static List<string> FightOptions = new List<string>() { "Heavy Attack (10s)", "Light Attack (7s)", "Drink Potion (3s)", "End Turn (0s)" };
         public static List<int> FightOptionCosts = new List<int>() { 10, 7, 3, 0 };
         public static int Initiative = 0;
         public static int Stamina = 10;
         public static int StaminaMax = 10;
-        public static int FightXP = 0;
         public static bool Dead = false;
+        public static int Gold = 0;
 
         public static Weapon Weapon = new Weapon();
         public static Armour Armour = new Armour();
@@ -228,7 +227,6 @@ namespace Text_Adventure_Environment
             Player.LU = 100;
             Player.OffHand = "N/A";
             Player.Inventory.Clear();
-            Player.FightXP = 0;
         }
 
         #endregion

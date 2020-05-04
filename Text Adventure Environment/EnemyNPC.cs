@@ -22,13 +22,11 @@ namespace Text_Adventure_Environment
         public int ConMod = 0;
         public string OffHand = "";
         public int XPValue = 0;
-
         public int Initiative = 0;
-
         public int Stamina = 0;
         public int StaminaMax = 0;
         public int DifBonus = 0;
-
+        public int Gold = 0;
         public Weapon Weapon = new Weapon();
         public Armour Armour = new Armour();
         
@@ -40,7 +38,8 @@ namespace Text_Adventure_Environment
             HP -= Damage;
             if(HP <= 0)
             {
-                Player.FightXP += XPValue;
+                Encounter.EncounterXP += XPValue;
+                Encounter.EncounterGold += Gold;
                 Dead = true;
             }
             return Dead;

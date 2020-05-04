@@ -9,6 +9,8 @@ namespace Text_Adventure_Environment
     static class Encounter
     {
         public static List<EnemyNPC> FightOrder = new List<EnemyNPC>();
+        public static int EncounterXP = 0;
+        public static int EncounterGold = 0;
         static List<int> Initiatives = new List<int>();
 
         #region Fight Setup
@@ -105,9 +107,11 @@ namespace Text_Adventure_Environment
             DrawGUI.UpdateStoryBox(Update);
             DrawGUI.UpdatePlayerOptions(Options);
             int Input = Player.PlayerInputs(Options.Count);
-            List<string> Update2 = new List<string>() { "You won the fight!", "", "XP Earned: " + Player.FightXP };
-            Player.XP += Player.FightXP;
-            Player.FightXP = 0;
+            List<string> Update2 = new List<string>() { "You won the fight!", "", "XP Earned: " + EncounterXP, "Gold Found: " + EncounterGold };
+            Player.XP += EncounterXP;
+            EncounterXP = 0;
+            Player.Gold += EncounterGold;
+            EncounterGold = 0;
             DrawGUI.UpdatePlayersThirdStatsBox();
             DrawGUI.UpdateStoryBox(Update2);
             Input = Player.PlayerInputs(Options.Count);

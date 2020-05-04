@@ -14,5 +14,10 @@ namespace Text_Adventure_Environment
         {
             return Ran.Next(1, (max + 1));
         }
+
+        public static int RandomRange(int Min, int Max)
+        {
+            return Ran.Next(Min, (Max + 1));
+        }
     }
 }
