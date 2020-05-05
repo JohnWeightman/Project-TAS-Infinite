@@ -78,69 +78,80 @@ namespace Text_Adventure_Environment
         static void LoadCampaign(string Campaign)
         {
             Program.Campaign.Name = Campaign.Remove(0, 3);
-            XmlReader XML = XmlReader.Create("Campaigns\\" + Program.Campaign.Name + ".xml");
+            XmlDocument Doc = new XmlDocument();
+            Doc.Load("Campaigns\\" + Program.Campaign.Name + ".xml");
             int ModNum = 0;
-            while (XML.Read())
+            foreach (XmlNode Node in Doc.DocumentElement)
             {
-                if ((XML.NodeType == XmlNodeType.Element) && (XML.Name == "Module"))
+                if(Node.Name == "Module")
                 {
                     Module Mod = new Module();
-                    Mod.Name = XML.GetAttribute("Name");
-                    Mod.ID = XML.GetAttribute("ID");
-                    Mod.ModType = Convert.ToByte(XML.GetAttribute("ModType"));
+                    Mod.Name = Node.Attributes[0].Value;
+                    Mod.ModType = Convert.ToByte(Node.Attributes[1].Value);
+                    Mod.ID = Node.Attributes[2].Value;
                     Program.Campaign.Modules.Add(Mod);
-                }
-                else if ((XML.NodeType == XmlNodeType.Element) && (XML.Name == "Story"))
-                {
-                    LoadModuleStory(XML, ModNum);
-                }
-                else if((XML.NodeType == XmlNodeType.Element) && (XML.Name == "OptionsList"))
-                {
-                    LoadModuleOptions(XML, ModNum);
-                    XML.ReadToNextSibling("OptionDirections");
-                    LoadModuleOptionDirections(XML, ModNum);
-                    if(Program.Campaign.Modules[ModNum].ModType == 0)
-                        ModNum += 1;
-                }
-                else if((XML.NodeType == XmlNodeType.Element) && (XML.Name == "EncounterEnemyType"))
-                {
-                    LoadModuleEncounterType(XML, ModNum);
-                    XML.ReadToNextSibling("EncounterEnemyNumber");
-                    LoadModuleEncounterNumber(XML, ModNum);
-                    ModNum += 1;
+                    foreach (XmlNode ModChild in Node.ChildNodes)
+                    {
+                        switch (ModChild.Name)
+                        {
+                            case "Story":
+                                LoadModuleStory(ModChild, ModNum);
+                                break;
+                            case "Options":
+                                LoadModuleOptions(ModChild, ModNum);
+                                break;
+                            case "Encounter":
+                                LoadModuleEncounter(ModChild, ModNum);
+                                break;
+                            case "Shop":
+                                LoadModuleShop(ModChild, ModNum);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    ModNum++;
                 }
             }
         }
 
-        static void LoadModuleStory(XmlReader XML, int ModNum)
+        static void LoadModuleStory(XmlNode Story, int ModNum)
         {
-            for(int x = 0; x < XML.AttributeCount; x++)
-                Program.Campaign.Modules[ModNum].Story.Add(XML.GetAttribute(x));
+            for (int x = 0; x < Story.Attributes.Count; x++)
+                Program.Campaign.Modules[ModNum].Story.Add(Story.Attributes[x].Value);
         }
 
-        static void LoadModuleOptions(XmlReader XML, int ModNum)
+        static void LoadModuleOptions(XmlNode Options, int ModNum)
         {
-            for (int x = 0; x < XML.AttributeCount; x++)
-                Program.Campaign.Modules[ModNum].Options.OptionsList.Add(XML.GetAttribute(x));
-
+            foreach(XmlNode Type in Options)
+                if (Type.Name == "OptionsList")
+                    for (int x = 0; x < Type.Attributes.Count; x++)
+                        Program.Campaign.Modules[ModNum].Options.OptionsList.Add(Type.Attributes[x].Value);
+                else if (Type.Name == "OptionDirections")
+                    for (int x = 0; x < Type.Attributes.Count; x++)
+                        Program.Campaign.Modules[ModNum].Options.OptionDirections.Add(Convert.ToInt32(Type.Attributes[x].Value));
         }
 
-        static void LoadModuleOptionDirections(XmlReader XML, int ModNum)
+        static void LoadModuleEncounter(XmlNode Encounter, int ModNum)
         {
-            for (int x = 0; x < XML.AttributeCount; x++)
-                Program.Campaign.Modules[ModNum].Options.OptionDirections.Add(Convert.ToByte(XML.GetAttribute(x)));
+            foreach (XmlNode Type in Encounter)
+                if (Type.Name == "EncounterEnemyType")
+                    for (int x = 0; x < Type.Attributes.Count; x++)
+                        Program.Campaign.Modules[ModNum].Encounter.EnemyTypes.Add(Type.Attributes[x].Value);
+                else if (Type.Name == "EncounterEnemyNumber")
+                    for (int x = 0; x < Type.Attributes.Count; x++)
+                        Program.Campaign.Modules[ModNum].Encounter.EnemyNumber.Add(Convert.ToInt32(Type.Attributes[x].Value));
         }
 
-        static void LoadModuleEncounterType(XmlReader XML, int ModNum)
+        static void LoadModuleShop(XmlNode Shop, int ModNum)
         {
-            for (int x = 0; x < XML.AttributeCount; x++)
-                Program.Campaign.Modules[ModNum].Encounter.EnemyTypes.Add(XML.GetAttribute(x));
-        }
-
-        static void LoadModuleEncounterNumber(XmlReader XML, int ModNum)
-        {
-            for (int x = 0; x < XML.AttributeCount; x++)
-                Program.Campaign.Modules[ModNum].Encounter.EnemyNumber.Add(Convert.ToInt32(XML.GetAttribute(x)));
+            foreach (XmlNode Stock in Shop)
+                if (Stock.Name == "WeaponStock")
+                    foreach (XmlNode Weapon in Stock)
+                        Program.Campaign.Modules[ModNum].Shop.AddWeaponToStock(Weapon.Name, Convert.ToInt32(Weapon.Attributes[0].Value));
+                else if (Stock.Name == "ArmourStock")
+                    foreach (XmlNode Armour in Stock)
+                        Program.Campaign.Modules[ModNum].Shop.AddArmourToStock(Armour.Name, Convert.ToInt32(Armour.Attributes[0].Value));
         }
 
         #endregion

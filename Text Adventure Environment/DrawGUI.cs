@@ -276,7 +276,7 @@ namespace Text_Adventure_Environment
             Draw.Rectangle(20, 10, 148, -25, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
             List<string> StartDisplayEnemeis = new List<string>() { "Bandit" };
             List<int> StartDisplayEnemyAmount = new List<int>() { 7 };
-            Enemies.LoadEnemeisFromFile(StartDisplayEnemeis, StartDisplayEnemyAmount, false);
+            Enemies.SetEncounterList(StartDisplayEnemeis, StartDisplayEnemyAmount, false);
             Encounter.SortFightOrder();
             UpdateFightOrderBox();
         }

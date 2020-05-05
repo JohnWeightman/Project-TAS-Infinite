@@ -32,6 +32,7 @@ namespace Text_Adventure_Environment
                 switch (Campaign.Modules[ModChoice].ModType)
                 {
                     case 0:
+                    case 2:
                         ModChoice = Campaign.StoryModule(Campaign.Modules[ModChoice]);
                         break;
                     case 1:

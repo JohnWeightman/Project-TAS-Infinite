@@ -47,7 +47,7 @@ namespace Text_Adventure_Environment
             {
                 List<string> DefaultEnemy = new List<string>() { "Bandit" };
                 List<int> DefaultAmount = new List<int>() { 1 };
-                Enemies.LoadEnemeisFromFile(DefaultEnemy, DefaultAmount, false);
+                Enemies.SetEncounterList(DefaultEnemy, DefaultAmount, false);
                 SortFightOrder();
             }
             DrawGUI.UpdateNPCBoxes();
@@ -112,6 +112,7 @@ namespace Text_Adventure_Environment
             EncounterXP = 0;
             Player.Gold += EncounterGold;
             EncounterGold = 0;
+            Player.Stamina = Player.StaminaMax;
             DrawGUI.UpdatePlayersThirdStatsBox();
             DrawGUI.UpdateStoryBox(Update2);
             Input = Player.PlayerInputs(Options.Count);

@@ -42,6 +42,7 @@ namespace Text_Adventure_Environment
         public byte ModType;
         public Options Options = new Options();
         public Encounters Encounter = new Encounters();
+        public Shops Shop = new Shops();
         public List<string> Story = new List<string>();
     }
 
@@ -57,9 +58,34 @@ namespace Text_Adventure_Environment
         public List<int> EnemyNumber = new List<int>();
     }
 
-    class Shop
+    class Shops
     {
         public List<Weapon> Weapons = new List<Weapon>();
         public List<Armour> Armour = new List<Armour>();
+
+        public void AddWeaponToStock(string WeaponName, int Cost)
+        {
+            foreach(Weapon Weapon in Equipment.Weapons)
+                if(Weapon.Name == WeaponName)
+                {
+                    Weapon NewWeapon = new Weapon();
+                    NewWeapon = Weapon;
+                    NewWeapon.Cost = Cost;
+                    Weapons.Add(NewWeapon);
+                    break;
+                }
+        }
+
+        public void AddArmourToStock(string ArmourName, int Cost)
+        {
+            foreach(Armour ArmourObj in Equipment.Armour)
+                if(ArmourObj.Name == ArmourName)
+                {
+                    Armour NewArmour = new Armour();
+                    NewArmour = ArmourObj;
+                    NewArmour.Cost = Cost;
+                    Armour.Add(NewArmour);
+                }
+        }
     }
 }
