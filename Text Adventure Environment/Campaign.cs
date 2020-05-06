@@ -28,7 +28,7 @@ namespace Text_Adventure_Environment
             DrawGUI.UpdateStoryBox(Mod.Story);
             DrawGUI.UpdatePlayerOptions(Mod.Options.OptionsList);
             int Input = Player.PlayerInputs(Mod.Options.OptionsList.Count);
-            Enemies.SetEncounterList(Mod.Encounter.EnemyTypes, Mod.Encounter.EnemyNumber, true);
+            Encounter.StartEncounter(Mod.Encounter.EncounterData);
             return Mod.Options.OptionDirections[0];
         }
 
@@ -54,8 +54,34 @@ namespace Text_Adventure_Environment
 
     class Encounters
     {
-        public List<string> EnemyTypes = new List<string>();
-        public List<int> EnemyNumber = new List<int>();
+        public List<EnemyNPC> EncounterData = new List<EnemyNPC>();
+
+        public void SetEncounter(List<Tuple<string, int>> NPCs)
+        {
+            int NPCTotal = 0;
+            for (int x = 0; x < NPCs.Count; x++)
+                NPCTotal += NPCs[x].Item2;
+            int Count = 0;
+            EnemyNPC[] Temp = new EnemyNPC[NPCTotal];
+            for (int NPCType = 0; NPCType < NPCs.Count; NPCType++)
+            {
+                foreach (EnemyNPC NPC in GameObjects.NPCs)
+                {
+                    if (NPC.Name == NPCs[NPCType].Item1)
+                    {
+                        for (int NPCCount = 0; NPCCount < NPCs[NPCType].Item2; NPCCount++)
+                        {
+                            Temp[Count] = new EnemyNPC();
+                            Temp[Count] = NPC;
+                            Temp[Count].Gold = DiceRoller.RandomRange(2 * Temp[Count].DifBonus, 5 * Temp[Count].DifBonus);
+                            Count++;
+                        }
+                    }
+                }
+            }
+            foreach (EnemyNPC NPC in Temp)
+                EncounterData.Add(NPC);
+        }
     }
 
     class Shops
@@ -65,7 +91,7 @@ namespace Text_Adventure_Environment
 
         public void AddWeaponToStock(string WeaponName, int Cost)
         {
-            foreach(Weapon Weapon in Equipment.Weapons)
+            foreach(Weapon Weapon in GameObjects.Weapons)
                 if(Weapon.Name == WeaponName)
                 {
                     Weapon NewWeapon = new Weapon();
@@ -78,7 +104,7 @@ namespace Text_Adventure_Environment
 
         public void AddArmourToStock(string ArmourName, int Cost)
         {
-            foreach(Armour ArmourObj in Equipment.Armour)
+            foreach(Armour ArmourObj in GameObjects.Armour)
                 if(ArmourObj.Name == ArmourName)
                 {
                     Armour NewArmour = new Armour();

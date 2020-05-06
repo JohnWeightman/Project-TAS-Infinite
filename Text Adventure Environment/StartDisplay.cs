@@ -134,13 +134,16 @@ namespace Text_Adventure_Environment
 
         static void LoadModuleEncounter(XmlNode Encounter, int ModNum)
         {
+            List<string> Names = new List<string>();
+            List<Tuple<string, int>> EncounterData = new List<Tuple<string, int>>();
             foreach (XmlNode Type in Encounter)
                 if (Type.Name == "EncounterEnemyType")
                     for (int x = 0; x < Type.Attributes.Count; x++)
-                        Program.Campaign.Modules[ModNum].Encounter.EnemyTypes.Add(Type.Attributes[x].Value);
+                        Names.Add(Type.Attributes[x].Value);
                 else if (Type.Name == "EncounterEnemyNumber")
                     for (int x = 0; x < Type.Attributes.Count; x++)
-                        Program.Campaign.Modules[ModNum].Encounter.EnemyNumber.Add(Convert.ToInt32(Type.Attributes[x].Value));
+                        EncounterData.Add(new Tuple<string, int>(Names[x], Convert.ToInt32(Type.Attributes[x].Value)));
+            Program.Campaign.Modules[ModNum].Encounter.SetEncounter(EncounterData);
         }
 
         static void LoadModuleShop(XmlNode Shop, int ModNum)

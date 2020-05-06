@@ -29,7 +29,7 @@ namespace Text_Adventure_Environment
             UpdatePlayerOptions(StartDisplayOptions);
             List<string> StartDisplayEvents = StartDisplay.StartEvents;
             UpdateEventBox();
-            Enemies.EncounterList.Clear();
+            Encounter.EncounterNPCs.Clear();
             Encounter.FightOrder.Clear();
         }
 
@@ -274,9 +274,8 @@ namespace Text_Adventure_Environment
         static void DrawFightOrderBox() //Draws the Fight Order box
         {
             Draw.Rectangle(20, 10, 148, -25, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
-            List<string> StartDisplayEnemeis = new List<string>() { "Bandit" };
-            List<int> StartDisplayEnemyAmount = new List<int>() { 7 };
-            Enemies.SetEncounterList(StartDisplayEnemeis, StartDisplayEnemyAmount, false);
+            for (int x = 0; x < 7; x++)
+                Encounter.EncounterNPCs.Add(GameObjects.NPCs[DiceRoller.RollDice(GameObjects.NPCs.Count - 1)]);
             Encounter.SortFightOrder();
             UpdateFightOrderBox();
         }
@@ -323,7 +322,7 @@ namespace Text_Adventure_Environment
             Console.SetCursorPosition(150, 17);
             Console.Write("Enemies");
             int YPos = 19;
-            foreach (EnemyNPC Enemy in Enemies.EncounterList)
+            foreach (EnemyNPC Enemy in Encounter.EncounterNPCs)
             {
                 Console.SetCursorPosition(150, YPos);
                 Console.Write(Enemy.Name);

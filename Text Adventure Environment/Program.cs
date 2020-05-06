@@ -19,8 +19,8 @@ namespace Text_Adventure_Environment
 
         static void PrepareGameEnvironment()
         {
-            Equipment.LoadEquipment();
-            Enemies.LoadEnemyDataFromFile();
+            GameObjects.LoadGameObjects();
+            //Enemies.LoadEnemyDataFromFile();
             DrawGUI.DrawGUIConsole();
         }
 
