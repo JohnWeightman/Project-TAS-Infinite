@@ -32,6 +32,11 @@ namespace Text_Adventure_Environment
             return Mod.Options.OptionDirections[0];
         }
 
+        public int ShopModule(Module Mod)
+        {
+            return Mod.Options.OptionDirections[0];
+        }
+
         #endregion
     }
 

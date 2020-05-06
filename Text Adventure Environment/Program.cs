@@ -20,7 +20,6 @@ namespace Text_Adventure_Environment
         static void PrepareGameEnvironment()
         {
             GameObjects.LoadGameObjects();
-            //Enemies.LoadEnemyDataFromFile();
             DrawGUI.DrawGUIConsole();
         }
 
@@ -32,11 +31,13 @@ namespace Text_Adventure_Environment
                 switch (Campaign.Modules[ModChoice].ModType)
                 {
                     case 0:
-                    case 2:
                         ModChoice = Campaign.StoryModule(Campaign.Modules[ModChoice]);
                         break;
                     case 1:
                         ModChoice = Campaign.EncounterModule(Campaign.Modules[ModChoice]);
+                        break;
+                    case 2:
+                        ModChoice = Campaign.ShopModule(Campaign.Modules[ModChoice]);
                         break;
                     default:
                         break;

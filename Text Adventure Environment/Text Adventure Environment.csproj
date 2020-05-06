@@ -47,7 +47,6 @@
     <Compile Include="Draw.cs" />
     <Compile Include="DrawGUI.cs" />
     <Compile Include="Encounter.cs" />
-    <Compile Include="EnemyNPC.cs" />
     <Compile Include="GameObjects.cs" />
     <Compile Include="Events.cs" />
     <Compile Include="Player.cs" />
