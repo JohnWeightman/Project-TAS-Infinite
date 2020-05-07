@@ -96,7 +96,11 @@ namespace Text_Adventure_Environment
                 Finished = CheckFightStatus();
             }
             if (Player.HP <= 0)
+            {
+                FightOrder.Clear();
+                EncounterNPCs.Clear();
                 Player.PlayerDeath();
+            }
             else
                 EncounterEnd();
         }
@@ -107,6 +111,7 @@ namespace Text_Adventure_Environment
             List<string> Options = new List<string>() { "Continue" };
             DrawGUI.UpdateStoryBox(Update);
             DrawGUI.UpdatePlayerOptions(Options);
+            Events.NewEvent("EncounterWon", ES1: Player.Name);
             int Input = Player.PlayerInputs(Options.Count);
             List<string> Update2 = new List<string>() { "You won the fight!", "", "XP Earned: " + EncounterXP, "Gold Found: " + EncounterGold };
             Player.XP += EncounterXP;
@@ -221,6 +226,7 @@ namespace Text_Adventure_Environment
                 bool Dead = EncounterNPCs[TargetEnemy].TakeDamage(Attack);
                 if (Dead)
                 {
+                    Events.NewEvent("NPCDeath", ES1: Player.Name, ES2: EncounterNPCs[TargetEnemy].Name);
                     List<string> Update = new List<string>() { "You strike down " + EncounterNPCs[TargetEnemy].Name + "!" };
                     FightOrder.Remove(EncounterNPCs[TargetEnemy]);
                     EncounterNPCs.Remove(EncounterNPCs[TargetEnemy]);

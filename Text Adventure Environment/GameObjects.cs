@@ -40,9 +40,9 @@ namespace Text_Adventure_Environment
                         EnmTemp[Count].Stamina = Convert.ToInt32(Child.Attributes[8].Value);
                         EnmTemp[Count].StaminaMax = Convert.ToInt32(Child.Attributes[9].Value);
                         EnmTemp[Count].DifBonus = Convert.ToInt32(Child.Attributes[10].Value);
-                        EnmTemp[Count].Weapon.UpdateWeapon(Child.Attributes[11].Value);
+                        EnmTemp[Count].Weapon.UpdateWeaponString(Child.Attributes[11].Value);
                         EnmTemp[Count].OffHand = Child.Attributes[12].Value;
-                        EnmTemp[Count].Armour.UpdateArmour(Child.Attributes[13].Value);
+                        EnmTemp[Count].Armour.UpdateArmourString(Child.Attributes[13].Value);
                         EnmTemp[Count].XPValue = Convert.ToInt32(Child.Attributes[14].Value);
                         Count++;
                     }
@@ -157,7 +157,7 @@ namespace Text_Adventure_Environment
         public bool Versatile = false;
         public int Cost = 0;
 
-        public void UpdateWeapon(string NewWeapon)
+        public void UpdateWeaponString(string NewWeapon)
         {
             foreach(Weapon Weapon in GameObjects.Weapons)
                 if(Weapon.Name == NewWeapon)
@@ -166,8 +166,18 @@ namespace Text_Adventure_Environment
                     Damage = Weapon.Damage;
                     TwoHanded = Weapon.TwoHanded;
                     Versatile = Weapon.Versatile;
+                    Cost = Weapon.Cost;
                     break;
                 }
+        }
+
+        public void UpdateWeaponObject(Weapon NewWeapon)
+        {
+            Name = NewWeapon.Name;
+            Damage = NewWeapon.Damage;
+            TwoHanded = NewWeapon.TwoHanded;
+            Versatile = NewWeapon.Versatile;
+            Cost = NewWeapon.Cost;
         }
     }
 
@@ -178,7 +188,7 @@ namespace Text_Adventure_Environment
         public int AC = 7;
         public int Cost = 0;
 
-        public void UpdateArmour(string NewArmour)
+        public void UpdateArmourString(string NewArmour)
         {
             foreach(Armour Armour in GameObjects.Armour)
                 if(Armour.Name == NewArmour)
@@ -186,7 +196,16 @@ namespace Text_Adventure_Environment
                     Name = Armour.Name;
                     Weight = Armour.Weight;
                     AC = Armour.AC;
+                    Cost = Armour.Cost;
                 }
+        }
+
+        public void UpdateArmourObject(Armour NewArmour)
+        {
+            Name = NewArmour.Name;
+            AC = NewArmour.AC;
+            Weight = NewArmour.Weight;
+            Cost = NewArmour.Cost;
         }
     }
 

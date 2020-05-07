@@ -201,8 +201,8 @@ namespace Text_Adventure_Environment
         static void DrawPlayersFourthStatsBox() //Draws the Players fourth stats box
         {
             Draw.Rectangle(20, 3, 2, 1, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Green);
-            Player.Weapon.UpdateWeapon("Shortsword");
-            Player.Armour.UpdateArmour("Leather");
+            Player.Weapon.UpdateWeaponString("Shortsword");
+            Player.Armour.UpdateArmourString("Leather");
             UpdatePlayersFourthStatsBox();
         }
 

@@ -8,8 +8,8 @@ namespace Text_Adventure_Environment
 {
     static class Events
     {
-        public static EventObj EventObj = new EventObj();
         public static List<string> EventsList = new List<string>();
+        static EventObj EventObj = new EventObj();
 
         public static void NewEvent(string EventType, int EN1 = 0, int EN2 = 0, int EN3 = 0, int EN4 = 0, int EN5 = 0, string ES1 = "", string ES2 = "", string ES3 = "")
         {
@@ -25,6 +25,18 @@ namespace Text_Adventure_Environment
                     break;
                 case "LightDamageRoll":
                     Event = LightDamageRollEvent();
+                    break;
+                case "NPCDeath":
+                    Event = NPCDeathEvent();
+                    break;
+                case "EncounterWon":
+                    Event = EncounterWonEvent();
+                    break;
+                case "BoughtWeapon":
+                    Event = BoughtWeaponEvent();
+                    break;
+                case "BoughtArmour":
+                    Event = BoughtArmourEvent();
                     break;
                 default:
                     return;
@@ -58,6 +70,30 @@ namespace Text_Adventure_Environment
         {
             string Event = "DMGROLL:" + EventObj.ES1 + "->" + EventObj.ES2 + "[(" + EventObj.EN1 + "+" + EventObj.EN2 + ")*0.666=" + EventObj.EN3 + "],DMG:" +
                 EventObj.EN3;
+            return Event;
+        }
+
+        static string NPCDeathEvent()
+        {
+            string Event = EventObj.ES1 + " KILLED " + EventObj.ES2;
+            return Event;
+        }
+
+        static string EncounterWonEvent()
+        {
+            string Event = EventObj.ES1 + " WON THE FIGHT";
+            return Event;
+        }
+
+        static string BoughtWeaponEvent()
+        {
+            string Event = "NEW WEP: " + EventObj.ES1 + ", MAX DMG INC: " + EventObj.EN1;
+            return Event;
+        }
+
+        static string BoughtArmourEvent()
+        {
+            string Event = "NEW ARM: " + EventObj.ES1 + ", AC INC: " + EventObj.EN1;
             return Event;
         }
     }

@@ -211,7 +211,7 @@ namespace Text_Adventure_Environment
             }
             UpdateAbilityModifiers();
             MaxHP = 10 + ConMod;
-            HP = Player.MaxHP;
+            HP = MaxHP;
             StaminaMax = 4 + (2 * DexMod);
             if (StaminaMax < 7)
                 StaminaMax = 7;
@@ -220,13 +220,14 @@ namespace Text_Adventure_Environment
 
         static void EmptyOtherStats()
         {
-            Player.Armour.UpdateArmour("N/A");
-            Player.Weapon.UpdateWeapon("Shortsword");
-            Player.AC = UpdatePlayerAC();
-            Player.XP = 0;
-            Player.LU = 100;
-            Player.OffHand = "N/A";
-            Player.Inventory.Clear();
+            Armour.UpdateArmourString("N/A");
+            Weapon.UpdateWeaponString("Shortsword");
+            AC = UpdatePlayerAC();
+            XP = 0;
+            LU = 100;
+            OffHand = "N/A";
+            Inventory.Clear();
+            Gold = 0;
         }
 
         #endregion

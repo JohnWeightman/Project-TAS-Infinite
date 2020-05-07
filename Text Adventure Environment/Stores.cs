@@ -81,7 +81,7 @@ namespace Text_Adventure_Environment
                 BuyWeapon(SelItem);
             else
             {
-                SelItem -= (Store.Weapons.Count - 1);
+                SelItem -= Store.Weapons.Count;
                 BuyArmour(SelItem);
             }
         }
@@ -90,7 +90,20 @@ namespace Text_Adventure_Environment
         {
             if (Player.Gold >= Store.Weapons[SelItem].Cost)
             {
-
+                Events.NewEvent("BoughtWeapon", ES1: Store.Weapons[SelItem].Name, EN1: Store.Weapons[SelItem].Damage - Player.Weapon.Damage);
+                Player.Gold -= Store.Weapons[SelItem].Cost;
+                Player.Weapon.UpdateWeaponObject(Store.Weapons[SelItem]);
+                List<string> Update = new List<string>() { "You bought a " + Player.Weapon.Name + "!", "", "Damage: " + Player.Weapon.Damage };
+                if (Player.Weapon.TwoHanded)
+                    Update.Add("Two Handed");
+                else if (Player.Weapon.Versatile)
+                    Update.Add("Versatile");
+                List<string> Options = new List<string>() { "Continue" };
+                DrawGUI.UpdateStoryBox(Update);
+                DrawGUI.UpdatePlayerOptions(Options);
+                DrawGUI.UpdatePlayersFourthStatsBox();
+                DrawGUI.UpdateInventory();
+                int Input = Player.PlayerInputs(Options.Count);
             }
             else
                 NotEnoughGold();
@@ -100,7 +113,18 @@ namespace Text_Adventure_Environment
         {
             if (Player.Gold >= Store.Armour[SelItem].Cost)
             {
-
+                Events.NewEvent("BoughtArmour", ES1: Store.Armour[SelItem].Name, EN1: Store.Armour[SelItem].AC - Player.Armour.AC);
+                Player.Gold -= Store.Armour[SelItem].Cost;
+                Player.Armour.UpdateArmourObject(Store.Armour[SelItem]);
+                Player.UpdatePlayerAC();
+                List<string> Update = new List<string>() { "You bought " + Player.Armour.Name + " armour!", "", "Armour AC: " + Player.Armour.AC, "Total AC: " +
+                    Player.AC, "Weight: " + Player.Armour.Weight };
+                List<string> Options = new List<string>() { "Continue" };
+                DrawGUI.UpdateStoryBox(Update);
+                DrawGUI.UpdatePlayerOptions(Options);
+                DrawGUI.UpdatePlayersFourthStatsBox();
+                DrawGUI.UpdateInventory();
+                int Input = Player.PlayerInputs(Options.Count);
             }
             else
                 NotEnoughGold();
