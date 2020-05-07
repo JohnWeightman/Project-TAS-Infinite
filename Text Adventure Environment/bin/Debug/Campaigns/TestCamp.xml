@@ -15,18 +15,18 @@
     </Options>
   </Module>
   <Module Name="Module3" ModType="2" ID="SAxmtmx8regxy01M">
-    <Story Part1="You arrive at the shop. Unfortunetly, it is currently closed."/>
+    <Story Part1="You arrive at the shop and are greeted by an old man."/>
     <Options>
-      <OptionsList Option1="Return to town"/>
+      <OptionsList Option1="See Wares" Option2="Leave"/>
       <OptionDirections OptionDirection1="1"/>
     </Options>
 	<Shop>
       <WeaponStock>
-        <Dagger Cost="0"/>
-        <Shortsword Cost="0"/>
+        <Dagger Cost="10"/>
+        <Shortsword Cost="10"/>
       </WeaponStock>
       <ArmourStock>
-        <Leather Cost="0"/>
+        <Leather Cost="10"/>
       </ArmourStock>
     </Shop>
   </Module>

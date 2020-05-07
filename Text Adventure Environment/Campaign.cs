@@ -34,6 +34,11 @@ namespace Text_Adventure_Environment
 
         public int ShopModule(Module Mod)
         {
+            DrawGUI.UpdateStoryBox(Mod.Story);
+            DrawGUI.UpdatePlayerOptions(Mod.Options.OptionsList);
+            int Input = Player.PlayerInputs(Mod.Options.OptionsList.Count);
+            if (Input == 1)
+                Stores.StoreLoop(Mod.Shop);
             return Mod.Options.OptionDirections[0];
         }
 
