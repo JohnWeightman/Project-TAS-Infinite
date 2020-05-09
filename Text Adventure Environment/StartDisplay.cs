@@ -89,6 +89,8 @@ namespace Text_Adventure_Environment
                     Mod.Name = Node.Attributes[0].Value;
                     Mod.ModType = Convert.ToByte(Node.Attributes[1].Value);
                     Mod.ID = Node.Attributes[2].Value;
+                    if (Mod.ModType == 3)
+                        Mod.EndCampaign = true;
                     Program.Campaign.Modules.Add(Mod);
                     foreach (XmlNode ModChild in Node.ChildNodes)
                     {

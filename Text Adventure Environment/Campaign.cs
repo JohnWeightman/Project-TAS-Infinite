@@ -42,6 +42,15 @@ namespace Text_Adventure_Environment
             return Mod.Options.OptionDirections[0];
         }
 
+        public int EndCampaignModule(Module Mod)
+        {
+            DrawGUI.UpdateStoryBox(Mod.Story);
+            DrawGUI.UpdatePlayerOptions(Mod.Options.OptionsList);
+            int Input = Player.PlayerInputs(Mod.Options.OptionsList.Count);
+            Complete = true;
+            return 0;
+        }
+
         #endregion
     }
 
@@ -50,6 +59,7 @@ namespace Text_Adventure_Environment
         public string Name;
         public string ID;
         public byte ModType;
+        public bool EndCampaign = false;
         public Options Options = new Options();
         public Encounters Encounter = new Encounters();
         public Shops Shop = new Shops();
