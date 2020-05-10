@@ -21,4 +21,7 @@
 		<Chainmail Name="Chainmail" AC="12" Weight="Heavy" Cost="0"/>
 		<Plate Name="Plate" AC="11" Weight="Heavy" Cost="0"/>
 	</Armour>
+	<Potions ChildCount="1">
+		<WeakHealthPotion Name="Weak Health Potion" DiceNumber="2" DiceSize="4" Modifier="2"/>
+	</Potions>
 </GameObjects>

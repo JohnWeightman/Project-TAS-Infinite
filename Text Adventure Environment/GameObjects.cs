@@ -10,9 +10,10 @@ namespace Text_Adventure_Environment
 {
     static class GameObjects
     {
+        public static List<EnemyNPC> NPCs = new List<EnemyNPC>();
         public static List<Weapon> Weapons = new List<Weapon>();
         public static List<Armour> Armour = new List<Armour>();
-        public static List<EnemyNPC> NPCs = new List<EnemyNPC>();
+        public static List<Potions> Potions = new List<Potions>();
 
         public static void LoadGameObjects()
         {
@@ -83,6 +84,22 @@ namespace Text_Adventure_Environment
                     }
                     foreach (Armour Arm in ArmTemp)
                         Armour.Add(Arm);
+                }
+                else if(Node.Name == "Potions")
+                {
+                    int Count = 0;
+                    int ChildCount = Convert.ToInt32(Node.Attributes[0].Value);
+                    Potions[] PotTemp = new Potions[ChildCount];
+                    foreach(XmlNode Child in Node.ChildNodes)
+                    {
+                        PotTemp[Count] = new Potions();
+                        PotTemp[Count].Name = Child.Attributes[0].Value;
+                        PotTemp[Count].DiceNum = Convert.ToInt32(Child.Attributes[1].Value);
+                        PotTemp[Count].DiceSize = Convert.ToInt32(Child.Attributes[2].Value);
+                        PotTemp[Count].Modifier = Convert.ToInt32(Child.Attributes[3].Value);
+                    }
+                    foreach (Potions Potion in PotTemp)
+                        Potions.Add(Potion);
                 }
             }
         }
@@ -207,6 +224,14 @@ namespace Text_Adventure_Environment
             Weight = NewArmour.Weight;
             Cost = NewArmour.Cost;
         }
+    }
+
+    class Potions
+    {
+        public string Name = "Weak Health Potion";
+        public int DiceNum = 2;
+        public int DiceSize = 4;
+        public int Modifier = 2;
     }
 
     static class DiceRoller
