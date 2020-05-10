@@ -247,10 +247,10 @@ namespace Text_Adventure_Environment
             Console.SetCursorPosition(4, 25);
             Console.Write("Gold: " + Player.Gold);
             int YPos = 26;
-            foreach (string Item in Player.Inventory)
+            foreach (Potions Potion in Player.Inventory.Potions)
             {
                 Console.SetCursorPosition(4, YPos);
-                Console.Write(Item);
+                Console.Write(Potion.Name);
                 YPos += 1;
             }
         }

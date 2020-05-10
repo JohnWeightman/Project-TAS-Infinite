@@ -269,16 +269,15 @@ namespace Text_Adventure_Environment
 
         static void HealthPotion()
         {
-            bool Potion = false;
-            foreach(string Item in Player.Inventory)
+            if(Player.Inventory.Potions.Count > 0)
             {
-                if(Item == "Health Potion")
-                {
-                    Player.Inventory.Remove(Item);
-                    DrawGUI.UpdateInventory();
-                    Potion = !Potion;
-                    break;
-                }
+
+            }
+            else
+            {
+                Player.Stamina += Player.FightOptionCosts[2];
+                List<string> Update = new List<string>() { "You don't have any Health Potions!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                DrawGUI.UpdateStoryBox(Update);
             }
             if (Potion)
             {
@@ -290,12 +289,6 @@ namespace Text_Adventure_Environment
                 Player.HP += Regen;
                 List<string> Update = new List<string>() { "You Heal for " + Regen + "HP!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
                 DrawGUI.UpdateStoryBox(Update);            
-            }
-            else
-            {
-                Player.Stamina += Player.FightOptionCosts[2];
-                List<string> Update = new List<string>() { "You don't have any Health Potions!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
-                DrawGUI.UpdateStoryBox(Update);
             }
         }
 

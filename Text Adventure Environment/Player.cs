@@ -26,7 +26,6 @@ namespace Text_Adventure_Environment
         public static int XP = 0;
         public static int LU = 100;
         public static string OffHand = "N/A";
-        public static List<string> Inventory = new List<string>() { "Health Potion", "Health Potion", "Health Potion", "Key", "Key" };
         public static List<string> FightOptions = new List<string>() { "Heavy Attack (10s)", "Light Attack (7s)", "Drink Potion (3s)", "End Turn (0s)" };
         public static List<int> FightOptionCosts = new List<int>() { 10, 7, 3, 0 };
         public static int Initiative = 0;
@@ -35,6 +34,7 @@ namespace Text_Adventure_Environment
         public static bool Dead = false;
         public static int Gold = 0;
 
+        public static Inventorys Inventory = new Inventorys();
         public static Weapon Weapon = new Weapon();
         public static Armour Armour = new Armour();
 
@@ -80,6 +80,8 @@ namespace Text_Adventure_Environment
 
         #region Player Options
 
+        #region Number Input
+
         public static int PlayerInputs(int Options)
         {
             bool Answer = false;
@@ -112,6 +114,53 @@ namespace Text_Adventure_Environment
 
         #endregion
 
+        #region Select Item Input
+
+        public static int SelectItem(List<string> Items)
+        {
+            int Item = 0;
+            bool Done = false;
+            while (!Done)
+            {
+                DrawGUI.OptionsSelectItem(Items[Item]);
+                int Input = PlayerInputs(4);
+                switch (Input)
+                {
+                    case 1:
+                    case 2:
+                        Item = ChangeSelectedItem(Input, Item, Items.Count - 1);
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        Done = !Done;
+                        break;
+                }
+            }
+            return Item;
+        }
+
+
+        static int ChangeSelectedItem(int Dir, int Item, int ItemMax)
+        {
+            if (Dir == 1)
+            {
+                Item -= 1;
+                if (Item < 0)
+                    Item = ItemMax;
+            }
+            else
+            {
+                Item += 1;
+                if (Item > ItemMax)
+                    Item = 0;
+            }
+            return Item;
+        }
+        #endregion
+
+        #endregion
+
         #region Character Creation
 
         public static void StartCharacterCreator()
@@ -129,7 +178,7 @@ namespace Text_Adventure_Environment
             List<string> CCName1 = new List<string>() {"Welcome to the Character Creator", "", "Name: "};
             DrawGUI.UpdateStoryBox(CCName1);
             Player.Name = Console.ReadLine();
-            List<string> CCName2 = new List<string>() { "Welcome to the Character Creator", "", "Are you sure you want to be known as " + Player.Name + "?"};
+            List<string> CCName2 = new List<string>() { "Welcome to the Character Creator", "", "Are you sure you want to be known as " + Name + "?"};
             DrawGUI.UpdateStoryBox(CCName2);
             List<string> Options = new List<string>() { "Yes", "No" };
             DrawGUI.UpdatePlayerOptions(Options);
@@ -232,6 +281,8 @@ namespace Text_Adventure_Environment
 
         #endregion
 
+        #region Miscellaneous Functions
+
         public static void DisplayCharacterSheet()
         {
             List<string> CharacterSheet = new List<string>() { "Welcome to the Character Creator", "", "Name: " + Name, "Level: " + Level, "HP: " + HP + "/" + MaxHP, "STA: " + 
@@ -286,5 +337,19 @@ namespace Text_Adventure_Environment
             Dead = true;
         }
 
+        #endregion
+    }
+
+    class Inventorys
+    {
+        public List<Potions> Potions = new List<Potions>();
+        int MaxItems = 10;
+        int CurrentItems = 0;
+
+        public void Clear()
+        {
+            Potions.Clear();
+            CurrentItems = 0;
+        }
     }
 }
