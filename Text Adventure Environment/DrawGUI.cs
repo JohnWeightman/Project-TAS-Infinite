@@ -273,7 +273,7 @@ namespace Text_Adventure_Environment
 
         static void DrawFightOrderBox() //Draws the Fight Order box
         {
-            Draw.Rectangle(20, 10, 148, -25, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
+            Draw.Rectangle(20, 10, 148, -20, Draw.DrawKind.BelowCursorButKeepCursorLocation, color: ConsoleColor.Red);
             for (int x = 0; x < 7; x++)
                 Encounter.EncounterNPCs.Add(GameObjects.NPCs[DiceRoller.RollDice(GameObjects.NPCs.Count - 1)]);
             Encounter.SortFightOrder();

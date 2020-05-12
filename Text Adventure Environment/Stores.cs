@@ -15,45 +15,14 @@ namespace Text_Adventure_Environment
         {
             Store = ModShop;
             DisplayWares();
-            bool Done = false;
-            int SelItem = 0;
-            while (!Done)
+            while (true)
             {
-                DrawGUI.OptionsSelectItem(Wares[SelItem]);
-                int Input = Player.PlayerInputs(4);
-                switch (Input)
-                {
-                    case 1:
-                    case 2:
-                        SelItem = ChangeSelectedItem(Input, SelItem);
-                        break;
-                    case 3:
-                        ObjectType(SelItem);
-                        break;
-                    case 4:
-                        Done = !Done;
-                        break;
-                    default:
-                        break;
-                }
+                int SelItem = Player.SelectItem(Wares);
+                if (SelItem == -1)
+                    return;
+                else
+                    ObjectType(SelItem);
             }
-        }
-
-        static int ChangeSelectedItem(int Dir, int SelItem)
-        {
-            if (Dir == 1)
-            {
-                SelItem -= 1;
-                if (SelItem < 0)
-                    SelItem = Wares.Count - 1;
-            }
-            else
-            {
-                SelItem += 1;
-                if (SelItem > Wares.Count - 1)
-                    SelItem = 0;
-            }
-            return SelItem;
         }
 
         static void DisplayWares()

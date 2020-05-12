@@ -24,7 +24,7 @@ namespace Text_Adventure_Environment
         public static int DexMod = 3;
         public static int ConMod = 3;
         public static int XP = 0;
-        public static int LU = 100;
+        public static int LU = 50;
         public static string OffHand = "N/A";
         public static List<string> FightOptions = new List<string>() { "Heavy Attack (10s)", "Light Attack (7s)", "Drink Potion (3s)", "End Turn (0s)" };
         public static List<int> FightOptionCosts = new List<int>() { 10, 7, 3, 0 };
@@ -131,8 +131,10 @@ namespace Text_Adventure_Environment
                         Item = ChangeSelectedItem(Input, Item, Items.Count - 1);
                         break;
                     case 3:
+                        Done = !Done;
                         break;
                     case 4:
+                        Item = -1;
                         Done = !Done;
                         break;
                 }
@@ -297,7 +299,7 @@ namespace Text_Adventure_Environment
         public static void LevelUp()
         {
             Level += 1;
-            LU = (LU * 2) + 50;
+            LU = (LU * 2) + 25;
             List<string> Update = new List<string>() { "Level Up!", "", "Level: " + Level, "", "You have 1 Ability Point to spend!", "Str: " + Str, "Dex: " + 
                 Dex, "Con: " + Con };
             List<string> Options = new List<string>() { "Str", "Dex", "Con" };

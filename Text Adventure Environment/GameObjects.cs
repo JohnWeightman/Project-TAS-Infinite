@@ -232,6 +232,15 @@ namespace Text_Adventure_Environment
         public int DiceNum = 2;
         public int DiceSize = 4;
         public int Modifier = 2;
+
+        public int HealthRegen()
+        {
+            int Regen = 0;
+            for (int x = 0; x < DiceNum; x++)
+                Regen += DiceRoller.RollDice(DiceSize);
+            Regen += Modifier;
+            return Regen;
+        }
     }
 
     static class DiceRoller

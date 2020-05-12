@@ -271,15 +271,32 @@ namespace Text_Adventure_Environment
         {
             if(Player.Inventory.Potions.Count > 0)
             {
-
+                DrawGUI.OptionsSelectItem(Player.Inventory.Potions[0].Name);
+                int Input = Player.PlayerInputs(4);
+                if(Input == -1)
+                {
+                    Player.Stamina += Player.FightOptionCosts[2];
+                    return;
+                }
+                else
+                {
+                    int Regen = Player.Inventory.Potions[Input].HealthRegen();
+                    if (Player.HP + Regen > Player.MaxHP)
+                        Regen = Player.MaxHP - Player.HP;
+                    Player.HP += Regen;
+                    List<string> Update = new List<string>() { "You recovered " + Regen + "HP!" };
+                    DrawGUI.UpdateStoryBox(Update);
+                    DrawGUI.UpdatePlayersFirstStatsBox();
+                    DrawGUI.UpdateInventory();
+                }
             }
             else
             {
                 Player.Stamina += Player.FightOptionCosts[2];
-                List<string> Update = new List<string>() { "You don't have any Health Potions!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
+                List<string> Update = new List<string>() { "You don't have any Health Potions!" };
                 DrawGUI.UpdateStoryBox(Update);
             }
-            if (Potion)
+            if (false)
             {
                 int Regen = 0;
                 for (int x = 0; x < Player.Level; x++)
