@@ -93,6 +93,7 @@ namespace Text_Adventure_Environment
                         {
                             Temp[Count] = new EnemyNPC();
                             Temp[Count] = NPC;
+                            Temp[Count].Name +=  " " + (NPCCount + 1);
                             Temp[Count].Gold = DiceRoller.RandomRange(2 * Temp[Count].DifBonus, 5 * Temp[Count].DifBonus);
                             Count++;
                         }
@@ -108,6 +109,7 @@ namespace Text_Adventure_Environment
     {
         public List<Weapon> Weapons = new List<Weapon>();
         public List<Armour> Armour = new List<Armour>();
+        public List<Potions> Potions = new List<Potions>();
 
         public void AddWeaponToStock(string WeaponName, int Cost)
         {
@@ -131,6 +133,20 @@ namespace Text_Adventure_Environment
                     NewArmour = ArmourObj;
                     NewArmour.Cost = Cost;
                     Armour.Add(NewArmour);
+                    break;
+                }
+        }
+
+        public void AddPotionsToStock(string PotionName, int Cost)
+        {
+            foreach(Potions Potion in GameObjects.Potions)
+                if(Potion.Name == PotionName)
+                {
+                    Potions NewPotion = new Potions();
+                    NewPotion = Potion;
+                    NewPotion.Cost = Cost;
+                    Potions.Add(NewPotion);
+                    break;
                 }
         }
     }

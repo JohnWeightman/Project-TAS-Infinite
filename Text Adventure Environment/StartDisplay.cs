@@ -157,6 +157,9 @@ namespace Text_Adventure_Environment
                 else if (Stock.Name == "ArmourStock")
                     foreach (XmlNode Armour in Stock)
                         Program.Campaign.Modules[ModNum].Shop.AddArmourToStock(Armour.Name, Convert.ToInt32(Armour.Attributes[0].Value));
+                else if (Stock.Name == "PotionStock")
+                    foreach (XmlNode Potion in Stock)
+                        Program.Campaign.Modules[ModNum].Shop.AddPotionsToStock(Potion.Attributes[0].Value, Convert.ToInt32(Potion.Attributes[1].Value));
         }
 
         #endregion

@@ -230,7 +230,6 @@ namespace Text_Adventure_Environment
                     List<string> Update = new List<string>() { "You strike down " + EncounterNPCs[TargetEnemy].Name + "!" };
                     FightOrder.Remove(EncounterNPCs[TargetEnemy]);
                     EncounterNPCs.Remove(EncounterNPCs[TargetEnemy]);
-                    DrawGUI.UpdateNPCBoxes();
                     DrawGUI.UpdateStoryBox(Update);
                 }
                 else
@@ -238,6 +237,7 @@ namespace Text_Adventure_Environment
                     List<string> Update = new List<string>() { "You strike " + EncounterNPCs[TargetEnemy].Name + " for " + Attack + " Damage!" };
                     DrawGUI.UpdateStoryBox(Update);
                 }
+                DrawGUI.UpdateNPCBoxes();
             }
             else
             {
@@ -378,6 +378,5 @@ namespace Text_Adventure_Environment
         }
 
         #endregion
-
     }
 }

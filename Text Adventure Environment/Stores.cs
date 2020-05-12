@@ -10,6 +10,7 @@ namespace Text_Adventure_Environment
     {
         static Shops Store = new Shops();
         static List<string> Wares = new List<string>();
+        static List<string> WaresNames = new List<string>();
 
         public static void StoreLoop(Shops ModShop)
         {
@@ -17,7 +18,7 @@ namespace Text_Adventure_Environment
             DisplayWares();
             while (true)
             {
-                int SelItem = Player.SelectItem(Wares);
+                int SelItem = Player.SelectItem(WaresNames);
                 if (SelItem == -1)
                     return;
                 else
@@ -36,10 +37,17 @@ namespace Text_Adventure_Environment
                     WeaponData += ", V";
                 WeaponData += ", Cost: " + Weapon.Cost;
                 Wares.Add(WeaponData);
+                WaresNames.Add(Weapon.Name);
             }
-            foreach(Armour Armour in Store.Armour)
+            foreach(Armour Armour in Store.Armour)              
             {
                 Wares.Add(Armour.Name + " - AC: " + Armour.AC + ", Weight: " + Armour.Weight + ", Cost: " + Armour.Cost);
+                WaresNames.Add(Armour.Name);
+            }
+            foreach (Potions Potion in Store.Potions)
+            {
+                Wares.Add(Potion.Name + " - Regen: " + Potion.DiceNum + "D" + Potion.DiceSize + "+" + Potion.Modifier + ", Cost: " + Potion.Cost);
+                WaresNames.Add(Potion.Name);
             }
             DrawGUI.UpdateStoryBox(Wares);
         }

@@ -324,10 +324,12 @@ namespace Text_Adventure_Environment
             int YPos = 19;
             foreach (EnemyNPC Enemy in Encounter.EncounterNPCs)
             {
+                Console.ForegroundColor = Enemy.Colour;
                 Console.SetCursorPosition(150, YPos);
                 Console.Write(Enemy.Name);
                 YPos += 1;
             }
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public static void ClearEnemiesBox() //Clears the Enemies box

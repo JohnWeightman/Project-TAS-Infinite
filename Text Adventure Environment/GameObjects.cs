@@ -31,6 +31,7 @@ namespace Text_Adventure_Environment
                         EnmTemp[Count] = new EnemyNPC();
                         EnmTemp[Count].Name = Child.Name;
                         EnmTemp[Count].HP = Convert.ToInt32(Child.Attributes[0].Value);
+                        EnmTemp[Count].MaxHP = EnmTemp[Count].HP;
                         EnmTemp[Count].AC = Convert.ToInt32(Child.Attributes[1].Value);
                         EnmTemp[Count].Str = Convert.ToInt32(Child.Attributes[2].Value);
                         EnmTemp[Count].StrMod = Convert.ToInt32(Child.Attributes[3].Value);
@@ -111,6 +112,7 @@ namespace Text_Adventure_Environment
         #region Enemy Data
 
         public string Name = "";
+        public int MaxHP = 0;
         public int HP = 0;
         public int AC = 0;
         public int Str = 0;
@@ -128,6 +130,7 @@ namespace Text_Adventure_Environment
         public int Gold = 0;
         public Weapon Weapon = new Weapon();
         public Armour Armour = new Armour();
+        public ConsoleColor Colour = ConsoleColor.Green;
 
         #endregion
 
@@ -141,7 +144,24 @@ namespace Text_Adventure_Environment
                 Encounter.EncounterGold += Gold;
                 Dead = true;
             }
+            else
+                SetColour();
             return Dead;
+        }
+
+        void SetColour()
+        {
+            float Health = ((float)HP / (float)MaxHP) * 100;
+            if (Health == 100)
+                Colour = ConsoleColor.Green;
+            else if (Health < 100 && Health >= 80)
+                Colour = ConsoleColor.DarkGreen;
+            else if (Health < 80 && Health >= 50)
+                Colour = ConsoleColor.DarkYellow;
+            else if (Health < 50 && Health >= 20)
+                Colour = ConsoleColor.Red;
+            else
+                Colour = ConsoleColor.DarkRed;
         }
 
         #region Combat Decision
@@ -232,6 +252,7 @@ namespace Text_Adventure_Environment
         public int DiceNum = 2;
         public int DiceSize = 4;
         public int Modifier = 2;
+        public int Cost = 0;
 
         public int HealthRegen()
         {
