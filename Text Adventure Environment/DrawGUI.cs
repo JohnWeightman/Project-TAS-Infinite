@@ -24,11 +24,6 @@ namespace Text_Adventure_Environment
             DrawPlayersFifthStatsBox();
             DrawFightOrderBox();                
             DrawEnemiesBox();
-            UpdateStoryBox(StartDisplay.StartStory);
-            List<string> StartDisplayOptions = StartDisplay.StartOptions;
-            UpdatePlayerOptions(StartDisplayOptions);
-            List<string> StartDisplayEvents = StartDisplay.StartEvents;
-            UpdateEventBox();
             Encounter.EncounterNPCs.Clear();
             Encounter.FightOrder.Clear();
         }
@@ -41,8 +36,8 @@ namespace Text_Adventure_Environment
             Draw.RectangleFromTop(24, 44, 146, 4, ConsoleColor.Blue);
             Draw.RectangleFromTop(122, 34, 24, 4, ConsoleColor.Blue);
             Draw.RectangleFromTop(61, 9, 85, 39, ConsoleColor.Blue);
-            Console.SetCursorPosition(74, 2);
-            Console.Write("Text Adventure GUI"); 
+            Console.SetCursorPosition(78, 2);
+            Console.Write("TAS Infinite"); 
         }
 
         #endregion
