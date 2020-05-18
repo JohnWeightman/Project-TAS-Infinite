@@ -124,8 +124,6 @@ namespace Text_Adventure_Environment
             DrawGUI.UpdateStoryBox(Update2);
             Input = Player.PlayerInputs(Options.Count);
             FightOrder.Clear();
-            if (Player.XP >= Player.LU)
-                Player.LevelUp();
         }
 
         static bool CheckFightStatus()

@@ -220,6 +220,7 @@ namespace Text_Adventure_Environment
             Program.Campaign.Modules[ModNum].Trap.SaveTarget = Convert.ToInt32(Trap.Attributes[5].Value);
             Program.Campaign.Modules[ModNum].Trap.SaveSuccess.Add(Trap.Attributes[6].Value);
             Program.Campaign.Modules[ModNum].Trap.SaveFail.Add(Trap.Attributes[7].Value);
+            Program.Campaign.Modules[ModNum].Trap.XPValue = Convert.ToInt32(Trap.Attributes[8].Value);
         }
 
         #endregion

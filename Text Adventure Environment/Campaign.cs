@@ -166,6 +166,7 @@ namespace Text_Adventure_Environment
         public int Modifier = 0;
         public string SaveType = "";
         public int SaveTarget = 0;
+        public int XPValue = 0;
         public List<string> SaveSuccess = new List<string>();
         public List<string> SaveFail = new List<string>();
 
@@ -174,12 +175,17 @@ namespace Text_Adventure_Environment
             int Save = Player.SavingThrow(SaveType);
             if (Save >= SaveTarget)
             {
-                //int XP = (DiceNum + DiceSize + Modifier);
                 DrawGUI.UpdateStoryBox(SaveSuccess);
+                DrawGUI.UpdatePlayerOptions(new List<string>() { "Continue" });
+                Player.UpdateXP(XPValue);
             }
             else
             {
                 int Damage = CalcDamage();
+                SaveFail.Add("");
+                SaveFail.Add("You took " + Damage + " Damage!");
+                DrawGUI.UpdateStoryBox(SaveFail);
+                Player.TakeDamage(Damage);
             }
                 
         }

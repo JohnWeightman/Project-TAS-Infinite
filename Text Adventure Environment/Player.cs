@@ -42,6 +42,22 @@ namespace Text_Adventure_Environment
 
         #region Update Player Stats
 
+        public static void TakeDamage(int Damage)
+        {
+            HP -= Damage;
+            DrawGUI.UpdatePlayersFirstStatsBox();
+            if (HP <= 0)
+                PlayerDeath();
+        }
+
+        public static void UpdateXP(int AddXP)
+        {
+            XP += AddXP;
+            DrawGUI.UpdatePlayersThirdStatsBox();
+            if (XP >= LU)
+                LevelUp();
+        }
+
         public static void UpdateAbilityModifiers()
         {
             Player.StrMod = Player.Str / 3;
@@ -296,7 +312,7 @@ namespace Text_Adventure_Environment
             int Input = PlayerInputs(Options.Count);
         }
 
-        public static void LevelUp()
+        static void LevelUp()
         {
             Level += 1;
             LU = (LU * 2) + 25;
