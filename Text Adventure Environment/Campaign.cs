@@ -42,6 +42,12 @@ namespace Text_Adventure_Environment
             return Mod.Options.OptionDirections[0];
         }
 
+        public int TrapModule(Module Mod)
+        {
+            Mod.Trap.Trapped();
+            return Mod.Options.OptionDirections[0];
+        }
+
         public int EndCampaignModule(Module Mod)
         {
             DrawGUI.UpdateStoryBox(Mod.Story);
@@ -63,6 +69,7 @@ namespace Text_Adventure_Environment
         public Options Options = new Options();
         public Encounters Encounter = new Encounters();
         public Shops Shop = new Shops();
+        public Traps Trap = new Traps();
         public List<string> Story = new List<string>();
     }
 
@@ -148,6 +155,41 @@ namespace Text_Adventure_Environment
                     Potions.Add(NewPotion);
                     break;
                 }
+        }
+    }
+
+    class Traps
+    {
+        public string Name = "";
+        public int DiceNum = 0;
+        public int DiceSize = 0;
+        public int Modifier = 0;
+        public string SaveType = "";
+        public int SaveTarget = 0;
+        public List<string> SaveSuccess = new List<string>();
+        public List<string> SaveFail = new List<string>();
+
+        public void Trapped()
+        {
+            int Save = Player.SavingThrow(SaveType);
+            if (Save >= SaveTarget)
+            {
+                //int XP = (DiceNum + DiceSize + Modifier);
+                DrawGUI.UpdateStoryBox(SaveSuccess);
+            }
+            else
+            {
+                int Damage = CalcDamage();
+            }
+                
+        }
+
+        int CalcDamage()
+        {
+            int Damage = Modifier;
+            for (int x = 0; x < DiceNum; x++)
+                Damage += DiceRoller.RollDice(DiceSize);
+            return Damage;
         }
     }
 }

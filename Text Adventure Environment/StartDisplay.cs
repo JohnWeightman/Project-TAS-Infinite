@@ -29,7 +29,7 @@ namespace Text_Adventure_Environment
             "(Historical European Martial Arts) learning different masters from different weapons though I'm the most proficient with a longsword. I spent 3 " +
             "years as an explorer leader at Viking explorers in Lincoln and also joined the Three Arrows Scout Survival Team. I'm also a regular D&D player, " +
             "both as a player and as a DM in D&D 5e. Currently part of 2 campaigns, the first I DM and the second I play 'Thalmar Rotdal', a drunk dwarven " +
-            "fool of a fighter.", "", "Ive also become a big supporter of all things game jam related. Ive taken part in 4 Global Game Jams and several " +
+            "fool of a fighter.", "", "I've also become a big supporter of all things game jam related. Ive taken part in 4 Global Game Jams and several " +
             "others besides. Normally part of a team called LowPoly Games, you can find most our jam games on our Itch.IO profile linked below. I've also " +
             "produced a few videos offering tips for new jammers and promoting a few of my favourate games that I've seen other jammers make.", "","Links:",
             "Twitter: @JohnTheScout", "Itch: https://istalriskolirproductions.itch.io/", "Github: https://github.com/JohnWeightman", "", "LowPoly Games " +
@@ -153,6 +153,9 @@ namespace Text_Adventure_Environment
                             case "Shop":
                                 LoadModuleShop(ModChild, ModNum);
                                 break;
+                            case "Trap":
+                                LoadModuleTrap(ModChild, ModNum);
+                                break;
                             default:
                                 break;
                         }
@@ -205,6 +208,18 @@ namespace Text_Adventure_Environment
                 else if (Stock.Name == "PotionStock")
                     foreach (XmlNode Potion in Stock)
                         Program.Campaign.Modules[ModNum].Shop.AddPotionsToStock(Potion.Attributes[0].Value, Convert.ToInt32(Potion.Attributes[1].Value));
+        }
+
+        static void LoadModuleTrap(XmlNode Trap, int ModNum)
+        {
+            Program.Campaign.Modules[ModNum].Trap.Name = Trap.Attributes[0].Value;
+            Program.Campaign.Modules[ModNum].Trap.DiceNum = Convert.ToInt32(Trap.Attributes[1].Value);
+            Program.Campaign.Modules[ModNum].Trap.DiceSize = Convert.ToInt32(Trap.Attributes[2].Value);
+            Program.Campaign.Modules[ModNum].Trap.Modifier = Convert.ToInt32(Trap.Attributes[3].Value);
+            Program.Campaign.Modules[ModNum].Trap.SaveType = Trap.Attributes[4].Value;
+            Program.Campaign.Modules[ModNum].Trap.SaveTarget = Convert.ToInt32(Trap.Attributes[5].Value);
+            Program.Campaign.Modules[ModNum].Trap.SaveSuccess.Add(Trap.Attributes[6].Value);
+            Program.Campaign.Modules[ModNum].Trap.SaveFail.Add(Trap.Attributes[7].Value);
         }
 
         #endregion

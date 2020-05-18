@@ -339,6 +339,26 @@ namespace Text_Adventure_Environment
             Dead = true;
         }
 
+        public static int SavingThrow(string SaveType)
+        {
+            int Save = DiceRoller.RollDice(12) + (Level / 3);
+            switch (SaveType)
+            {
+                case "Str":
+                    Save += StrMod;
+                    break;
+                case "Dex":
+                    Save += DexMod;
+                    break;
+                case "Con":
+                    Save += ConMod;
+                    break;
+                default:
+                    break;
+            }
+            return Save;
+        }
+
         #endregion
     }
 
