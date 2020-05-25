@@ -39,6 +39,7 @@ namespace Text_Adventure_Environment
                         ModChoice = Campaign.ShopModule(Campaign.Modules[ModChoice]);
                         break;
                     case 3:
+                        ModChoice = Campaign.TrapModule(Campaign.Modules[ModChoice]);
                         break;
                     case 4:
                         ModChoice = Campaign.EndCampaignModule(Campaign.Modules[ModChoice]);

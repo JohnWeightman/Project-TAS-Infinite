@@ -10,6 +10,7 @@ namespace Text_Adventure_Environment
     {
         public string Name;
         public bool Complete = false;
+        public Settings Settings = new Settings();
         public List<Module> Modules = new List<Module>();
 
         #region Module Functions
@@ -197,5 +198,32 @@ namespace Text_Adventure_Environment
                 Damage += DiceRoller.RollDice(DiceSize);
             return Damage;
         }
+    }
+
+    class Settings
+    {
+        public General General = new General();
+        public PlayerSettings Player = new PlayerSettings();
+        public EnemySettings Enemies = new EnemySettings();
+    }
+
+    class General
+    {
+
+    }
+
+    class PlayerSettings
+    {
+        public int FirstLevelUp = 0;
+        public int LevelUpIncrease = 0;
+    }
+
+    class EnemySettings
+    {
+        public int EnemyNamePlateColourGreen = 0;
+        public int EnemyNamePlateColourDarkGreen = 0;
+        public int EnemyNamePlateColourDarkYellow = 0;
+        public int EnemyNamePlateColourRed = 0;
+        public int EnemyNamePlateColourDarkRed = 0;
     }
 }

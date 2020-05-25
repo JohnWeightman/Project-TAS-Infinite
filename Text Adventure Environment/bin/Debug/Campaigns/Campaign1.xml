@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Campaign1>
+  <Settings>
+    <General/>
+    <Player FirstLevelUp="50" LevelUpIncrease="25"/>
+    <Enemies EnemyNamePlateColourGreen="100" EnemyNamePlateColourDarkGreen="80" EnemyNamePlateColourDarkYellow="50" EnemyNamePlateColourRed="20" EnemyNamePlateColourDarkRed="0"/>
+  </Settings>
+  <Campaign>
+    <Module Name="Module1" ModType="0" ID="2EGQ4pIGbkj37u9D">
+      <Story/>
+      <Options>
+        <OptionsList/>
+        <OptionDirections OptionDirection1="1"/>
+      </Options>
+    </Module>
+    <Module Name="Module2" ModType="0" ID="RDyxR6O5ce0lSHTj">
+      <Story Part1="Your stood in town, what would you like to do?"/>
+      <Options>
+        <OptionsList Option1="Go to Shop" Option2="Go to Arena" Option3="Go Home"/>
+        <OptionDirections OptionDirection1="2" OptionDirection2="4" OptionDirection3="3"/>
+      </Options>
+    </Module>
+    <Module Name="Module3" ModType="0" ID="QKlmSM7fqawMjCO0">
+      <Story Part1="You head to the shop and a young clerk greets you."/>
+      <Options>
+        <OptionsList Option1="Return to Town"/>
+        <OptionDirections OptionDirection1="1"/>
+      </Options>
+    </Module>
+    <Module Name="Module4" ModType="0" ID="yG4ud3NXpEjRkxnt">
+      <Story Part1="Your standing inside your bedroom."/>
+      <Options>
+        <OptionsList Option1="Go to Town" Option2="Go to Bed"/>
+        <OptionDirections OptionDirection1="1" OptionDirection2="5"/>
+      </Options>
+    </Module>
+    <Module Name="Module5" ModType="1" ID="P1EMemk0AocmA5nz">
+      <Story Part1="You step into the arena to face your opponent!"/>
+      <Options>
+        <OptionsList Option1="Continue"/>
+        <OptionDirections OptionDirection1="1"/>
+      </Options>
+      <Encounter>
+        <EncounterEnemyType EnemyType1="Bandit"/>
+        <EncounterEnemyNumber EnemyNumber1="1"/>
+      </Encounter>
+    </Module>
+    <Module Name="Module6" ModType="0" ID="p1MhgzAPwnwj7FuS">
+      <Story Part1="You wake up feeling refreshed!"/>
+      <Options>
+        <OptionsList Option1="Continue"/>
+        <OptionDirections OptionDirection1="3"/>
+      </Options>
+    </Module>
+  </Campaign>
+</Campaign1>

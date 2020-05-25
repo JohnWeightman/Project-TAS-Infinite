@@ -10,7 +10,6 @@ namespace Text_Adventure_Environment
 {
     static class StartDisplay
     {
-
         #region About Information
 
         static List<string> AboutTAS = new List<string>() { "TAS Infinite", "", "TAS Infinite was developed by John Weightman, a hobbyist game developer who " +
@@ -125,43 +124,82 @@ namespace Text_Adventure_Environment
             Program.Campaign.Name = Campaign;
             XmlDocument Doc = new XmlDocument();
             Doc.Load("Campaigns\\" + Program.Campaign.Name + ".xml");
-            int ModNum = 0;
             foreach (XmlNode Node in Doc.DocumentElement)
             {
-                if(Node.Name == "Module")
+                if (Node.Name == "Settings")
+                    LoadSettingsNode(Node);
+                else if (Node.Name == "Campaign")
+                    LoadCampaignNode(Node);
+            }
+        }
+
+        static void LoadSettingsNode(XmlNode Settings)
+        {
+            foreach (XmlNode SetChild in Settings)
+                if (SetChild.Name == "General")
+                    LoadGeneralSettings(SetChild);
+                else if (SetChild.Name == "Player")
+                    LoadPlayerSettings(SetChild);
+                else if (SetChild.Name == "Enemies")
+                    LoadEnemySettings(SetChild);
+        }
+
+        static void LoadGeneralSettings(XmlNode General)
+        {
+
+        }
+
+        static void LoadPlayerSettings(XmlNode Player)
+        {
+            Program.Campaign.Settings.Player.FirstLevelUp = Convert.ToInt32(Player.Attributes[0].Value);
+            Program.Campaign.Settings.Player.LevelUpIncrease = Convert.ToInt32(Player.Attributes[1].Value);
+        }
+
+        static void LoadEnemySettings(XmlNode Enemies)
+        {
+            Program.Campaign.Settings.Enemies.EnemyNamePlateColourGreen = Convert.ToInt32(Enemies.Attributes[0].Value);
+            Program.Campaign.Settings.Enemies.EnemyNamePlateColourDarkGreen = Convert.ToInt32(Enemies.Attributes[1].Value);
+            Program.Campaign.Settings.Enemies.EnemyNamePlateColourDarkYellow = Convert.ToInt32(Enemies.Attributes[2].Value);
+            Program.Campaign.Settings.Enemies.EnemyNamePlateColourRed = Convert.ToInt32(Enemies.Attributes[3].Value);
+            Program.Campaign.Settings.Enemies.EnemyNamePlateColourDarkRed = Convert.ToInt32(Enemies.Attributes[4].Value);
+        }
+
+        static void LoadCampaignNode(XmlNode Campaign)
+        {
+            int ModNum = 0;
+            foreach(XmlNode ModEle in Campaign)
+            {
+                Module Mod = new Module();
+                Mod.Name = ModEle.Attributes[0].Value;
+                Mod.ModType = Convert.ToByte(ModEle.Attributes[1].Value);
+                Mod.ID = ModEle.Attributes[2].Value;
+                if (Mod.ModType == 3)
+                    Mod.EndCampaign = true;
+                Program.Campaign.Modules.Add(Mod);
+                foreach (XmlNode ModChild in ModEle.ChildNodes)
                 {
-                    Module Mod = new Module();
-                    Mod.Name = Node.Attributes[0].Value;
-                    Mod.ModType = Convert.ToByte(Node.Attributes[1].Value);
-                    Mod.ID = Node.Attributes[2].Value;
-                    if (Mod.ModType == 3)
-                        Mod.EndCampaign = true;
-                    Program.Campaign.Modules.Add(Mod);
-                    foreach (XmlNode ModChild in Node.ChildNodes)
+                    switch (ModChild.Name)
                     {
-                        switch (ModChild.Name)
-                        {
-                            case "Story":
-                                LoadModuleStory(ModChild, ModNum);
-                                break;
-                            case "Options":
-                                LoadModuleOptions(ModChild, ModNum);
-                                break;
-                            case "Encounter":
-                                LoadModuleEncounter(ModChild, ModNum);
-                                break;
-                            case "Shop":
-                                LoadModuleShop(ModChild, ModNum);
-                                break;
-                            case "Trap":
-                                LoadModuleTrap(ModChild, ModNum);
-                                break;
-                            default:
-                                break;
-                        }
+                        case "Story":
+                            LoadModuleStory(ModChild, ModNum);
+                            break;
+                        case "Options":
+                            LoadModuleOptions(ModChild, ModNum);
+                            break;
+                        case "Encounter":
+                            LoadModuleEncounter(ModChild, ModNum);
+                            break;
+                        case "Shop":
+                            LoadModuleShop(ModChild, ModNum);
+                            break;
+                        case "Trap":
+                            LoadModuleTrap(ModChild, ModNum);
+                            break;
+                        default:
+                            break;
                     }
-                    ModNum++;
                 }
+                ModNum++;
             }
         }
 

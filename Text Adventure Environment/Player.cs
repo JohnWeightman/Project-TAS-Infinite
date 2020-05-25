@@ -291,7 +291,7 @@ namespace Text_Adventure_Environment
             Weapon.UpdateWeaponString("Shortsword");
             AC = UpdatePlayerAC();
             XP = 0;
-            LU = 100;
+            LU = Program.Campaign.Settings.Player.FirstLevelUp;
             OffHand = "N/A";
             Inventory.Clear();
             Gold = 0;
@@ -315,7 +315,7 @@ namespace Text_Adventure_Environment
         static void LevelUp()
         {
             Level += 1;
-            LU = (LU * 2) + 25;
+            LU = (LU * 2) + Program.Campaign.Settings.Player.LevelUpIncrease;
             List<string> Update = new List<string>() { "Level Up!", "", "Level: " + Level, "", "You have 1 Ability Point to spend!", "Str: " + Str, "Dex: " + 
                 Dex, "Con: " + Con };
             List<string> Options = new List<string>() { "Str", "Dex", "Con" };

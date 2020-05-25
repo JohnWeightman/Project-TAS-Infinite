@@ -151,14 +151,15 @@ namespace Text_Adventure_Environment
 
         void SetColour()
         {
+            EnemySettings CC = Program.Campaign.Settings.Enemies;
             float Health = ((float)HP / (float)MaxHP) * 100;
-            if (Health == 100)
+            if (Health <= 100 && Health >= CC.EnemyNamePlateColourGreen)
                 Colour = ConsoleColor.Green;
-            else if (Health < 100 && Health >= 80)
+            else if (CC.EnemyNamePlateColourGreen < 100 && Health >= CC.EnemyNamePlateColourDarkGreen)
                 Colour = ConsoleColor.DarkGreen;
-            else if (Health < 80 && Health >= 50)
+            else if (Health < CC.EnemyNamePlateColourDarkGreen && Health >= CC.EnemyNamePlateColourDarkYellow)
                 Colour = ConsoleColor.DarkYellow;
-            else if (Health < 50 && Health >= 20)
+            else if (Health < CC.EnemyNamePlateColourDarkYellow && Health >= CC.EnemyNamePlateColourRed)
                 Colour = ConsoleColor.Red;
             else
                 Colour = ConsoleColor.DarkRed;
