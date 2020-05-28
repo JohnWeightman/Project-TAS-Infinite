@@ -216,6 +216,7 @@ namespace Text_Adventure_Environment
     {
         public int FirstLevelUp = 0;
         public int LevelUpIncrease = 0;
+        public bool UseStats = false;
     }
 
     class EnemySettings

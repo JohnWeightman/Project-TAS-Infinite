@@ -42,6 +42,22 @@ namespace Text_Adventure_Environment
 
         #region Update Player Stats
 
+        public static void UpdateStatsFromCampaign()
+        {
+            UpdateAbilityModifiers();
+            AC = UpdatePlayerAC();
+            HP = MaxHP;
+            XP = 0;
+            LU = Program.Campaign.Settings.Player.FirstLevelUp;
+            OffHand = "N/A";
+            Inventory.Clear();
+            StaminaMax = 4 + (2 * DexMod);
+            if (StaminaMax < 7)
+                StaminaMax = 7;
+            Stamina = StaminaMax;
+            Gold = 0;
+        }
+
         public static void TakeDamage(int Damage)
         {
             HP -= Damage;
@@ -60,34 +76,34 @@ namespace Text_Adventure_Environment
 
         public static void UpdateAbilityModifiers()
         {
-            Player.StrMod = Player.Str / 3;
-            Player.DexMod = Player.Dex / 3;
-            Player.ConMod = Player.Con / 3;
+            StrMod = Str / 3;
+            DexMod = Dex / 3;
+            ConMod = Con / 3;
         }
 
         public static int UpdatePlayerAC()
         {
             int AC = 0;
-            if (Player.Armour.Name != "N/A")
+            if (Armour.Name != "N/A")
             {
-                if(Player.Armour.Weight == "Light")
+                if(Armour.Weight == "Light")
                 {
-                    if (Player.DexMod > 5)
-                        AC = Player.Armour.AC + 5;
+                    if (DexMod > 5)
+                        AC = Armour.AC + 5;
                     else
-                        AC = Player.Armour.AC + Player.DexMod;
+                        AC = Armour.AC + DexMod;
                 }
                 else
                 {
-                    AC = Player.Armour.AC;
+                    AC = Armour.AC;
                 }
             }
             else
             {
-                if (Player.DexMod > 5)
+                if (DexMod > 5)
                     AC = 11;
                 else
-                    AC = 6 + Player.DexMod;
+                    AC = 6 + DexMod;
             }
             return AC;
         }
@@ -191,11 +207,11 @@ namespace Text_Adventure_Environment
             DrawGUI.UpdatePlayersStatBoxes();
         }
 
-        static void CharacterName()
+        public static void CharacterName()
         {
             List<string> CCName1 = new List<string>() {"Welcome to the Character Creator", "", "Name: "};
             DrawGUI.UpdateStoryBox(CCName1);
-            Player.Name = Console.ReadLine();
+            Name = Console.ReadLine();
             List<string> CCName2 = new List<string>() { "Welcome to the Character Creator", "", "Are you sure you want to be known as " + Name + "?"};
             DrawGUI.UpdateStoryBox(CCName2);
             List<string> Options = new List<string>() { "Yes", "No" };

@@ -153,6 +153,23 @@ namespace Text_Adventure_Environment
         {
             Program.Campaign.Settings.Player.FirstLevelUp = Convert.ToInt32(Player.Attributes[0].Value);
             Program.Campaign.Settings.Player.LevelUpIncrease = Convert.ToInt32(Player.Attributes[1].Value);
+            foreach (XmlNode Stats in Player)
+                LoadPlayerSettingsStats(Stats);
+        }
+
+        static void LoadPlayerSettingsStats(XmlNode Stats)
+        {
+            Program.Campaign.Settings.Player.UseStats = Convert.ToBoolean(Stats.Attributes[0].Value);
+            if (Program.Campaign.Settings.Player.UseStats)
+            {
+                Player.Str = Convert.ToInt32(Stats.Attributes[1].Value);
+                Player.Dex = Convert.ToInt32(Stats.Attributes[2].Value);
+                Player.Con = Convert.ToInt32(Stats.Attributes[3].Value);
+                Player.MaxHP = Convert.ToInt32(Stats.Attributes[4].Value);
+                Player.Weapon.UpdateWeaponString(Stats.Attributes[5].Value);
+                Player.Armour.UpdateArmourString(Stats.Attributes[6].Value);
+                Player.UpdateStatsFromCampaign();
+            }
         }
 
         static void LoadEnemySettings(XmlNode Enemies)
@@ -278,7 +295,10 @@ namespace Text_Adventure_Environment
                     DrawGUI.ClearPlayersStatBoxes();
                     DrawGUI.ClearNPCBoxes();
                     DrawGUI.ClearEventsBox();
-                    Player.StartCharacterCreator();
+                    if (!Program.Campaign.Settings.Player.UseStats)
+                        Player.StartCharacterCreator();
+                    else
+                        Player.CharacterName();
                     Program.GameLoop();
                     break;
                 case 2:
