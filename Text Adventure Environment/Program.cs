@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Debugger;
 
 namespace Text_Adventure_Environment
 {
@@ -27,25 +23,32 @@ namespace Text_Adventure_Environment
             int ModChoice = 0;
             while (!Player.Dead && !Campaign.Complete)
             {
-                switch (Campaign.Modules[ModChoice].ModType)
+                try
                 {
-                    case 0:
-                        ModChoice = Campaign.StoryModule(Campaign.Modules[ModChoice]);
-                        break;
-                    case 1:
-                        ModChoice = Campaign.EncounterModule(Campaign.Modules[ModChoice]);
-                        break;
-                    case 2:
-                        ModChoice = Campaign.ShopModule(Campaign.Modules[ModChoice]);
-                        break;
-                    case 3:
-                        ModChoice = Campaign.TrapModule(Campaign.Modules[ModChoice]);
-                        break;
-                    case 4:
-                        ModChoice = Campaign.EndCampaignModule(Campaign.Modules[ModChoice]);
-                        break;
-                    default:
-                        break;
+                    switch (Campaign.Modules[ModChoice].ModType)
+                    {
+                        case 0:
+                            ModChoice = Campaign.StoryModule(Campaign.Modules[ModChoice]);
+                            break;
+                        case 1:
+                            ModChoice = Campaign.EncounterModule(Campaign.Modules[ModChoice]);
+                            break;
+                        case 2:
+                            ModChoice = Campaign.ShopModule(Campaign.Modules[ModChoice]);
+                            break;
+                        case 3:
+                            ModChoice = Campaign.TrapModule(Campaign.Modules[ModChoice]);
+                            break;
+                        case 4:
+                            ModChoice = Campaign.EndCampaignModule(Campaign.Modules[ModChoice]);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                catch
+                {
+                    Debug.Log("Program/GameLoop() - Error With Module " + Campaign.Modules[ModChoice].Name);
                 }
             }
             StartDisplay.DisplayCampaignMenu();

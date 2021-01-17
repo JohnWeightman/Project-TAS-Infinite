@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Text_Adventure_Environment
 {
+
     static class Stores
     {
         static Shops Store = new Shops();

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Text_Adventure_Environment
 {
@@ -293,17 +290,6 @@ namespace Text_Adventure_Environment
                 Player.Stamina += Player.FightOptionCosts[2];
                 List<string> Update = new List<string>() { "You don't have any Health Potions!" };
                 DrawGUI.UpdateStoryBox(Update);
-            }
-            if (false)
-            {
-                int Regen = 0;
-                for (int x = 0; x < Player.Level; x++)
-                    Regen += DiceRoller.RollDice(4) + 1;
-                if (Regen > (Player.MaxHP - Player.HP))
-                    Regen = Player.MaxHP - Player.HP;
-                Player.HP += Regen;
-                List<string> Update = new List<string>() { "You Heal for " + Regen + "HP!", "", "Stamina: " + Player.Stamina + "/" + Player.StaminaMax };
-                DrawGUI.UpdateStoryBox(Update);            
             }
         }
 

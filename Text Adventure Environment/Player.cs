@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Debugger;
 
 namespace Text_Adventure_Environment
 {
@@ -118,11 +116,18 @@ namespace Text_Adventure_Environment
         {
             bool Answer = false;
             int Input = 0;
-            while (!Answer)
+            try
             {
-                Input = Player.PlayerInputsLoop(Options);
-                if (Input != 404)
-                    Answer = !Answer;
+                while (!Answer)
+                {
+                    Input = PlayerInputsLoop(Options);
+                    if (Input != 404)
+                        Answer = !Answer;
+                }
+            }
+            catch
+            {
+                Debug.Log("Player/PlayerInputs() - Error Reading Player Inputs", 4);
             }
             return Input;
         }
@@ -151,25 +156,32 @@ namespace Text_Adventure_Environment
         public static int SelectItem(List<string> Items)
         {
             int Item = 0;
-            bool Done = false;
-            while (!Done)
+            try
             {
-                DrawGUI.OptionsSelectItem(Items[Item]);
-                int Input = PlayerInputs(4);
-                switch (Input)
+                bool Done = false;
+                while (!Done)
                 {
-                    case 1:
-                    case 2:
-                        Item = ChangeSelectedItem(Input, Item, Items.Count - 1);
-                        break;
-                    case 3:
-                        Done = !Done;
-                        break;
-                    case 4:
-                        Item = -1;
-                        Done = !Done;
-                        break;
+                    DrawGUI.OptionsSelectItem(Items[Item]);
+                    int Input = PlayerInputs(4);
+                    switch (Input)
+                    {
+                        case 1:
+                        case 2:
+                            Item = ChangeSelectedItem(Input, Item, Items.Count - 1);
+                            break;
+                        case 3:
+                            Done = !Done;
+                            break;
+                        case 4:
+                            Item = -1;
+                            Done = !Done;
+                            break;
+                    }
                 }
+            }
+            catch
+            {
+                Debug.Log("Player/SelectItem() - Error Reading Player Input", 4);
             }
             return Item;
         }

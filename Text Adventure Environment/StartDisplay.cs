@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Xml;
+using Debugger;
 
 namespace Text_Adventure_Environment
 {
@@ -62,7 +60,8 @@ namespace Text_Adventure_Environment
                     Environment.Exit(1);
                     break;
                 default:
-                    Environment.Exit(1);
+                    Debug.Log("StartDisplay/DisplayMainMennu() - Invalid Input", 1);
+                    DisplayMainMenu();
                     break;
             }
         }
@@ -79,9 +78,16 @@ namespace Text_Adventure_Environment
                 DisplayMainMenu();
             else
             {
-                string CampSel = Campaigns[Input].ToLower();
-                LoadCampaign(CampSel);
-                DisplayCampaignMenu();
+                try
+                {
+                    string CampSel = Campaigns[Input].ToLower();
+                    LoadCampaign(CampSel);
+                    DisplayCampaignMenu();
+                }
+                catch
+                {
+                    Debug.Log("StartDisplay/SelectCampaign() - Error Loading Campaign", 2);
+                }
             }
         }
 
@@ -137,11 +143,38 @@ namespace Text_Adventure_Environment
         {
             foreach (XmlNode SetChild in Settings)
                 if (SetChild.Name == "General")
-                    LoadGeneralSettings(SetChild);
+                {
+                    try
+                    {
+                        LoadGeneralSettings(SetChild);
+                    }
+                    catch
+                    {
+                        Debug.Log("StartDisplay/LoadSettingsNoce() - Error Loading General Settings");
+                    }
+                }
                 else if (SetChild.Name == "Player")
-                    LoadPlayerSettings(SetChild);
+                {
+                    try
+                    {
+                        LoadPlayerSettings(SetChild);
+                    }
+                    catch
+                    {
+                        Debug.Log("StartDisplay/LoadSettingsNode() - Error Loading Player Settings");
+                    }
+                }
                 else if (SetChild.Name == "Enemies")
-                    LoadEnemySettings(SetChild);
+                {
+                    try
+                    {
+                        LoadEnemySettings(SetChild);
+                    }
+                    catch
+                    {
+                        Debug.Log("StartDisplay/LoadSettingsNode() - Error Loading Enemy Settings");
+                    }
+                }
         }
 
         static void LoadGeneralSettings(XmlNode General)
@@ -195,25 +228,32 @@ namespace Text_Adventure_Environment
                 Program.Campaign.Modules.Add(Mod);
                 foreach (XmlNode ModChild in ModEle.ChildNodes)
                 {
-                    switch (ModChild.Name)
+                    try
                     {
-                        case "Story":
-                            LoadModuleStory(ModChild, ModNum);
-                            break;
-                        case "Options":
-                            LoadModuleOptions(ModChild, ModNum);
-                            break;
-                        case "Encounter":
-                            LoadModuleEncounter(ModChild, ModNum);
-                            break;
-                        case "Shop":
-                            LoadModuleShop(ModChild, ModNum);
-                            break;
-                        case "Trap":
-                            LoadModuleTrap(ModChild, ModNum);
-                            break;
-                        default:
-                            break;
+                        switch (ModChild.Name)
+                        {
+                            case "Story":
+                                LoadModuleStory(ModChild, ModNum);
+                                break;
+                            case "Options":
+                                LoadModuleOptions(ModChild, ModNum);
+                                break;
+                            case "Encounter":
+                                LoadModuleEncounter(ModChild, ModNum);
+                                break;
+                            case "Shop":
+                                LoadModuleShop(ModChild, ModNum);
+                                break;
+                            case "Trap":
+                                LoadModuleTrap(ModChild, ModNum);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    catch
+                    {
+                        Debug.Log("StartDisplay/LoadCampaingNode() - Error Loading " + ModChild.Name + " Object: Mod " + (ModNum + 1), 2);
                     }
                 }
                 ModNum++;
@@ -299,13 +339,15 @@ namespace Text_Adventure_Environment
                         Player.StartCharacterCreator();
                     else
                         Player.CharacterName();
+                    DrawGUI.UpdatePlayersStatBoxes();
                     Program.GameLoop();
                     break;
                 case 2:
                     DisplayMainMenu();
                     break;
                 default:
-                    System.Environment.Exit(1);
+                    Debug.Log("StartDisplay/DisplayCampaignMennu() - Invalid Input", 1);
+                    DisplayCampaignMenu();
                     break;
             }
         }
