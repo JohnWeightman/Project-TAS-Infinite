@@ -48,7 +48,7 @@ namespace Text_Adventure_Environment
                 }
                 catch
                 {
-                    Debug.Log("Program/GameLoop() - Error With Module " + Campaign.Modules[ModChoice].Name);
+                    Debug.Log("Program/GameLoop() - Error With Campaign Module: " + Campaign.Name + "." + Campaign.Modules[ModChoice].Name);
                 }
             }
             StartDisplay.DisplayCampaignMenu();

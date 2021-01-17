@@ -11,10 +11,9 @@ namespace Text_Adventure_Environment
         #region About Information
 
         static List<string> AboutTAS = new List<string>() { "TAS Infinite", "", "TAS Infinite was developed by John Weightman, a hobbyist game developer who " +
-            "built this project initially to pass the time during the Coronavirus lockdown in 2020. I continued to work on the project afterwards, however, " +
-            "using it as my main ongoing project and also completed '#100DaysOfCode' working on this project.", "", "The project originally started with just " +
-            "the GUI class that I built and played around one evening. I continued to add to it till I decided to build a shell of a game for amatuer " +
-            "developers to take and build a game from. This evolved into the game before you, a community based text adventure game, with a in built tool to " +
+            "built this project initially to pass the time during the Coronavirus lockdown in 2020.", "", "The project originally started with just " +
+            "the GUI class that I built and played around one evening. I continued to add to it till I decided to build a game engine for people " +
+            "to take and build a game from. This evolved into the game before you, a community based text adventure game, with a in built tool to " +
             "encourage people to build and share their own adventures for people to play.", "", "Much of the game is built to try and give players " +
             "opportunities to change and play around with the game files, as well as for me to learn new things in C#, the language the game is written in. " +
             "I encourage people to play around with things, and the project code is also avaliable on Github if any developers or hobbyists want to have a " +
@@ -25,9 +24,9 @@ namespace Text_Adventure_Environment
             "2018-19, part of the Lincoln Royals dodgeball team, an avid scout leader and many other things besides.", "", "I have spent 4 years doing HEMA " +
             "(Historical European Martial Arts) learning different masters from different weapons though I'm the most proficient with a longsword. I spent 3 " +
             "years as an explorer leader at Viking explorers in Lincoln and also joined the Three Arrows Scout Survival Team. I'm also a regular D&D player, " +
-            "both as a player and as a DM in D&D 5e. Currently part of 2 campaigns, the first I DM and the second I play 'Thalmar Rotdal', a drunk dwarven " +
-            "fool of a fighter.", "", "I've also become a big supporter of all things game jam related. Ive taken part in 4 Global Game Jams and several " +
-            "others besides. Normally part of a team called LowPoly Games, you can find most our jam games on our Itch.IO profile linked below. I've also " +
+            "both as a player and as a DM in D&D 5e. Currently part of 2 campaigns, the first I DM and the second I play 'Looping Coil', a tabaxi ranger with" +
+            "a mischievous", "", "I've also become a big supporter of all things game jam related. Ive taken part in every Global Game Jam since 2017 and " +
+            "many others besides. Normally part of a team called LowPoly Games, you can find most our jam games on our Itch.IO profile linked below. I've also " +
             "produced a few videos offering tips for new jammers and promoting a few of my favourate games that I've seen other jammers make.", "","Links:",
             "Twitter: @JohnTheScout", "Itch: https://istalriskolirproductions.itch.io/", "Github: https://github.com/JohnWeightman", "", "LowPoly Games " +
             "Itch: https://lowpolygames.itch.io/" };

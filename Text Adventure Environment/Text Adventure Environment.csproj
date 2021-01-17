@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B3E917CA-2968-42D6-A89D-D54133D491CA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Text_Adventure_Environment</RootNamespace>
-    <AssemblyName>Text Adventure Environment</AssemblyName>
+    <RootNamespace>TAS_Infinite</RootNamespace>
+    <AssemblyName>TAS Infinite</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
